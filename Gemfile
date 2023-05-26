@@ -3,6 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.1"
 
+# for password security
+gem "bcrypt"
+
+# for building json responces instead of views
+gem "jbuilder"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
@@ -38,11 +44,24 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "byebug", platforms: %i[ mri mingw x64_mingw ]
+  # in case of need quick fake info
+  gem "faker"
 end
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  # nice annotations to your tables
+  gem "annotate"
+
+  # using pry as default rails console
+  gem "pry-rails"
+
+  # more explicit errors
+  gem "better_errors"
+
+  # debugging purposes
+  gem "binding_of_caller"
 end
 
