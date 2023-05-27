@@ -68,11 +68,13 @@ class ApplicationController < ActionController::API
         params.deep_transform_keys!(&:underscore)
     end
 
+    # clear error handling
     def invalid_authenticity_token
         render json: { message: 'Invalid authenticity token' }, 
           status: :unprocessable_entity
     end
 
+    # clear errors for unspecified errors like wrong variable etc...
     def unhandled_error(error)
         if request.accepts.first.html?
           raise error
@@ -84,4 +86,5 @@ class ApplicationController < ActionController::API
           logger.error "\n#{@message}:\n\t#{@stack.join("\n\t")}\n"
         end
     end
+
 end
