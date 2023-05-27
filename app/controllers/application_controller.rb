@@ -1,11 +1,18 @@
 class ApplicationController < ActionController::API
 
+    # errors handling
+    rescue_from StandardError, with: :unhandled_error
+    rescue_from ActionController::InvalidAuthenticityToken,
+        #if invalid authenticity token
+        with: :invalid_authenticity_token
+
     # part of protection from forgery
     include ActionController::RequestForgeryProtection
     protect_from_forgery with: :exception
 
     # before action methods
-    before_action :snake_case_params, :attach_authenticity_token
+    before_action :snake_case_params
+    before_action :attach_authenticity_token
 
     # ===================================== CHRLLL Methods ==================================
 
@@ -58,6 +65,23 @@ class ApplicationController < ActionController::API
 
     # convertion of camelCase to snake_case
     def snake_case_params
-    params.deep_transform_keys!(&:underscore)
+        params.deep_transform_keys!(&:underscore)
+    end
+
+    def invalid_authenticity_token
+        render json: { message: 'Invalid authenticity token' }, 
+          status: :unprocessable_entity
+    end
+
+    def unhandled_error(error)
+        if request.accepts.first.html?
+          raise error
+        else
+          @message = "#{error.class} - #{error.message}"
+          @stack = Rails::BacktraceCleaner.new.clean(error.backtrace)
+          render 'api/errors/internal_server_error', status: :internal_server_error
+          
+          logger.error "\n#{@message}:\n\t#{@stack.join("\n\t")}\n"
+        end
     end
 end
