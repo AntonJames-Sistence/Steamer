@@ -39,7 +39,7 @@ class User < ApplicationRecord
         length: { in: 6..255 }, 
         allow_nil: true
 
-    # ================================  ================================
+    # ================================ Find By Credentials ================================
 
     def self.find_by_credentials(credential, password) # able to search username or email
         # assign email or username symbol according to regexp response
