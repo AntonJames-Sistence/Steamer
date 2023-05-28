@@ -1,9 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import sessionReducer from './session';
 
 // root reducer combine all reducers together for store
 const rootReducer = combineReducers({
-
+  session: sessionReducer
 });
 
 // enhancer for using redux-logger

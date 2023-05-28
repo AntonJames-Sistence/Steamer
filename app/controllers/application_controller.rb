@@ -17,19 +17,19 @@ class ApplicationController < ActionController::API
     # ===================================== CHRLLL Methods ==================================
 
     # test method, has to be removed later
-    def test
-        if params.has_key?(:login)
-          login!(User.first)
-        elsif params.has_key?(:logout)
-          logout!
-        end
+    # def test
+    #     if params.has_key?(:login)
+    #       login!(User.first)
+    #     elsif params.has_key?(:logout)
+    #       logout!
+    #     end
       
-        if current_user
-          render json: { user: current_user.slice('id', 'username', 'session_token') }
-        else
-          render json: ['No current user']
-        end
-    end
+    #     if current_user
+    #       render json: { user: current_user.slice('id', 'username', 'session_token') }
+    #     else
+    #       render json: ['No current user']
+    #     end
+    # end
 
     # return user whose current_user attribute matches the token from cookie file or creates one
     def current_user
