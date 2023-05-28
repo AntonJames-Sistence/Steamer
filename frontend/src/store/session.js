@@ -1,6 +1,6 @@
 import csrfFetch from "./csrf";
 
-// ========================== POJO action creators ==========================
+// ========================== POJO action creators ==============================
 
 const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
@@ -18,7 +18,48 @@ const removeCurrentUser = () => {
     };
 };
 
-// ========================== Thunks ==========================
+// ========================== Thunks and helper methods ==========================
+
+//                      ======== restore session ========
+// logic for storing currentUser
+const storeCurrentUser = (user) => {
+    // - seItem - and - removeItem - provided by sessionStorage 
+    // if else logic prevents setting currentUser to null value
+    if (user) {
+        sessionStorage.setItem("currentUser", JSON.stringify(user)) 
+    } else {
+        sessionStorage.removeItem("currentUser")
+    };
+};
+
+// logic for storing X-CSRF-Token
+const storeCSRFToken = (response) => {
+    // taking X-CSRF-Token from header object of the response
+    const csrfToken = response.headers.get("X-CSRF-Token");
+
+    // if token exists saves it in sessionStorage in browser
+    if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
+};
+
+export const restoreSession = () => async (dispatch) => {
+    // request info about current session user from backend
+    const response = await csrfFetch('/api/session');
+    // store token inside browser
+    storeCSRFToken(response);
+    
+    // gets session: { user: ...} object with user inside
+    const data = await response.json();
+    // helper method to store current user in browser storage
+    storeCurrentUser(data.user);
+
+    // dispatching user to action
+    dispatch(setCurrentUser(data.user));
+
+    // return in case of chaining more logic
+    return response;
+};
+
+//                      ======== login thunk ========
 
 export const login = (userLogPass) => async (dispatch) => {
 
@@ -29,6 +70,9 @@ export const login = (userLogPass) => async (dispatch) => {
     });
     const sessionObject = await response.json();
 
+    // helper method to store current user in browser storage
+    storeCurrentUser(sessionObject.user);
+
     // dispatch to get POJO and initialize reducer
     dispatch(setCurrentUser(sessionObject.user));
 
@@ -38,8 +82,12 @@ export const login = (userLogPass) => async (dispatch) => {
 
 // ========================== Session Reducer ==========================
 
-// session reducer takes default user state as null, in case app doesn't have logged in user
-const sessionReducer = (state = { user: null }, action) => {
+// session reducer takes initial state, in case app havs logged in user
+const initialState = { 
+    user: JSON.parse(sessionStorage.getItem("currentUser"))
+};
+
+const sessionReducer = (state = initialState, action) => {
     // good practice
     Object.freeze(state);
 

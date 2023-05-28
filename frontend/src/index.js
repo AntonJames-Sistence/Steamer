@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import configureStore from './store';
-import csrfFetch, { restoreCSRF } from './store/csrf';
+import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
 
 
@@ -39,9 +39,10 @@ const renderApplication = () => {
   );
 }
 
-// logic for getting X-CSRF-Token from backend and storing it, in case we don't have one
-if (sessionStorage.getItem("X-CSRF-Token") === null) {
-  restoreCSRF().then(renderApplication);
+// logic for restoring session by storing currentUser and X-CSRF-Token in browser sessionStorage
+if (  sessionStorage.getItem("X-CSRF-Token") === null ||
+      sessionStorage.getItem("currentUser") === null ) {
+  store.dispatch(sessionActions.restoreSession()).then(renderApplication);
 } else {
   renderApplication();
-}
+};
