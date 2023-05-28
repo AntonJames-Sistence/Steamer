@@ -20,12 +20,12 @@ const removeCurrentUser = () => {
 
 // ========================== Thunks ==========================
 
-export const login = (user) => async (dispatch) => {
+export const login = (userLogPass) => async (dispatch) => {
 
     // fetch request to DB with modifications using - csrfFetch - method
     const response = await csrfFetch('/api/session', {
       method: 'POST',
-      body: JSON.stringify(user)
+      body: JSON.stringify(userLogPass)
     });
     const sessionObject = await response.json();
 
