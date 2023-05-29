@@ -42,64 +42,71 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="signup-login-container">
+    <div className="header-text-form-container">
+
+      <div className="header-text">Sign Up</div>
+
+      <div className="signup-login-form-container">
+
         <form onSubmit={handleSubmit} className="signup-login-form">
 
-        <ul>
-            {errors.map(error => <li key={error}>{error}</li>)}
-        </ul>
+          <ul>
+              {errors.map(error => <li key={error}>{error}</li>)}
+          </ul>
 
-        <div className="text-field">
-            <div className="page-text">Username</div>
-            
-            <input
-            className="signup-login-input"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            />
-        </div>
+          <div className="text-field">
+              <div className="page-text">Username</div>
+              
+              <input
+              className="signup-login-input"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              />
+          </div>
 
-        <div className="text-field">
-            <div className="page-text">Email</div>
+          <div className="text-field">
+              <div className="page-text">Email</div>
 
-            <input
-            className="signup-login-input"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            />
-        </div>
+              <input
+              className="signup-login-input"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              />
+          </div>
 
-        <div className="text-field">
-            <div className="page-text">Password</div>
+          <div className="text-field">
+              <div className="page-text">Password</div>
 
-            <input
-            className="signup-login-input"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            />
-        </div>
+              <input
+              className="signup-login-input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              />
+          </div>
 
-        <div className="text-field">
-            <div className="page-text">Confirm Password</div>
+          <div className="text-field">
+              <div className="page-text">Confirm Password</div>
 
-            <input
-            className="signup-login-input"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-            />
-        </div>
+              <input
+              className="signup-login-input"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              />
+          </div>
 
-        <button className="signup-login-button">Sign Up</button>
+          <button className="signup-login-button">Sign Up</button>
 
         </form>
+
+      </div>
     </div>
   );
 }

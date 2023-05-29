@@ -36,39 +36,46 @@ const LoginForm = () => {
     }
 
     return (
-        <div className="signup-login-container">
-            <form onSubmit={handleSubmit} className="signup-login-form">
+        <div className="header-text-form-container">
+            
+            <div className="header-text">Sign In</div>
 
-                <ul>
-                    {errors.map(error => <li key={error}>{error}</li>)}
-                </ul>
+            <div className="signup-login-form-container">
 
-                <div className="text-field">
-                    <div className="page-text" id="page-text-blue-spotlight">Sign in with username or email</div>
+                <form onSubmit={handleSubmit} className="signup-login-form">
 
-                        <input
-                        className="signup-login-input"
-                        type="text"
-                        value={credential}
-                        onChange={ (event) => setCredential(event.target.value) }
-                        required
-                        />
-                </div>
+                    <ul>
+                        {errors.map(error => <li key={error}>{error}</li>)}
+                    </ul>
 
-                <div className="text-field">
-                    <div className="page-text">Password</div>
+                    <div className="text-field">
+                        <div className="page-text" id="page-text-blue-spotlight">Sign in with username or email</div>
 
-                        <input
-                        className="signup-login-input"
-                        type="password"
-                        value={password}
-                        onChange={ (event) => setPassword(event.target.value) }
-                        required
-                        />
-                </div>
+                            <input
+                            className="signup-login-input"
+                            type="text"
+                            value={credential}
+                            onChange={ (event) => setCredential(event.target.value) }
+                            required
+                            />
+                    </div>
 
-                <button className="signup-login-button">Sign In</button>
-            </form>
+                    <div className="text-field">
+                        <div className="page-text">Password</div>
+
+                            <input
+                            className="signup-login-input"
+                            type="password"
+                            value={password}
+                            onChange={ (event) => setPassword(event.target.value) }
+                            required
+                            />
+                    </div>
+
+                    <button className="signup-login-button">Sign In</button>
+                </form>
+            </div>
+
         </div>
     )
 }
