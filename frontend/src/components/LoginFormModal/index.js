@@ -10,7 +10,7 @@ const LoginFormModal = () => {
     // LogIn form when showModal variable is true
     return (
       <>
-        <button onClick={() => setShowModal(true)}>login</button>
+        <a onClick={() => setShowModal(true)}>login</a>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
             <LoginForm />

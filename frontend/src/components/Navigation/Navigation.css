@@ -1,0 +1,130 @@
+.global-navbar-container {
+    padding-left: 16px;
+    padding-right: 16px;
+    display: block;
+    background: #171a21;
+    width: auto;
+}
+
+.global-navbar {
+    position: relative;
+    width: 650px;
+    height: 70px;
+    margin: 0px auto;
+    padding: 0px;
+    display: flex;
+}
+
+/* ----------------- logo related styles ----------------- */
+
+#logo-name-holder {
+    padding-top: 10px;
+    /* font-size: large; */
+}
+
+#logo {
+    height: 36px;
+    width: 40px;
+}
+
+.logo {
+    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
+    padding-top: 20px;
+    /* margin-right: 40px; */
+    display: flex;
+    color: #b8b6b4;
+}
+
+/* ----------------- links related styles ----------------- */
+
+.nav-link {
+    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
+    display: block;
+    position: relative;
+    padding-top: 31px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 7px;
+    line-height: 16px;
+    float: left;
+    font-size: 10px;
+    color: #b8b6b4;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+    color: #b8b6b4;
+}
+
+.nav-link:first-child {
+    margin-left: 20px;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+}
+
+/* ----------------- login/signup related styles ----------------- */
+
+.global-actions {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 21px;
+    color: #b8b6b4;
+    font-size: 11px;
+    z-index: 401;
+    line-height: 24px;
+    vertical-align: top;
+    display: inline-block;
+    padding: 0 4px;
+    cursor: pointer;
+}
+
+.global-actions > a:hover {
+    color: #ffffff;
+}
+
+.profile-popup-menu {
+    position: absolute;
+    width: 105px;
+    padding: 6px 0px;
+    border: 1px solid #171a21;
+    position: relative;
+    background-color: #171a21;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 12px #000000;
+}
+
+.popup-menu-item {
+    color: #b8b6b4;
+    text-transform: none;
+    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
+    font-weight: normal;
+    line-height: normal;
+    text-align: left;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 4px 10px;
+}
+
+.popup-menu-item:hover {
+    color: #ffffff;
+}
+
+#username {
+    display: flex;
+    justify-content: end;
+}
+
+#username > a:hover {
+    color: #ffffff;
+}
+
+.current-user {
+    color: #57cbde;
+}

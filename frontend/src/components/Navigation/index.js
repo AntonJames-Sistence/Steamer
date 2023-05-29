@@ -1,10 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
+import ProfileButton from './ProfileDropdownMenu';
 import './Navigation.css';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import logoPath from '../../resources/logo.png'
 
 const Navigation = () => {
     // taking sessionUser from store
@@ -24,18 +24,38 @@ const Navigation = () => {
         sessionLinks = (
         <>
             <LoginFormModal />
+            &nbsp;|&nbsp;
             <SignupFormModal />
         </>
         );
     }
 
     return (
-        <ul>
-        <li>
-            <NavLink exact to="/">Steamer logo </NavLink> 
-            {sessionLinks}
-        </li>
-        </ul>
+        <div className='global-navbar-container'>
+            <div className='global-navbar'>
+
+                    <div className='logo'>
+                        <a href='#'>
+                        <img id='logo' src={logoPath} alt="Steamer logo" />
+                        </a>
+                        <a href='#'>
+                        <div id='logo-name-holder'>STEAMER</div>
+                        </a>
+                    </div>
+
+                    <div className='global-actions'>
+                        {sessionLinks}
+                    </div>
+
+                    <div className='nav-links-container'>
+                        <a href='#' className='nav-link'>Store</a>
+                        <a href='#' className='nav-link'>Community</a>
+                        <a href='#' className='nav-link'>About</a>
+                        <a href='#' className='nav-link'>Support</a>
+                    </div>
+                
+            </div>
+        </div>
     );
 }
 

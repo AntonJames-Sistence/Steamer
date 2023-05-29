@@ -47,3 +47,10 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+body {
+	background-image: url('../src/resources/background.png');
+	background-size: cover;
+ 	 /* background-position: center; */
+ 	 background-repeat: no-repeat;
+}

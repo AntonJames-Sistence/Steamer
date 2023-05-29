@@ -39,16 +39,16 @@ const ProfileButton = ( {currentUser} ) => {
 
     return (
         <>
-          <button onClick={openMenu}>{currentUser.username}</button>
+          <div id="username">
+          <a onClick={openMenu}>{currentUser.username}</a>
+          </div>
           {/* if showMenu === true then render all code in () else dousn't render  */}
           { showMenu && (
-            <ul className="profile-dropdown">
-              <li>{currentUser.username}</li>
-              <li>{currentUser.email}</li>
-              <li>
-                <button onClick={logout}>logout: {currentUser.username}</button>
-              </li>
-            </ul>
+            <div className="profile-popup-menu">
+              <a className="popup-menu-item">View profile</a>
+              <a className="popup-menu-item">Account details</a>
+              <a className="popup-menu-item" onClick={logout}>Logout: <span className="current-user">{currentUser.username}</span></a>
+            </div>
           )}
         </>
     );
