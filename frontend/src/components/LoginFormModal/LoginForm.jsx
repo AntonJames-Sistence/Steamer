@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 
-const LoginFormPage = () => {
+const LoginForm = () => {
     // dispatch for frontend login functionality
     const dispatch = useDispatch();
 
@@ -73,4 +73,4 @@ const LoginFormPage = () => {
     )
 }
 
-export default LoginFormPage;
+export default LoginForm;

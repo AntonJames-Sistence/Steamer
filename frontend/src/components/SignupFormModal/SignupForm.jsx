@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
-import './SignupFormPage.css'
+import './SignupForm.css'
 
-function SignupFormPage() {
+const SignupForm = () => {
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState("");
@@ -12,9 +11,6 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-
-  const sessionUser = useSelector(state => state.session.user);
-  if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,7 +50,7 @@ function SignupFormPage() {
         </ul>
 
         <div className="text-field">
-            <div className="page-text">Username:</div>
+            <div className="page-text">Username</div>
             
             <input
             className="signup-login-input"
@@ -66,7 +62,7 @@ function SignupFormPage() {
         </div>
 
         <div className="text-field">
-            <div className="page-text">Email:</div>
+            <div className="page-text">Email</div>
 
             <input
             className="signup-login-input"
@@ -78,7 +74,7 @@ function SignupFormPage() {
         </div>
 
         <div className="text-field">
-            <div className="page-text">Password:</div>
+            <div className="page-text">Password</div>
 
             <input
             className="signup-login-input"
@@ -90,7 +86,7 @@ function SignupFormPage() {
         </div>
 
         <div className="text-field">
-            <div className="page-text">Confirm Password:</div>
+            <div className="page-text">Confirm Password</div>
 
             <input
             className="signup-login-input"
@@ -108,4 +104,4 @@ function SignupFormPage() {
   );
 }
 
-export default SignupFormPage;
+export default SignupForm;
