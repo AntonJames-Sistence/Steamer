@@ -1,0 +1,77 @@
+/* ------------------- login-signup-container related styles ------------------- */
+
+.signup-login-container {
+    background-color: #181a21;
+    border-radius: 4px;
+    padding: 24px 32px;
+    display: flex;
+    min-width: 636px;
+    color: #E9E9E9;
+}
+
+.signup-login-form {
+    display: grid;
+    gap: 12px;
+    color: #E9E9E9;
+}
+
+/* ------------------- login-signup-button styles ------------------- */
+
+.signup-login-button {
+    position: relative;
+    background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    padding: 12px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: inherit;
+    text-align: center;
+    cursor: pointer;
+    width: 270px;
+}
+
+.signup-login-button:hover {
+    background: linear-gradient(90deg, #06BFFF 50%, #2D73FF 100%);
+}
+
+/* ------------------- text-field related divs styles ------------------- */
+
+.text-field {
+    display: grid;
+    grid-template-areas:
+        "label hint"
+        "input input";
+    grid-template-columns: 1fr min-content;
+    gap: 4px;
+}
+
+.signup-login-input {
+    border-radius: 2px;
+    color: #fff;
+    padding: 10px;
+    background-color: #32353c;
+    outline: none;
+    font-size: 15px;
+    grid-area: input;
+    border: 1px solid #32353c;
+    width: auto;
+}
+
+.signup-login-input:hover {
+    background-color: #393c44;
+}
+
+.page-text {
+    color: #afafaf;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+}
+
+#page-text-blue-spotlight {
+    color: #1999ff;
+    font-weight: 500;
+}

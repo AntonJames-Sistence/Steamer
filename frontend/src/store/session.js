@@ -24,7 +24,7 @@ const removeCurrentUser = () => {
 // logic for storing currentUser
 const storeCurrentUser = (user) => {
     // - seItem - and - removeItem - provided by sessionStorage 
-    // if else logic prevents setting currentUser to null value
+    // if else logic allow us to use same method to logout by passing null instead of user in value
     if (user) {
         sessionStorage.setItem("currentUser", JSON.stringify(user)) 
     } else {
@@ -62,7 +62,6 @@ export const restoreSession = () => async (dispatch) => {
 //                      ======== login thunk ========
 
 export const login = (userLogPass) => async (dispatch) => {
-
     // fetch request to DB with modifications using - csrfFetch - method
     const response = await csrfFetch('/api/session', {
       method: 'POST',
@@ -77,6 +76,32 @@ export const login = (userLogPass) => async (dispatch) => {
     dispatch(setCurrentUser(sessionObject.user));
 
     // return in case of chaining more logic
+    return response;
+};
+
+//                      ======== signup thunk ========
+
+export const signup = (userInfo) => async (dispatch) => {
+    const response = await csrfFetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify(userInfo)
+    });
+    const sesObj = await response.json();
+    
+    storeCurrentUser(sesObj.user);
+    dispatch(setCurrentUser(sesObj.user));
+    return response;
+};
+
+//                      ======== logout thunk ========
+
+export const logout = () => async (dispatch) => {
+    const response = await csrfFetch('/api/session', {
+        method: 'DELETE'
+    });
+
+    storeCurrentUser(null);
+    dispatch(removeCurrentUser());
     return response;
 };
 
