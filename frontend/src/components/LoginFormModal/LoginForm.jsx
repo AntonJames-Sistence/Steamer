@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-
 
 const LoginFormPage = () => {
     // dispatch for frontend login functionality
@@ -12,10 +10,6 @@ const LoginFormPage = () => {
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
-
-    // for redirection purposes
-    const sessionUser = useSelector(state => state.session.user);
-    if (sessionUser) return <Redirect to="/" />;
 
     // main logic for dispatching login
     const handleSubmit = (e) => {
@@ -57,6 +51,7 @@ const LoginFormPage = () => {
                         type="text"
                         value={credential}
                         onChange={ (event) => setCredential(event.target.value) }
+                        required
                         />
                 </div>
 
@@ -68,6 +63,7 @@ const LoginFormPage = () => {
                         type="password"
                         value={password}
                         onChange={ (event) => setPassword(event.target.value) }
+                        required
                         />
                 </div>
 
