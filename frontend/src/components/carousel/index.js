@@ -40,8 +40,7 @@ const Carousel = () => {
                     <div className='info-capsule'>
                         <div className='game-title'>Darkest Dungeon II</div>
                         <p>
-                            Darkest Dungeon II is a roguelike road trip of the damned. Form a party, 
-                            equip your stagecoach,
+                            
                         </p>
                     </div>
                 </div>
@@ -53,8 +52,7 @@ const Carousel = () => {
                     <div className='info-capsule'>
                         <div className='game-title'>Resident Evil 4</div>
                         <p>
-                            Survival is just the beginning. Six years have passed since the biological 
-                            disaster in Raccoon City.
+                            
                         </p>
                     </div>
                 </div>
@@ -66,9 +64,7 @@ const Carousel = () => {
                     <div className='info-capsule'>
                         <div className='game-title'>Lineage II</div>
                         <p>
-                            Step into the role of a legendary warrior seeking to find his place in the midst of battle!
-                             Lineage II brings you into an expansive MMORPG experience where you create your own
-                              destiny in the realm of Aden.
+                            
                         </p>
                     </div>
                 </div> 

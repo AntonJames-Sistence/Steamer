@@ -95,6 +95,7 @@ a {
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 12px #000000;
+    z-index: 1;
 }
 
 .popup-menu-item {

@@ -3,21 +3,24 @@
 .carousel-img {
     width: 450px;
     height: 250px;
+    padding: 0px;
 }
 
-.carousel-slide {
-    display: flex;
-    align-items: center;
+/* main slide container */
+.slick-list {
+    box-shadow: 0px 0 10px 0px #000;
+    border-radius: 3px;
 }
   
 .slide-content {
     display: flex;
-    /* align-items: center; */
+    
 }
 
 .info-capsule {
     color: #fff;
     max-width: 200px;
+    
 }
 
 /* ========================== carousel outside capsule ========================== */
@@ -30,6 +33,7 @@
     padding-right: 2%;
     padding-bottom: 20px;
     padding-top: 20px;
+    /* z-index: -1; */
 }
 
 .carousel-header-text {
@@ -55,4 +59,10 @@
     height: 69px;
     padding-left: 6px;
     padding-right: 6px;
+}
+
+/* ========================================= */
+
+.button {
+
 }

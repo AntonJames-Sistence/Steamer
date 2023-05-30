@@ -35,6 +35,17 @@ const LoginForm = () => {
             });
     }
 
+    const handleDemo = (e) => {
+        e.preventDefault();
+
+        const demoUser = {
+            credential: 'admin',
+            password: 'password'
+        }
+
+        return dispatch(sessionActions.login(demoUser));
+    }
+
     return (
         <div className="header-text-form-container">
             
@@ -71,6 +82,8 @@ const LoginForm = () => {
                     </div>
 
                     <button className="signup-login-button">Sign In</button>
+
+                    <button className="signup-login-button" onClick={handleDemo}>Demo User</button>
 
                     <ul className="errors">
                         {errors.map(error => <div key={error}>{error}</div>)}
