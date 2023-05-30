@@ -28,14 +28,14 @@ const SignupForm = () => {
         .catch(async (res) => {
             let data;
             try {
-            // .clone() essentially allows you to read the response body twice
-            data = await res.clone().json();
+              // .clone() essentially allows you to read the response body twice
+              data = await res.clone().json();
             } catch {
-            data = await res.text(); // Will hit this case if the server is down
+              data = await res.text(); // Will hit this case if the server is down
             }
-            if (data?.errors) setErrors(data.errors);
-            else if (data) setErrors([data]);
-            else setErrors([res.statusText]);
+              if (data?.errors) setErrors(data.errors);
+              else if (data) setErrors([data]);
+              else setErrors([res.statusText]);
         });
     }
     return setErrors(['Passwords must be the same']);
