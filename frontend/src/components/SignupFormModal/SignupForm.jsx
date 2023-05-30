@@ -50,15 +50,12 @@ const SignupForm = () => {
 
         <form onSubmit={handleSubmit} className="signup-login-form">
 
-          <ul>
-              {errors.map(error => <li key={error}>{error}</li>)}
-          </ul>
-
           <div className="text-field">
               <div className="page-text">Username</div>
               
               <input
               className="signup-login-input"
+              id={`${errors.length > 0 ? 'has-errors' : ''}`}
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -71,6 +68,7 @@ const SignupForm = () => {
 
               <input
               className="signup-login-input"
+              id={`${errors.length > 0 ? 'has-errors' : ''}`}
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -83,6 +81,7 @@ const SignupForm = () => {
 
               <input
               className="signup-login-input"
+              id={`${errors.length > 0 ? 'has-errors' : ''}`}
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -95,6 +94,7 @@ const SignupForm = () => {
 
               <input
               className="signup-login-input"
+              id={`${errors.length > 0 ? 'has-errors' : ''}`}
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
@@ -103,6 +103,10 @@ const SignupForm = () => {
           </div>
 
           <button className="signup-login-button">Sign Up</button>
+
+          <ul className="errors">
+              {errors.map(error => <li key={error}>{error}</li>)}
+          </ul>
 
         </form>
 

@@ -7,6 +7,7 @@
 }
 
 .signup-login-form-container {
+    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
     padding: 24px 32px;
     display: flex;
     background-color: #181a21;
@@ -21,29 +22,29 @@
 }
 
 .header-text {
+    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
     color: #fff;
-    font-size: 30px;
+    font-size: 25px;
     text-transform: uppercase;
     letter-spacing: .055em;
-    font-weight: 200;
 }
 
 /* ------------------- login-signup-button styles ------------------- */
 
 .signup-login-button {
+    font-family: inherit;
     position: relative;
+    left: 68px;
     background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
     border-radius: 2px;
     border: none;
-    outline: none;
     padding: 12px;
     color: #fff;
-    font-size: 16px;
-    font-weight: 400;
-    font-family: inherit;
+    font-size: 12px;
     text-align: center;
     cursor: pointer;
-    width: 270px;
+    width: 170px;
+    height: 35px;
 }
 
 .signup-login-button:hover {
@@ -53,24 +54,28 @@
 /* ------------------- text-field related divs styles ------------------- */
 
 .text-field {
+    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
     display: grid;
     grid-template-areas:
         "label hint"
         "input input";
     grid-template-columns: 1fr min-content;
     gap: 4px;
+    width: 300px;
 }
 
 .signup-login-input {
+    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
     border-radius: 2px;
     color: #fff;
     padding: 10px;
     background-color: #32353c;
     outline: none;
-    font-size: 15px;
+    /* font-size: 15px; */
     grid-area: input;
     border: 1px solid #32353c;
     width: auto;
+    height: 5px;
 }
 
 .signup-login-input:hover {
@@ -90,3 +95,13 @@
     font-weight: 500;
 }
 
+.errors {
+    color: #c15755;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+}
+
+#has-errors {
+    border-color: #c15755;
+}

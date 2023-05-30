@@ -44,15 +44,12 @@ const LoginForm = () => {
 
                 <form onSubmit={handleSubmit} className="signup-login-form">
 
-                    <ul>
-                        {errors.map(error => <li key={error}>{error}</li>)}
-                    </ul>
-
                     <div className="text-field">
                         <div className="page-text" id="page-text-blue-spotlight">Sign in with username or email</div>
 
                             <input
                             className="signup-login-input"
+                            id={`${errors.length > 0 ? 'has-errors' : ''}`}
                             type="text"
                             value={credential}
                             onChange={ (event) => setCredential(event.target.value) }
@@ -65,6 +62,7 @@ const LoginForm = () => {
 
                             <input
                             className="signup-login-input"
+                            id={`${errors.length > 0 ? 'has-errors' : ''}`}
                             type="password"
                             value={password}
                             onChange={ (event) => setPassword(event.target.value) }
@@ -73,6 +71,11 @@ const LoginForm = () => {
                     </div>
 
                     <button className="signup-login-button">Sign In</button>
+
+                    <ul className="errors">
+                        {errors.map(error => <div key={error}>{error}</div>)}
+                    </ul>
+
                 </form>
             </div>
 
