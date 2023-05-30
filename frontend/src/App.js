@@ -1,14 +1,15 @@
 import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
+import Carousel from "./components/carousel";
 
 function App() {
   return (
     <>
       <Navigation />
         <Switch>
-          {/* <Route path="/signup">
-            <SignupFormPage />
-          </Route> */}
+          <Route path="/">
+            <Carousel />
+          </Route>
         </Switch>
     </>
   );

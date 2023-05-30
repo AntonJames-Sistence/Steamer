@@ -48,7 +48,7 @@ table {
 	border-spacing: 0;
 }
 
-body {
+#body {
 	background-image: url('../src/resources/background.png');
 	background-size: cover;
  	 /* background-position: center; */
