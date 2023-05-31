@@ -32,7 +32,6 @@ export const getGames = (store) => store.games ? Object.values(store.games) : []
 export const fetchGame = (gameId) => async dispatch => {
     const res = await fetch(`/api/games/${gameId}`);
     const gameInfo = await res.json();
-    console.log(gameInfo)
 
     dispatch(receiveGame(gameInfo));
 };
@@ -40,6 +39,7 @@ export const fetchGame = (gameId) => async dispatch => {
 export const fetchGames = () => async dispatch => {
     const res = await fetch('/api/games/');
     const gamesInfo = await res.json();
+    console.log(gamesInfo)
 
     dispatch(receiveGames(gamesInfo));
 };
@@ -48,8 +48,6 @@ export const fetchGames = () => async dispatch => {
 
 const gamesReducer = (state = {}, action) => {
     Object.freeze(state);
-
-    const nextState = {...state};
 
     switch (action.type) {
         case RECEIVE_GAME:

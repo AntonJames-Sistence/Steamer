@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -23,12 +23,20 @@ import l2_screenshot_1 from '../../resources/carousel/l2/l2_screenshot_1.jpeg'
 import l2_screenshot_2 from '../../resources/carousel/l2/l2_screenshot_2.jpeg'
 import l2_screenshot_3 from '../../resources/carousel/l2/l2_screenshot_3.jpeg'
 import l2_screenshot_4 from '../../resources/carousel/l2/l2_screenshot_4.jpeg'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchGames, getGames } from '../../store/games';
 
 
 // ---------------------------------------------------------
 
 const MainCarousel = () => {
     const sliderRef = useRef(null);
+    const dispatch = useDispatch();
+    const games = useSelector(getGames);
+    console.log(games)
+    useEffect(() => {
+        dispatch(fetchGames())
+    }, [dispatch])
 
     // const NextArrow = ({ onClick }) => (
     //     <button onClick={onClick}>Next</button>
@@ -58,7 +66,7 @@ const MainCarousel = () => {
                 <div className='slide-content'>
                     <img className='carousel-img' src={dd2} alt='DD2' />
                     <div className='info-capsule'>
-                        <div className='game-title'>Darkest Dungeon II</div>
+                        <div className='game-title'>{games[0].title}</div>
 
                         <div className='screenshots'>
                             <div className='screenshot-holder'>
@@ -79,7 +87,7 @@ const MainCarousel = () => {
 
                         <div className='top-seller-icon'>Top Seller</div>
 
-                        <div className='price'>$39.99</div>
+                        <div className='price'>${games[0].price}</div>
                     </div>
                 </div>
             </div>

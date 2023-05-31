@@ -12,6 +12,8 @@ const GameShowPage = () => {
         dispatch(fetchGame(gameId))
     }, [dispatch, gameId]);
 
+    if (!game) return (<></>) // prevents bug when not provided params
+
     return (
         <>
             <h1>{game.title}</h1>

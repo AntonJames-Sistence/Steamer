@@ -12,6 +12,7 @@ function App() {
   return (
     <>
       <Navigation />
+
         <Switch>
           <Route exact path="/games/:gameId" component={GameShowPage} />
           <Route path="/">
@@ -19,9 +20,10 @@ function App() {
             <MainCarousel />
             <CategoryCarousel />
             <LoginInvite />
-            <Footer />
           </Route>
         </Switch>
+
+      <Footer />
     </>
   );
 }
