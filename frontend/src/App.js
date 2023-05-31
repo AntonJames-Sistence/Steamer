@@ -1,14 +1,19 @@
 import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import Carousel from "./components/carousel";
+import MainCarousel from "./components/MainCarousel";
+import StoreNavBar from "./components/StoreNavBar";
+import CategoryCarousel from "./components/CategoryCarousel";
 
 function App() {
+
   return (
     <>
       <Navigation />
         <Switch>
           <Route path="/">
-            <Carousel />
+            <StoreNavBar />
+            <MainCarousel />
+            <CategoryCarousel />
           </Route>
         </Switch>
     </>

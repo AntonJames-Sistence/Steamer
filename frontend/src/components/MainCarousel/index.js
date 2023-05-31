@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './Carousel.css'
+import './MainCarousel.css'
 
 // images imports  ---------------------------------------------------------
 
@@ -27,16 +27,16 @@ import l2_screenshot_4 from '../../resources/carousel/l2/l2_screenshot_4.jpeg'
 
 // ---------------------------------------------------------
 
-const Carousel = () => {
+const MainCarousel = () => {
     const sliderRef = useRef(null);
 
-    const NextArrow = ({ onClick }) => (
-        <button onClick={onClick}>Next</button>
-    );
+    // const NextArrow = ({ onClick }) => (
+    //     <button onClick={onClick}>Next</button>
+    // );
     
-    const PrevArrow = ({ onClick }) => (
-        <button onClick={onClick}>Previous</button>
-    );
+    // const PrevArrow = ({ onClick }) => (
+    //     <button onClick={onClick}>Previous</button>
+    // );
     
     const settings = {
         dots: true,
@@ -46,7 +46,7 @@ const Carousel = () => {
         slidesToScroll: 1,
         autoplay: true,
         fade: true,
-        autoplaySpeed: 10000,
+        autoplaySpeed: 3000,
         pauseOnHover: true,
         nextArrow: null, //<NextArrow />,
         prevArrow: null //<PrevArrow />,
@@ -62,16 +62,16 @@ const Carousel = () => {
 
                         <div className='screenshots'>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={dd2_screenshot_1} />
+                                <img className='mini-screenshot' src={dd2_screenshot_1} alt='dd2_scr1'/>
                             </div>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={dd2_screenshot_2} />
+                                <img className='mini-screenshot' src={dd2_screenshot_2} alt='dd2_scr2' />
                             </div>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={dd2_screenshot_3} />
+                                <img className='mini-screenshot' src={dd2_screenshot_3} alt='dd2_scr3' />
                             </div>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={dd2_screenshot_4} />
+                                <img className='mini-screenshot' src={dd2_screenshot_4} alt='dd2_scr4' />
                             </div>
                         </div>
 
@@ -92,16 +92,16 @@ const Carousel = () => {
 
                         <div className='screenshots'>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={re4_screenshot_1} />
+                                <img className='mini-screenshot' src={re4_screenshot_1} alt='re4_scr1' />
                             </div>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={re4_screenshot_2} />
+                                <img className='mini-screenshot' src={re4_screenshot_2} alt='re4_scr2' />
                             </div>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={re4_screenshot_3} />
+                                <img className='mini-screenshot' src={re4_screenshot_3} alt='re4_scr3' />
                             </div>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={re4_screenshot_4} />
+                                <img className='mini-screenshot' src={re4_screenshot_4} alt='re4_scr4' />
                             </div>
                         </div>
 
@@ -123,16 +123,16 @@ const Carousel = () => {
 
                         <div className='screenshots'>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={l2_screenshot_1} />
+                                <img className='mini-screenshot' src={l2_screenshot_1} alt='l2_scr1' />
                             </div>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={l2_screenshot_2} />
+                                <img className='mini-screenshot' src={l2_screenshot_2} alt='l2_scr2' />
                             </div>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={l2_screenshot_3} />
+                                <img className='mini-screenshot' src={l2_screenshot_3} alt='l2_scr3' />
                             </div>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={l2_screenshot_4} />
+                                <img className='mini-screenshot' src={l2_screenshot_4} alt='l2_scr4' />
                             </div>
                         </div>
 
@@ -163,4 +163,4 @@ const Carousel = () => {
     );
 };
 
-export default Carousel;
+export default MainCarousel;

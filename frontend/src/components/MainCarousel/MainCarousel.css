@@ -8,19 +8,22 @@
 
 /* main slide container */
 .slick-list {
-    background-image: url('../../resources/slider_background.jpeg');
-    box-shadow: 0px 0 10px 0px #000;
-    border-radius: 3px;
+    
+    
 }
   
 .slide-content {
     display: flex;
-    
+    box-shadow: 0px 0px 15px 0px #000;
+    border-radius: 0px;
 }
 
 .info-capsule {
     color: #fff;
     z-index: -2;
+    background-image: url('../../resources/slider_background.jpeg');
+    box-shadow: 0px 0 15px 0px #000;
+    /* border-radius: 7px; */
 }
 
 .avaliability {
@@ -63,10 +66,11 @@
     position: relative;
     width: 640px;
     margin: 0 auto;
+    margin-top: 10px;
     padding-left: 2%;
     padding-right: 2%;
     padding-bottom: 20px;
-    padding-top: 20px;
+    /* padding-top: 20px; */
     /* z-index: -1; */
 }
 
@@ -76,7 +80,7 @@
     font-size: 10px;
     text-transform: uppercase;
     color: #fff;
-    margin: 0 0 5px;
+    margin: 0 0 13px;
     letter-spacing: 0.03em;
     font-weight: normal;
     padding-top: 2px;
@@ -99,12 +103,10 @@
 
 .slick-prev:before, .slick-next:before {
     /* height: 10px; */
-    color: #171a21;
+    color: black;
+    opacity: .50;
 }
 
-.slick-prev:before:hover, .slick-next:before:hover {
-    color: white;
-}
 
 /* ===================== screenshots ==================== */
 

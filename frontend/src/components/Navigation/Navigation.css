@@ -63,7 +63,8 @@ a {
 
 .nav-link:hover {
     /* color: #ffffff; */
-    color: #5c7e10;
+    /* color: #5c7e10; */
+    color: #1999ff;
 }
 
 /* ----------------- login/signup related styles ----------------- */
@@ -84,7 +85,7 @@ a {
 
 .global-actions > a:hover {
     /* color: #ffffff; */
-    color: #5c7e10;
+    color: #1999ff;
 }
 
 .profile-popup-menu {
