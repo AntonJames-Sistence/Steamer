@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -18,17 +18,27 @@ import re4_screenshot_2 from '../../resources/carousel/re4/re4_screenshot_2.jpg'
 import re4_screenshot_3 from '../../resources/carousel/re4/re4_screenshot_3.jpg'
 import re4_screenshot_4 from '../../resources/carousel/re4/re4_screenshot_4.jpg'
 
-import l2 from '../../resources/carousel/l2/l2.jpeg'
-import l2_screenshot_1 from '../../resources/carousel/l2/l2_screenshot_1.jpeg'
-import l2_screenshot_2 from '../../resources/carousel/l2/l2_screenshot_2.jpeg'
-import l2_screenshot_3 from '../../resources/carousel/l2/l2_screenshot_3.jpeg'
-import l2_screenshot_4 from '../../resources/carousel/l2/l2_screenshot_4.jpeg'
+import la from '../../resources/carousel/la/lost_ark.jpeg'
+import l2_screenshot_2 from '../../resources/carousel/la/la1.jpg'
+import l2_screenshot_3 from '../../resources/carousel/la/la2.jpg'
+import l2_screenshot_1 from '../../resources/carousel/la/la3.jpg'
+import l2_screenshot_4 from '../../resources/carousel/la/la4.jpg'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchGames, getGames } from '../../store/games';
 
 
 // ---------------------------------------------------------
 
 const MainCarousel = () => {
     const sliderRef = useRef(null);
+    const dispatch = useDispatch();
+    const games = useSelector(getGames);
+
+    console.log(games)
+
+    useEffect(() => {
+        dispatch(fetchGames())
+    }, [dispatch])
 
     // const NextArrow = ({ onClick }) => (
     //     <button onClick={onClick}>Next</button>
@@ -52,13 +62,15 @@ const MainCarousel = () => {
         prevArrow: null //<PrevArrow />,
     };
 
+    if(games.length === 0) return (<></>)
+
     const sliderCapsule = (
         <Slider {...settings} ref={sliderRef}>
             <div className='carousel-slide'>
                 <div className='slide-content'>
                     <img className='carousel-img' src={dd2} alt='DD2' />
                     <div className='info-capsule'>
-                        <div className='game-title'>Darkest Dungeon II</div>
+                        <div className='game-title'>{games[0].title}</div>
 
                         <div className='screenshots'>
                             <div className='screenshot-holder'>
@@ -79,7 +91,7 @@ const MainCarousel = () => {
 
                         <div className='top-seller-icon'>Top Seller</div>
 
-                        <div className='price'>$39.99</div>
+                        <div className='price'>${games[0].price}</div>
                     </div>
                 </div>
             </div>
@@ -88,7 +100,7 @@ const MainCarousel = () => {
                 <div className='slide-content'>
                     <img className='carousel-img' src={re4} alt='RE4'/>
                     <div className='info-capsule'>
-                        <div className='game-title'>Resident Evil 4</div>
+                        <div className='game-title'>{games[1].title}</div>
 
                         <div className='screenshots'>
                             <div className='screenshot-holder'>
@@ -109,7 +121,7 @@ const MainCarousel = () => {
 
                         <div className='top-seller-icon'>Top Seller</div>
 
-                        <div className='price'>$59.99</div>
+                        <div className='price'>${games[1].price}</div>
 
                     </div>
                 </div>
@@ -117,9 +129,9 @@ const MainCarousel = () => {
 
             <div className='carousel-slide'>
                 <div className='slide-content'>
-                    <img className='carousel-img' src={l2} alt='L2'/>
+                    <img className='carousel-img' src={la} alt='LostArk'/>
                     <div className='info-capsule'>
-                        <div className='game-title'>Lineage II</div>
+                        <div className='game-title'>{games[2].title}</div>
 
                         <div className='screenshots'>
                             <div className='screenshot-holder'>
@@ -140,13 +152,15 @@ const MainCarousel = () => {
 
                         <div className='top-seller-icon'>Top Seller</div>
 
-                        <div className='price'>Free To Play</div>
+                        <div className='price'>{games[2].price === "0.0" ? 'Free to Play' : games[2].price}</div>
                     </div>
                 </div> 
             </div>
         </Slider>
     )
   
+    
+
     return (
       
         <div className='carousel-content'>

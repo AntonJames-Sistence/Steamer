@@ -7,6 +7,7 @@ import App from './App';
 import configureStore from './store';
 import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
+import * as gamesActions from './store/games';
 import { ModalProvider } from './context/Modal';
 
 
@@ -17,6 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.store = store;
   window.csrfFetch = csrfFetch;
   window.sessionActions = sessionActions;
+  window.gamesActions = gamesActions;
 }
 
 // wrapper component to provide access to redux store
