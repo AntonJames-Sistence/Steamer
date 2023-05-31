@@ -63,3 +63,6 @@
     color: #ffffff;
     cursor: pointer;
 }
+#signup-text > a:hover {
+    color: #66c0f4;
+}

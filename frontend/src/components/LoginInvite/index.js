@@ -1,6 +1,14 @@
+import { useState } from 'react';
 import './LoginInvite.css'
+import { Modal } from '../../context/Modal';
+import LoginForm from '../LoginFormModal/LoginForm';
+import SignupForm from '../SignupFormModal/SignupForm';
 
 const LoginInvite = () => {
+    const [showLogInModal, setShowLogInModal] = useState(false);
+    const [showSignUpModal, setShowSignUpModal] = useState(false);
+
+
     return (
         <div className="login-invite-wrap">
 
@@ -15,10 +23,20 @@ const LoginInvite = () => {
                     <p>Sign in to view personalized recommendations</p>
 
                     <div>
-                        <a href="#" className="green-signin-button"><span>Sign In</span></a>
+                        <a className="green-signin-button" onClick={() => setShowLogInModal(true)}><span>Sign In</span></a>
+                        {showLogInModal && (
+                            <Modal onClose={() => setShowLogInModal(false)}>
+                                <LoginForm />
+                            </Modal>
+                        )}
                     </div>
 
-                    <span id='signup-text'>Or <a href='#'>sign up</a> and join Steam for free</span>
+                    <span id='signup-text'>Or <a onClick={() => setShowSignUpModal(true)}>sign up</a> and join Steam for free</span>
+                    {showSignUpModal && (
+                        <Modal onClose={() => setShowSignUpModal(false)}>
+                            <SignupForm />
+                        </Modal>
+                    )}
                 </div>
             </div>
 
