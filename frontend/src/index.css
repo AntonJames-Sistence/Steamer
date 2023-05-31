@@ -50,5 +50,13 @@ table {
 
 body {
 	background-image: url('../src/resources/body_background.png');
- 	background-repeat: no-repeat;
+	background-position-x: center;
+    background-position-y: top;
+    background-size: initial;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgb(27, 40, 56);
 }

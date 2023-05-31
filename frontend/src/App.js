@@ -3,6 +3,7 @@ import Navigation from "./components/Navigation";
 import MainCarousel from "./components/MainCarousel";
 import StoreNavBar from "./components/StoreNavBar";
 import CategoryCarousel from "./components/CategoryCarousel";
+import LoginInvite from "./components/LoginInvite";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
             <StoreNavBar />
             <MainCarousel />
             <CategoryCarousel />
+            <LoginInvite />
           </Route>
         </Switch>
     </>
