@@ -18,8 +18,8 @@
 /* ----------------- logo related styles ----------------- */
 
 #logo-name-holder {
-    padding-top: 10px;
-    /* font-size: large; */
+    padding-top: 13px;
+    font-size: 14px;
 }
 
 #logo {
@@ -47,7 +47,7 @@
     padding-bottom: 7px;
     line-height: 16px;
     float: left;
-    font-size: 10px;
+    font-size: 9px;
     color: #b8b6b4;
     text-transform: uppercase;
 }
@@ -70,12 +70,13 @@ a {
 /* ----------------- login/signup related styles ----------------- */
 
 .global-actions {
+    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
     position: absolute;
     right: 0px;
     top: 0px;
     height: 21px;
     color: #b8b6b4;
-    font-size: 11px;
+    font-size: 8px;
     line-height: 24px;
     vertical-align: top;
     display: inline-block;
