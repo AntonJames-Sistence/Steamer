@@ -19,6 +19,7 @@ class User < ApplicationRecord
     before_validation :ensure_session_token
 
     # ================================ User Validations ================================
+    
     validates :username, 
         uniqueness: true, 
         presence: true,

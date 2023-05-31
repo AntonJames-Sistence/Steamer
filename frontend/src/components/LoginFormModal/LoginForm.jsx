@@ -25,14 +25,25 @@ const LoginForm = () => {
                 let data;
                 try {
                 // .clone() essentially allows you to read the response body twice
-                data = await res.clone().json();
+                    data = await res.clone().json();
                 } catch {
-                data = await res.text(); // Will hit this case if the server is down
+                    data = await res.text(); // Will hit this case if the server is down
                 }
-                if (data?.errors) setErrors(data.errors);
-                else if (data) setErrors([data]);
-                else setErrors([res.statusText]);
+                    if (data?.errors) setErrors(data.errors);
+                    else if (data) setErrors([data]);
+                    else setErrors([res.statusText]);
             });
+    }
+
+    const handleDemo = (e) => {
+        e.preventDefault();
+
+        const demoUser = {
+            credential: 'admin',
+            password: 'password'
+        }
+
+        return dispatch(sessionActions.login(demoUser));
     }
 
     return (
@@ -71,6 +82,8 @@ const LoginForm = () => {
                     </div>
 
                     <button className="signup-login-button">Sign In</button>
+
+                    <button className="signup-login-button" onClick={handleDemo}>Demo User</button>
 
                     <ul className="errors">
                         {errors.map(error => <div key={error}>{error}</div>)}

@@ -83,8 +83,8 @@
 }
 
 .page-text {
-    /* color: #1999ff; */
-    color: #afafaf;
+    color: #1999ff;
+    /* color: #afafaf; */
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: .02em;

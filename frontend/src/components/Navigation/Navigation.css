@@ -58,11 +58,13 @@ a {
 }
 
 .nav-link:first-child {
-    margin-left: 20px;
+    margin-left: 70px;
 }
 
 .nav-link:hover {
-    color: #ffffff;
+    /* color: #ffffff; */
+    /* color: #5c7e10; */
+    color: #1999ff;
 }
 
 /* ----------------- login/signup related styles ----------------- */
@@ -82,7 +84,8 @@ a {
 }
 
 .global-actions > a:hover {
-    color: #ffffff;
+    /* color: #ffffff; */
+    color: #1999ff;
 }
 
 .profile-popup-menu {
@@ -95,6 +98,7 @@ a {
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 12px #000000;
+    z-index: 1;
 }
 
 .popup-menu-item {
@@ -112,16 +116,18 @@ a {
 }
 
 .popup-menu-item:hover {
-    color: #ffffff;
+    /* color: #ffffff; */
+    color: #1999ff;
 }
 
 #username {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 #username > a:hover {
-    color: #ffffff;
+    /* color: #ffffff; */
+    color: #1999ff;
 }
 
 .current-user {
