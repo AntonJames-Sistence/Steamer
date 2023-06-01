@@ -1,0 +1,24 @@
+.slider-img {
+    height: 225px;
+    width: 400px;
+}
+
+.thumbnail-carousel {
+    width: 400px;
+    overflow-x: auto;
+    white-space: nowrap;
+    transition: transform 0.3s ease-in-out;
+}
+.thumbnail-carousel img {
+    width: 90px;
+    height: 50px;
+    object-fit: cover;
+    margin: 3px 3px 3px 3px;
+}
+
+/* ============================ capsule & wraps ============================ */
+
+.show-slider-wrap {
+    /* display: flex; */
+    justify-content: center;
+}
