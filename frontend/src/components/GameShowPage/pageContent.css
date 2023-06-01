@@ -39,13 +39,18 @@
     border-radius: 4px;
     color: #ffffff;
     margin-top: 10px;
+    padding-bottom: 5px;
 }
 
 .purchase-button-capsule {
-    
+    /* position: absolute; */
+    right: 280px;
+    bottom: -145px;
     text-align: right;
+    white-space: nowrap;
 }
 .price-button-wrap {
+    
     display: inline-block;
     background-color: #000000;
     padding: 2px 2px 2px 0px;
@@ -111,6 +116,7 @@
 .signin-offer {
     margin-bottom: 0;
     background-color: rgba(0,0,0,0.2);
+    /* background: linear-gradient(to right, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 100%); */
     color: #fff;
     font-size: 12px;
     font-family: "Motiva Sans", Sans-serif;
@@ -154,4 +160,67 @@
     margin-left: 15px;
     margin-bottom: 15px;
     margin-right: 5px;
+}
+
+/* ================ game details links ================ */
+
+.game-details-box {
+    background: linear-gradient(to right, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 100%);
+    margin-top: 10px;
+}
+.block-content {
+    color: #8f98a0;
+    line-height: 20px;
+}
+
+.game-details-block {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8px;
+    color: #8f98a0;
+    padding-top: 10px;
+    line-height: 20px;
+}
+.game-details-block > b {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #556772;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 8px;
+    margin: 5px 5px 0px 15px;
+}
+.game-details-block > a {
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: 300;
+    color: #67c1f5;
+    font-size: 8px;
+}
+.game-details-block > a:hover {
+    color: #ffffff;
+}
+
+
+.buttons-block {
+    padding-top: 14px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.buttons-block > a {
+    padding-top: 4px;
+    padding-left: 8px;
+    padding-bottom: 4px;
+    line-height: 12px;
+    background: rgba( 103, 193, 245, 0.1 );
+    color: #67c1f5;
+    border-radius: 1px;
+    display: block;
+    margin-bottom: 2px;
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+}
+
+.buttons-block > a:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #67c1f5 0%,#417a9b 100%);
 }

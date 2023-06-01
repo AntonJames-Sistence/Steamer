@@ -234,6 +234,38 @@ const GameShowPage = () => {
 
                 <div className='right-col-content'>
                     {!currentUser ? signUpOffer : <></>}
+                    <div className='game-details-box'>
+                        <div className='.block-content'>
+                            <div className='game-details-block'>
+                                <b>Title:</b>
+                                {game.title}
+                                <br />
+                                <b>Genre:</b>
+                                <a href='#'>{game.genre}</a>
+                                <br />
+                                <b>Developer:</b>
+                                <a href='#'>{game.developer}</a>
+                                <br />
+                                <b>Publisher:</b>
+                                <a href='#'>{game.publisher}</a>
+                                <br />
+                                <b>Franchise:</b>
+                                <a href='#'>{game.title}</a>
+                                <br />
+                                <b>Release date:</b>
+                                {formatDate(game.releaseDate)}
+                                <br />
+                            </div>
+                        </div>
+
+                        <div className='buttons-block'>
+                            <a href='/'>Visit the website</a>
+                            <a href='/'>View update history</a>
+                            <a href='/'>Read related news</a>
+                            <a href='/'>View discussions</a>
+                            <a href='/'>Find Community Groups</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
