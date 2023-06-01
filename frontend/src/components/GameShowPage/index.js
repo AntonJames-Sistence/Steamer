@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGame, getGame } from '../../store/games';
 import './GameShowPage.css'
+import './sliderHeader.css'
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -42,7 +43,7 @@ const GameShowPage = () => {
         speed: 700,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 5000,
         fade: true,
     };
@@ -80,7 +81,7 @@ const GameShowPage = () => {
             <div className='show-genre'>
                 <div className='show-tags'>Popular user-defined tags for this product:</div>
                 <div className='show-tags-data'>
-                    <a href='#'>{game.genre}</a>
+                    <a className='show-tags-links' href='#'>{game.genre}</a>
                 </div>
             </div>
 
@@ -113,10 +114,8 @@ const GameShowPage = () => {
         </Slider>
     )
 
-    return (
-        <div className='carousel-content'>
-            {slider}
-            <div className="thumbnail-carousel-container">
+    const sliderThumbnail = (
+        <div className="thumbnail-carousel-container">
                 <div className="thumbnail-carousel">
                     <img className='test' 
                         src={slide1} alt="Thumbnail 1"
@@ -147,7 +146,32 @@ const GameShowPage = () => {
                         onMouseEnter={() => handleThumbnailHover(2)}
                         />
                 </div>
+        </div>
+    )
+
+    const sliderHeader = (
+        <div className='slider-header-wrap'>
+            <div className='slide-header-links'>
+                <a href='#'>All Games</a>
+                {' > '}
+                <a href='#'>{game.genre} Games</a>
+                {' > '}
+                <a href='#'>{game.title}</a>
             </div>
+            <div className='title-wrap'>
+                <div className='show-game-title'>{game.title}</div>
+                <div>
+                    <a href='#' className='community-hub'><span>Community Hub</span></a>
+                </div>
+            </div>
+        </div>
+    )
+
+    return (
+        <div className='carousel-content'>
+            {sliderHeader}
+            {slider}
+            {sliderThumbnail}
         </div>
 
     )
