@@ -39,7 +39,6 @@ export const fetchGame = (gameId) => async dispatch => {
 export const fetchGames = () => async dispatch => {
     const res = await fetch('/api/games/');
     const gamesInfo = await res.json();
-    console.log(gamesInfo)
 
     dispatch(receiveGames(gamesInfo));
 };
