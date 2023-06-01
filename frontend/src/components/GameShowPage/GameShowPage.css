@@ -1,7 +1,91 @@
-.slider-img {
+.show-slider-img {
     height: 225px;
     width: 400px;
 }
+
+.show-header-img {
+    width: 230px;
+    height: 100px;
+}
+
+.show-content-wrap {
+    display: flex;
+}
+
+.info-holder {
+    margin-left: 10px;
+    /* margin-bottom: 5px; */
+}
+
+.show-game-description {
+    font-size: 10px;
+    line-height: 12px;
+    padding-right: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #c6d4df;
+    margin: 7px 0px 7px 0px;
+}
+
+.release-date, .developer, .publisher {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #556772;
+    font-size: 8px;
+    display: flex;
+    text-transform: uppercase;
+}
+.developer {
+    margin-top: 15px;
+}
+.publisher {
+    margin-top: 5px;
+}
+
+.show-date {
+    color: #8f98a0;
+    margin-left: 20px;
+    text-transform: none;
+}
+
+.show-developer, .show-publisher {
+    color: #67c1f5;
+    margin-left: 31px;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 2;
+}
+.show-developer:hover, .show-publisher:hover {
+    color: #ffffff;
+}
+
+.show-publisher {
+    margin-left: 34.5px;
+}
+
+.show-tags {
+    font-size: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #556772;
+    margin-top: 30px;
+}
+.show-tags-data {
+    display: flex;
+}
+.show-tags-data > a {
+    color: #67c1f5;
+    padding: 0 4px;
+    margin-right: 2px;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-top: 6px;
+    font-size: 9px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba( 103, 193, 245, 0.2 );
+}
+.show-tags-data > a:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #67c1f5 0%,#417a9b 100%);
+}
+/* ============================ thumbnails img rules ============================ */
 
 .thumbnail-carousel {
     width: 400px;
@@ -16,9 +100,14 @@
     margin: 3px 3px 3px 3px;
 }
 
+.thumbnail-carousel-container {
+    position: absolute;
+    top: 230px;
+}
+
 /* ============================ capsule & wraps ============================ */
 
 .show-slider-wrap {
     /* display: flex; */
-    justify-content: center;
+    /* justify-content: center; */
 }
