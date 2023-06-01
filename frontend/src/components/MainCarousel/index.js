@@ -68,7 +68,9 @@ const MainCarousel = () => {
         <Slider {...settings} ref={sliderRef}>
             <div className='carousel-slide'>
                 <div className='slide-content'>
-                    <img className='carousel-img' src={dd2} alt='DD2' />
+                    <a href={`/games/${games[0].id}`}>
+                        <img className='carousel-img' src={dd2} alt='DD2' />
+                    </a>
                     <div className='info-capsule'>
                         <div className='game-title'>{games[0].title}</div>
 
@@ -98,7 +100,9 @@ const MainCarousel = () => {
 
             <div className='carousel-slide'>
                 <div className='slide-content'>
-                    <img className='carousel-img' src={re4} alt='RE4'/>
+                    <a href={`/games/${games[1].id}`}>
+                        <img className='carousel-img' src={re4} alt='RE4'/>
+                    </a>
                     <div className='info-capsule'>
                         <div className='game-title'>{games[1].title}</div>
 
@@ -129,7 +133,9 @@ const MainCarousel = () => {
 
             <div className='carousel-slide'>
                 <div className='slide-content'>
-                    <img className='carousel-img' src={la} alt='LostArk'/>
+                    <a href={`/games/${games[2].id}`}>
+                        <img className='carousel-img' src={la} alt='LostArk'/>
+                    </a>
                     <div className='info-capsule'>
                         <div className='game-title'>{games[2].title}</div>
 

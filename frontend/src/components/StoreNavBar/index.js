@@ -7,7 +7,10 @@ const StoreNavBar = () => {
 
     return (
         <div className='nav-wrap'>
-    
+            <a href='/cart'>
+                <button>cart</button>
+            </a>
+
             <div className="store-nav-bg">
 
                 <div className="store-nav">
