@@ -1,111 +1,27 @@
-.show-slider-img {
-    height: 225px;
-    width: 400px;
-}
+/* ============================ under slider ============================ */
 
-.show-header-img {
-    width: 230px;
-    height: 100px;
-}
-
-.show-content-wrap {
+.invite-capsule {
     display: flex;
+    justify-content: center;
+    
 }
-
-.info-holder {
-    margin-left: 10px;
-    z-index: 2;
-    /* margin-bottom: 5px; */
-}
-
-.show-game-description {
-    font-size: 10px;
-    line-height: 12px;
-    padding-right: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #c6d4df;
-    margin: 7px 0px 7px 0px;
-}
-
-.release-date, .developer, .publisher {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #556772;
-    font-size: 8px;
-    display: flex;
-    text-transform: uppercase;
-}
-.developer {
-    margin-top: 15px;
-}
-.publisher {
-    margin-top: 5px;
-}
-
-.show-date {
-    color: #8f98a0;
-    margin-left: 20px;
-    text-transform: none;
-}
-
-.show-developer, .show-publisher {
-    color: #67c1f5;
-    margin-left: 31px;
-    text-decoration: none;
-    cursor: pointer;
-}
-.show-developer:hover, .show-publisher:hover {
-    color: #ffffff;
-}
-
-.show-publisher {
-    margin-left: 34.5px;
-}
-
-.show-tags {
-    font-size: 8px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #556772;
-    margin-top: 30px;
-}
-.show-tags-data {
-    display: flex;
-}
-.show-tags-links {
-    color: #67c1f5;
-    padding: 1px 6px;
-    margin-right: 2px;
-    border-radius: 2px;
-    cursor: pointer;
-    margin-top: 6px;
-    font-size: 9px;
-    font-family: Arial, Helvetica, sans-serif;
+.invite-capsule > p {
+    width: 630px;
+    /* background-color: #212d42; */
     background-color: rgba( 103, 193, 245, 0.2 );
+    border: #417a9b;
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #969696;
+    font-size: 10px;
+    padding: 5px 0px;
+    padding-left: 10px;
 }
-.show-tags-links:hover {
+
+.login-invite-link {
     color: #ffffff;
-    background: linear-gradient(135deg, #67c1f5 0%,#417a9b 100%);
+    cursor: pointer;
 }
-/* ============================ thumbnails img rules ============================ */
-
-.thumbnail-carousel {
-    width: 400px;
-    overflow-x: auto;
-    white-space: nowrap;
-    transition: transform 0.3s ease-in-out;
+.login-invite-link:hover {
+    color: #66c0f4;
 }
-.thumbnail-carousel img {
-    width: 90px;
-    height: 50px;
-    object-fit: cover;
-    margin: 3px 3px 3px 3px;
-}
-
-.thumbnail-carousel-container {
-    position: absolute;
-    top: 275px;
-}
-
-/* ============================ capsule & wraps ============================ */
-
-/* .show-slider-wrap {
-} */

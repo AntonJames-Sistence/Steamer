@@ -1,9 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGame, getGame } from '../../store/games';
+import { Modal } from '../../context/Modal';
+import LoginForm from '../LoginFormModal/LoginForm';
+
 import './GameShowPage.css'
 import './sliderHeader.css'
+import './carousel.css'
+import './pageContent.css'
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -26,6 +31,9 @@ const GameShowPage = () => {
     const game = useSelector(getGame(gameId));
     console.log(game)
     const sliderRef = useRef(null);
+    const [ signInModal, setSignInModal ] = useState(false);
+
+    const currentUser = useSelector(state => state.session.user);
 
     useEffect(() => {
         dispatch(fetchGame(gameId))
@@ -40,11 +48,11 @@ const GameShowPage = () => {
         dots: false,
         arrows: false,
         infinite: true,
-        speed: 700,
+        speed: 400,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 2000,
         fade: true,
     };
 
@@ -167,13 +175,80 @@ const GameShowPage = () => {
         </div>
     )
 
-    return (
-        <div className='carousel-content'>
-            {sliderHeader}
-            {slider}
-            {sliderThumbnail}
+    const signInInvite = (
+        <div className='invite-capsule'>
+            <p><a className='login-invite-link' onClick={() => setSignInModal(true)}>Sign in</a> to add this item to your wishlist, follow it, or mark it as ignored</p>
+            {signInModal && (
+                <Modal onClose={() => setSignInModal(false)}>
+                    <LoginForm />
+                </Modal>     
+            )}
         </div>
+    )
 
+    const signUpOffer = (
+        <div className='signin-offer-wrap'>
+            <div className='signin-offer'>Is this game relevant to you?</div>
+            <div className='show-signin-offer'>
+                <p>Sign in to see reasons why you may or may not like this based on your games, friends, and curators you follow.</p>
+                <a 
+                className='signin-offer-button' 
+                id='left-side-button'
+                onClick={() => setSignInModal(true)}
+                ><span>Sign In</span></a>
+                or
+                <a className='signin-offer-button'><span>Open in Steamer</span></a>
+            </div>
+        </div>
+    )
+
+    const pageContent = (
+        <div className='page-content-wrap'>
+            <div className='page-content-capsule'>
+
+                <div className='left-col-content'>
+                    <div className='franchise'>
+                        <span>Check out the {game.title} franchise on Steamer</span>
+                    </div>
+                    <div className='purchase-area'>
+                        <span>Buy {game.title}</span>
+
+                        <div className='purchase-button-capsule'>
+                            <div className='price-button-wrap'>
+                                <div className='show-price'>
+                                    ${game.price}
+                                </div>
+                                <div className='add-to-cart'>
+                                    <span>Add to Cart</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='show-details'>
+                        <h2 className='about-game'>About this Game</h2>
+                        <span className='game-description'>{game.description}</span>
+                        <h2 className='about-game' id='bottomline'></h2>
+                    </div>
+                </div>
+
+                <div className='right-col-content'>
+                    {!currentUser ? signUpOffer : <></>}
+                </div>
+            </div>
+        </div>
+    )
+
+    return (
+        <>
+            <div className='show-carousel-content'>
+                {sliderHeader}
+                {slider}
+                {sliderThumbnail}
+            </div>
+            {!currentUser ? signInInvite : <></>}
+            {pageContent}
+        </>
     )
 
 }
