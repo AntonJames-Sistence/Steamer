@@ -2,13 +2,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import gamesReducer from './games';
-import cartReducer from './cart';
+import cartItemsReducer from './cartItems';
 
 // root reducer combine all reducers together for store
 const rootReducer = combineReducers({
   session: sessionReducer,
   games: gamesReducer,
-  cart: cartReducer
+  cart: cartItemsReducer
 });
 
 // enhancer for using redux-logger

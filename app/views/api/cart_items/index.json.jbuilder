@@ -1,6 +1,6 @@
-unless @cart_association.empty?
+unless @cart_items.empty?
     # json.cart_items do
-    #     @cart_association.each do |cart_item|
+    #     @cart_items.each do |cart_item|
     #       json.set! cart_item.id do
     #         json.extract! cart_item,  :user_id, :game_id 
     #       end
@@ -10,7 +10,7 @@ unless @cart_association.empty?
     # name of object
     json.games do
         # looping over users cart associated with games
-        @cart_association.each do |cart_item|
+        @cart_items.each do |cart_item|
             # each item will have name of game.id
           json.set! cart_item.game.id do
             # setting value to what it receives from another json builder

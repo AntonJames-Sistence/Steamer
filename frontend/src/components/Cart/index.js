@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCartItems, getCartGames } from "../../store/cart";
+import { fetchCartItems, getCartGames } from "../../store/cartItems";
 
 
 const Cart = () => {
@@ -17,17 +17,16 @@ const Cart = () => {
     const eachGame = () => {
         return cartItems.map((game) => {
             return (
-                <>
-                    <h1>{game.title}</h1>
-                    <br />
-                </>
+                <div key={game.id}>
+                    <h2>{game.title}</h2>
+                </div>
             )
         })
     }
 
     return (
         <>
-            <h1>{eachGame()}</h1>
+            <div>{eachGame()}</div>
         </>
     )
 }
