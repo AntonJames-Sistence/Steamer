@@ -17,7 +17,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import slide1 from '../../resources/carousel/l2/l2.jpeg'
 import slide2 from '../../resources/carousel/l2/l22.jpeg'
 import slide3 from '../../resources/carousel/l2/l23.jpeg'
-import { fetchCartGame } from '../../store/cartItems';
+import { fetchCartGame, fetchCartGames, getCartGames } from '../../store/cartItems';
 
 // helper method to parse date
 export const formatDate = (dateString) => {
@@ -29,7 +29,9 @@ export const formatDate = (dateString) => {
 const GameShowPage = () => {
     const dispatch = useDispatch();
     const { gameId } = useParams();
+
     const game = useSelector(getGame(gameId));
+    const cartGames = useSelector(getCartGames);
 
     const [errors, setErrors] = useState([])
     
@@ -39,7 +41,8 @@ const GameShowPage = () => {
     const currentUser = useSelector(state => state.session.user);
 
     useEffect(() => {
-        dispatch(fetchGame(gameId))
+        dispatch(fetchGame(gameId));
+        dispatch(fetchCartGames());
     }, [dispatch, gameId]);
 
 
@@ -223,6 +226,14 @@ const GameShowPage = () => {
         });
     }
 
+    const displayButton = () => {
+        if(currentUser) {
+            return <span onClick={handleAddToCart}>Add to Cart</span>
+        } else {
+            return <span onClick={()=>{window.location.href = '/cart';}}>In Cart</span>
+        }
+    }
+
     const pageContent = (
         <div className='page-content-wrap'>
             <div className='page-content-capsule'>
@@ -240,7 +251,9 @@ const GameShowPage = () => {
                                     { game.price !== '0.0' ? `$${game.price}` : 'Free To Play'}
                                 </div>
                                 <div className='add-to-cart'>
+                                    
                                     <span onClick={handleAddToCart}>Add to Cart</span>
+                                    
                                 </div>
                             </div>
                         </div>

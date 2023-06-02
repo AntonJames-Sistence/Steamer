@@ -63,9 +63,8 @@ export const fetchCartGame = (gameId) => async dispatch => {
         body: JSON.stringify({cart_item: {gameId: gameId}}) // ensure strong params
     });
     const data = await res.json();
-    console.log(data) // delete this
 
-    dispatch(addGameToCart(data));
+    dispatch(addGameToCart(data.game));
 }
 
 export const removeGameFromCart = (cartItemId) => async dispatch => {
@@ -81,16 +80,19 @@ export const removeGameFromCart = (cartItemId) => async dispatch => {
 const cartItemsReducer = (state = {}, action) => {
     Object.freeze(state);
 
-    
+    const nextState = {...state};
     switch (action.type) {
         case RECEIVE_CART_GAMES:
             return {...state, ...action.payload.games }
+
         case ADD_GAME_TO_CART:
-            return {...state, ...action.game}
+            nextState[action.game.id] = action.game;
+            return nextState;
+
         case REMOVE_CART_GAME:
-            const nextState = {...state}
             delete nextState[action.cartItemId];
             return nextState;
+
         default:
             return state;
     }

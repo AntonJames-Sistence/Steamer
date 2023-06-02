@@ -10,9 +10,9 @@ class Api::CartItemsController < ApplicationController
         @cart_item = CartItem.new(cart_item_params.merge(user_id: current_user.id))
 
         if @cart_item.save!
-            render json: { game: @cart_item }
+            render json: { game: @cart_item.game }
         else
-            render json: { errors: ['Allready in cart'] }, status: :unauthorized
+            render json: { errors: ['Allready in cart'] }, status: :unprocessable_entity
         end
     end
 
