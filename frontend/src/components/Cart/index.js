@@ -24,7 +24,7 @@ const Cart = () => {
             return (
                 <div key={game.id}>
                     <h2>{game.title}</h2>
-                    <button onClick={handleRemove}>remove</button>
+                    <button onClick={e=>dispatch(removeGameFromCart(game.id))}>remove</button>
                 </div>
                 // <></>
             )

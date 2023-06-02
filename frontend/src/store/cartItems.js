@@ -72,7 +72,6 @@ export const removeGameFromCart = (cartItemId) => async dispatch => {
     const res = await csrfFetch(`/api/cart_items/${cartItemId}`, {
         method: 'DELETE'
     });
-    console.log(res.json())
     
     dispatch(removeCartGame(cartItemId));
 }
@@ -82,15 +81,16 @@ export const removeGameFromCart = (cartItemId) => async dispatch => {
 const cartItemsReducer = (state = {}, action) => {
     Object.freeze(state);
 
-    const newState = {...state};
+    
     switch (action.type) {
         case RECEIVE_CART_GAMES:
             return {...state, ...action.payload.games }
         case ADD_GAME_TO_CART:
             return {...state, ...action.game}
-        case RECEIVE_CART_GAMES:
-            delete newState[action.cartItemId];
-            return newState;
+        case REMOVE_CART_GAME:
+            const nextState = {...state}
+            delete nextState[action.cartItemId];
+            return nextState;
         default:
             return state;
     }

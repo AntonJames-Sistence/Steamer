@@ -17,9 +17,12 @@ class Api::CartItemsController < ApplicationController
     end
 
     def destroy
-        @cart_item = CartItem.find(params[:id])
-        @cart_item.destroy
-        render json: {message: 'Done'}
+        # by nature of table setup it will return array with only one element
+        @cart_items = CartItem.includes(:game, :user).where(user_id: current_user.id, game_id: params[:id])
+        @game = @cart_items[0]
+        @game.destroy
+        # render json: {item: @cart_item}
+        # render json: {message: 'Done'}
     end
 
     private 
