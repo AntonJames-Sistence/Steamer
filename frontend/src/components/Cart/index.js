@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCartItems, getCartGames } from "../../store/cartItems";
+import { fetchCartGames, getCartGames } from "../../store/cartItems";
 
 
 const Cart = () => {
@@ -9,7 +9,7 @@ const Cart = () => {
     const cartItems = useSelector(getCartGames);
 
     useEffect(() => {
-        dispatch(fetchCartItems())
+        dispatch(fetchCartGames())
     }, [dispatch]);
 
     if(!cartItems) return (<></>)

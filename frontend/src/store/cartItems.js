@@ -42,18 +42,20 @@ export const getCartGames = (store) => {
 // };
 
 
-export const fetchCartItems = () => async dispatch => {
+export const fetchCartGames = () => async dispatch => {
     const res = await fetch('/api/cart_items'); // index route
     const cartItems = await res.json();
-    
+
     dispatch(receiveCartGames(cartItems));
 }
 
-export const fetchCartGame = () => async dispatch => {
+export const fetchCartGame = (gameId) => async dispatch => {
     const res = await csrfFetch('/api/cart_items', {
-        method: 'POST'
+        method: 'POST',
+        body: JSON.stringify({cart_item: {gameId: gameId}}) // ensure strong params
     });
     const data = await res.json();
+    console.log(data) // delete this
 
     dispatch(addGameToCart(data));
 }
@@ -74,7 +76,7 @@ const cartItemsReducer = (state = {}, action) => {
         case RECEIVE_CART_GAMES:
             return {...state, ...action.payload.games }
         case ADD_GAME_TO_CART:
-            return {...state}
+            return {...state, ...action.game}
         case RECEIVE_CART_GAMES:
             return {...state}
         default:

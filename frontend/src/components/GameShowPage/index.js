@@ -17,6 +17,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import slide1 from '../../resources/carousel/l2/l2.jpeg'
 import slide2 from '../../resources/carousel/l2/l22.jpeg'
 import slide3 from '../../resources/carousel/l2/l23.jpeg'
+import { fetchCartGame } from '../../store/cartItems';
 
 // helper method to parse date
 export const formatDate = (dateString) => {
@@ -29,7 +30,7 @@ const GameShowPage = () => {
     const dispatch = useDispatch();
     const { gameId } = useParams();
     const game = useSelector(getGame(gameId));
-    console.log(game)
+    
     const sliderRef = useRef(null);
     const [ signInModal, setSignInModal ] = useState(false);
 
@@ -202,6 +203,12 @@ const GameShowPage = () => {
         </div>
     )
 
+    // add item to cart handle
+    const handleAddToCart = () => {
+        
+        dispatch(fetchCartGame(parseInt(gameId)));
+    }
+
     const pageContent = (
         <div className='page-content-wrap'>
             <div className='page-content-capsule'>
@@ -219,7 +226,7 @@ const GameShowPage = () => {
                                     ${game.price}
                                 </div>
                                 <div className='add-to-cart'>
-                                    <span>Add to Cart</span>
+                                    <span onClick={handleAddToCart}>Add to Cart</span>
                                 </div>
                             </div>
                         </div>

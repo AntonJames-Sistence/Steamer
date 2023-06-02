@@ -1,3 +1,7 @@
+.left-col-content {
+    max-width: 480px;
+}
+
 
 .page-content-wrap {
     display: flex;

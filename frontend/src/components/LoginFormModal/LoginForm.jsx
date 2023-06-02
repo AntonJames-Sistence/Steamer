@@ -47,7 +47,7 @@ const LoginForm = () => {
         }
 
         dispatch(sessionActions.login(demoUser));
-        history.push('/');
+        // history.push('/'); // has bug when login on a game showpage
     }
 
     return (

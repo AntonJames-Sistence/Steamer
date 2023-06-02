@@ -7,9 +7,9 @@ class Api::CartItemsController < ApplicationController
     end
 
     def create
-        @association = CartItem.new(:cart_params);
+        @cart_item = CartItem.new(cart_item_params.merge(user_id: current_user.id))
 
-        # render :post ???
+        render json: @cart_item
     end
 
     def destroy
@@ -18,7 +18,7 @@ class Api::CartItemsController < ApplicationController
 
     private 
 
-    def cart_params
-        params.require(:cart).permit(:user_id, :game_id)
+    def cart_item_params
+        params.require(:cart_item).permit(:game_id)
     end
 end

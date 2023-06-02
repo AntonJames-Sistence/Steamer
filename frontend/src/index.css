@@ -60,3 +60,7 @@ body {
     background-clip: initial;
     background-color: rgb(27, 40, 56);
 }
+
+a:focus {
+	outline: none;
+}
