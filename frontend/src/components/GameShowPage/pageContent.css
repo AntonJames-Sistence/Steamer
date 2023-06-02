@@ -113,6 +113,10 @@
 }
 
 /* ============================== right column area ============================== */
+.signin-offer-wrap {
+    margin-bottom: 10px;
+}
+
 .right-col-content {
     margin-left: 14px;
     float: right;
@@ -170,7 +174,7 @@
 
 .game-details-box {
     background: linear-gradient(to right, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 100%);
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 .block-content {
     color: #8f98a0;

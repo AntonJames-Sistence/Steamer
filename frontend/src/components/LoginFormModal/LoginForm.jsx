@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from 'react-router-dom';
 import * as sessionActions from "../../store/session";
 
 const LoginForm = () => {
     // dispatch for frontend login functionality
     const dispatch = useDispatch();
-
-    const history = useHistory();
 
     // useState hook for dynamic input update
     const [credential, setCredential] = useState('');
@@ -46,8 +43,7 @@ const LoginForm = () => {
             password: 'password'
         }
 
-        dispatch(sessionActions.login(demoUser));
-        // history.push('/'); // has bug when login on a game showpage
+        return dispatch(sessionActions.login(demoUser));
     }
 
     return (

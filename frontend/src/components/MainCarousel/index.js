@@ -69,7 +69,7 @@ const MainCarousel = () => {
         <Slider {...settings} ref={sliderRef}>
             <div className='carousel-slide'>
                 <div className='slide-content'>
-                    <a href={`/games/${games[0].id}`}>
+                    <a href={ `/games/${games[0].id}`}>
                         <img className='carousel-img' src={dd2} alt='DD2' />
                     </a>
                     <div className='info-capsule'>

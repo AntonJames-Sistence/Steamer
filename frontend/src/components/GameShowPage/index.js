@@ -223,7 +223,7 @@ const GameShowPage = () => {
                         <div className='purchase-button-capsule'>
                             <div className='price-button-wrap'>
                                 <div className='show-price'>
-                                    ${game.price}
+                                    { game.price !== '0.0' ? `${game.price}` : 'Free To Play'}
                                 </div>
                                 <div className='add-to-cart'>
                                     <span onClick={handleAddToCart}>Add to Cart</span>
