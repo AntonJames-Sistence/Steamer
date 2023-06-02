@@ -15,11 +15,25 @@ const receiveCartGames = (games) => {
     }
 }
 
-export const getCartItems = (store) => store.cart ? Object.values(store.cart) : [];
+export const getCartItems = (store) => {
+    if(store.cart) {
+        
+        return Object.values(store.cart);
+    } else {
+        return [];
+    }
+};
+
+// helper func to get only array with games ids
+export const getGamesIdFromCart = state => {
+    const cartItems = state.cart;
+    return Object.values(cartItems).map(item => item.gameId);
+};
 
 export const fetchCartItems = () => async dispatch => {
     const res = await fetch('/api/carts'); // index route
     const cartInfo = await res.json();
+    
 
     dispatch(receiveCartGames(cartInfo));
 }
