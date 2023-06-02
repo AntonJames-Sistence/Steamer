@@ -34,10 +34,11 @@ const MainCarousel = () => {
     const dispatch = useDispatch();
     const games = useSelector(getGames);
 
-    console.log(games)
 
     useEffect(() => {
+        
         dispatch(fetchGames())
+    
     }, [dispatch])
 
     // const NextArrow = ({ onClick }) => (

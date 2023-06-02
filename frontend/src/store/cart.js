@@ -8,42 +8,42 @@ const addGameToCart = (reference) => {
     }
 };
 
-const receiveCartGames = (games) => {
+const receiveCartGames = (payload) => {
     return {
         type: RECEIVE_CART_GAMES,
-        games
+        payload: payload
     }
 }
 
-export const getCartItems = (store) => {
+export const getCartGames = (store) => {
     if(store.cart) {
-        
         return Object.values(store.cart);
     } else {
         return [];
     }
 };
 
-// helper func to get only array with games ids
-export const getGamesIdFromCart = state => {
-    const cartItems = state.cart;
-    return Object.values(cartItems).map(item => item.gameId);
-};
+// // helper func to get only array with games ids
+// export const getGamesIdFromCart = state => {
+//     const cartItems = state.cart;
+//     return Object.values(cartItems).map(item => item.gameId);
+// };
+
 
 export const fetchCartItems = () => async dispatch => {
     const res = await fetch('/api/carts'); // index route
     const cartInfo = await res.json();
-    
 
     dispatch(receiveCartGames(cartInfo));
 }
+
 
 const cartReducer = (state = {}, action) => {
     Object.freeze(state);
 
     switch (action.type) {
         case RECEIVE_CART_GAMES:
-            return {...state, ...action.games}
+            return {...state, ...action.payload.games }
         default:
             return state;
     }

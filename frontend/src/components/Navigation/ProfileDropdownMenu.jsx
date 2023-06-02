@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { useHistory } from "react-router-dom";
 
 const ProfileButton = ( {currentUser} ) => {
     const dispatch = useDispatch();
     // useState hook variable to hide and show user dropdown menu
     const [showMenu, setShowMenu] = useState(false);
+
+    const history = useHistory();
     
     // open/hide menu logic
     const openMenu = () => {
@@ -35,6 +38,10 @@ const ProfileButton = ( {currentUser} ) => {
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());
+        setTimeout(() => {
+          history.push('/');
+        }, 500);
+        
     };
 
     return (
