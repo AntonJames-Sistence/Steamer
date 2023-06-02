@@ -1,25 +1,32 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCartGames, getCartGames } from "../../store/cartItems";
+import { fetchCartGames, getCartGames, getCartItems, removeGameFromCart } from "../../store/cartItems";
 
 
 const Cart = () => {
     const dispatch = useDispatch();
 
-    const cartItems = useSelector(getCartGames);
+    const cartGames = useSelector(getCartGames);
+    // const cartItems = useSelector(getCartItems);
 
     useEffect(() => {
         dispatch(fetchCartGames())
     }, [dispatch]);
 
-    if(!cartItems) return (<></>)
+    if(!cartGames) return (<></>)
+
+    const handleRemove = () => {
+        dispatch();
+    }
 
     const eachGame = () => {
-        return cartItems.map((game) => {
+        return cartGames.map((game) => {
             return (
                 <div key={game.id}>
                     <h2>{game.title}</h2>
+                    <button onClick={handleRemove}>remove</button>
                 </div>
+                // <></>
             )
         })
     }
@@ -27,6 +34,7 @@ const Cart = () => {
     return (
         <>
             <div>{eachGame()}</div>
+            
         </>
     )
 }

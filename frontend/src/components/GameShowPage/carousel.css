@@ -80,6 +80,7 @@
 }
 .show-tags-data {
     display: flex;
+    justify-content: baseline;
 }
 .show-tags-links {
     color: #67c1f5;

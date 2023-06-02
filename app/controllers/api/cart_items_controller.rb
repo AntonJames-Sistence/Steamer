@@ -9,11 +9,17 @@ class Api::CartItemsController < ApplicationController
     def create
         @cart_item = CartItem.new(cart_item_params.merge(user_id: current_user.id))
 
-        render json: @cart_item
+        if @cart_item.save!
+            render json: { game: @cart_item }
+        else
+            render json: { errors: ['Allready in cart'] }, status: :unauthorized
+        end
     end
 
     def destroy
-        @association = CartItem.find_by(id: params[:id])
+        @cart_item = CartItem.find(params[:id])
+        @cart_item.destroy
+        render json: {message: 'Done'}
     end
 
     private 

@@ -30,6 +30,8 @@ const GameShowPage = () => {
     const dispatch = useDispatch();
     const { gameId } = useParams();
     const game = useSelector(getGame(gameId));
+
+    const [errors, setErrors] = useState([])
     
     const sliderRef = useRef(null);
     const [ signInModal, setSignInModal ] = useState(false);
@@ -206,7 +208,19 @@ const GameShowPage = () => {
     // add item to cart handle
     const handleAddToCart = () => {
         
-        dispatch(fetchCartGame(parseInt(gameId)));
+        return dispatch(fetchCartGame(parseInt(gameId)))
+            .catch(async (res) => {
+                let data;
+                try {
+                // .clone() essentially allows you to read the response body twice
+                    data = await res.clone().json();
+                } catch {
+                    data = await res.text(); // Will hit this case if the server is down
+                }
+                    if (data?.errors) setErrors(data.errors);
+                    else if (data) setErrors([data]);
+                    else setErrors([res.statusText]);
+        });
     }
 
     const pageContent = (
@@ -223,7 +237,7 @@ const GameShowPage = () => {
                         <div className='purchase-button-capsule'>
                             <div className='price-button-wrap'>
                                 <div className='show-price'>
-                                    { game.price !== '0.0' ? `${game.price}` : 'Free To Play'}
+                                    { game.price !== '0.0' ? `$${game.price}` : 'Free To Play'}
                                 </div>
                                 <div className='add-to-cart'>
                                     <span onClick={handleAddToCart}>Add to Cart</span>
