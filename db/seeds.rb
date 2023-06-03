@@ -6,12 +6,16 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+# require_relative './generate.rb'
+
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     User.destroy_all
     Game.destroy_all
+    CartItem.destroy_all
     
+    # line below doesnt work for online part of AWS
     ActiveStorage::Attachment.where(record_type: "Game", name: "images").find_each do |attachment|
       attachment.purge
     end
@@ -20,6 +24,7 @@ ApplicationRecord.transaction do
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
     ApplicationRecord.connection.reset_pk_sequence!('games')
+    ApplicationRecord.connection.reset_pk_sequence!('cart_items')
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
@@ -42,7 +47,7 @@ ApplicationRecord.transaction do
 
     puts "Creating games..."
 
-    dd2 = Game.create!(
+    Game.create!(
       title: "Darkest Dungeon II",
       genre: "RPG",
       details: "Darkest Dungeon II is a roguelike road trip of the damned. 
@@ -63,22 +68,14 @@ ApplicationRecord.transaction do
       publisher: "Red Hook Studios",
       price: 39.99
     )
+    # attach_images_to_dd2_game # generating images and uploading them to AWS
 
-    images_to_attach = ['./app/assets/dd2/dd2_main.jpeg', './app/assets/dd2/dd2_mini_1.jpg', './app/assets/dd2/dd2_mini_2.jpg', './app/assets/dd2/dd2_mini_3.jpg', './app/assets/dd2/dd2_mini_4.jpg']
+    # images_to_attach = ['./app/assets/dd2/dd2_main.jpeg', './app/assets/dd2/dd2_mini_1.jpg', './app/assets/dd2/dd2_mini_2.jpg', './app/assets/dd2/dd2_mini_3.jpg', './app/assets/dd2/dd2_mini_4.jpg']
 
-    images_to_attach.each do |image_path|
-      image_file = File.open(image_path)
-      dd2.images.attach(io: image_file, filename: File.basename(image_path))
-    end
-
-    if dd2.images.attached?
-      puts "Images attached to game: #{dd2.images.map { |image| image.filename.to_s }}"
-    else
-      puts "No images attached to game."
-    end
-
-    # dd2_main_img = File.open('./app/assets/dd2/dd2_main.jpeg')
-    # dd2.images.attach(io: dd2_main_img, filename: 'dd2_main_img.jpeg')
+    # images_to_attach.each do |image_path|
+    #   image_file = File.open(image_path)
+    #   dd2.images.attach(io: image_file, filename: File.basename(image_path))
+    # end
 
     Game.create!(
       title: "Resident Evil 4",

@@ -19,7 +19,6 @@ class Game < ApplicationRecord
     validates :title, uniqueness: true
     validates :title, :genre, :details, :description, :release_date, :developer, :publisher, :price, presence: true
 
-    # has_one_attached :photo
     has_many_attached :images
 
     has_many :cart_items,

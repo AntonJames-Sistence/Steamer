@@ -64,7 +64,7 @@ const GameShowPage = () => {
         <div className='info-holder'>
 
             <div>
-                <img className='show-header-img' src={game.imageUrls[5]} alt="" />
+                <img className='show-header-img' src={game.imageUrls[0]} alt="" />
             </div>
 
             <div className='show-game-description'>
@@ -100,35 +100,35 @@ const GameShowPage = () => {
         <Slider ref={sliderRef} {...settings}>
             <div className='show-carousel-slide'>
                 <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={game.imageUrls[5]} alt="" />
+                    <img className='show-slider-img' src={game.imageUrls[0]} alt="" />
                     
                     {infoHolderComponent}
                 </div>
             </div>
             <div className='show-carousel-slide'>
                 <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={game.imageUrls[6]} alt="" />
+                    <img className='show-slider-img' src={game.imageUrls[1]} alt="" />
                     
                     {infoHolderComponent}
                 </div>
             </div>
             <div className='show-carousel-slide'>
                 <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={game.imageUrls[7]} alt="" />
+                    <img className='show-slider-img' src={game.imageUrls[2]} alt="" />
                     
                     {infoHolderComponent}
                 </div>
             </div>
             <div className='show-carousel-slide'>
                 <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={game.imageUrls[8]} alt="" />
+                    <img className='show-slider-img' src={game.imageUrls[3]} alt="" />
                     
                     {infoHolderComponent}
                 </div>
             </div>
             <div className='show-carousel-slide'>
                 <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={game.imageUrls[9]} alt="" />
+                    <img className='show-slider-img' src={game.imageUrls[4]} alt="" />
                     
                     {infoHolderComponent}
                 </div>
@@ -144,27 +144,27 @@ const GameShowPage = () => {
         <div className="thumbnail-carousel-container">
                 <div className="thumbnail-carousel">
                     <img
-                        src={game.imageUrls[5]}
+                        src={game.imageUrls[0]}
                         alt=""
                         onMouseEnter={() => handleThumbnailHover(0)}
                         />
                     <img
-                        src={game.imageUrls[6]} 
+                        src={game.imageUrls[1]} 
                         alt=""
                         onMouseEnter={() => handleThumbnailHover(1)}
                         />
                     <img
-                        src={game.imageUrls[7]}
+                        src={game.imageUrls[2]}
                         alt=""
                         onMouseEnter={() => handleThumbnailHover(2)}
                         />
                     <img
-                        src={game.imageUrls[8]}
+                        src={game.imageUrls[3]}
                         alt=""
                         onMouseEnter={() => handleThumbnailHover(3)}
                         />
                     <img
-                        src={game.imageUrls[9]}
+                        src={game.imageUrls[4]}
                         alt=""
                         onMouseEnter={() => handleThumbnailHover(4)}
                         />

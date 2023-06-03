@@ -12,11 +12,11 @@ import './MainCarousel.css'
 // import dd2_screenshot_3 from '../../resources/carousel/dd2/dd_screenshot_3.jpg';
 // import dd2_screenshot_4 from '../../resources/carousel/dd2/dd_screenshot_4.jpg';
 
-import re4 from '../../resources/carousel/re4/re4.jpeg';
-import re4_screenshot_1 from '../../resources/carousel/re4/rs4_screenshot_1.jpg'
-import re4_screenshot_2 from '../../resources/carousel/re4/re4_screenshot_2.jpg'
-import re4_screenshot_3 from '../../resources/carousel/re4/re4_screenshot_3.jpg'
-import re4_screenshot_4 from '../../resources/carousel/re4/re4_screenshot_4.jpg'
+// import re4 from '../../resources/carousel/re4/re4.jpeg';
+// import re4_screenshot_1 from '../../resources/carousel/re4/rs4_screenshot_1.jpg'
+// import re4_screenshot_2 from '../../resources/carousel/re4/re4_screenshot_2.jpg'
+// import re4_screenshot_3 from '../../resources/carousel/re4/re4_screenshot_3.jpg'
+// import re4_screenshot_4 from '../../resources/carousel/re4/re4_screenshot_4.jpg'
 
 import la from '../../resources/carousel/la/lost_ark.jpeg'
 import l2_screenshot_2 from '../../resources/carousel/la/la1.jpg'
@@ -102,13 +102,13 @@ const MainCarousel = () => {
             <div className='carousel-slide'>
                 <div className='slide-content'>
                     <a href={`/games/${games[1].id}`}>
-                        <img className='carousel-img' src={re4} alt='RE4'/>
+                        {/* <img className='carousel-img' src={re4} alt='RE4'/> */}
                     </a>
                     <div className='info-capsule'>
                         <div className='game-title'>{games[1].title}</div>
 
                         <div className='screenshots'>
-                            <div className='screenshot-holder'>
+                            {/* <div className='screenshot-holder'>
                                 <img className='mini-screenshot' src={re4_screenshot_1} alt='re4_scr1' />
                             </div>
                             <div className='screenshot-holder'>
@@ -119,7 +119,7 @@ const MainCarousel = () => {
                             </div>
                             <div className='screenshot-holder'>
                                 <img className='mini-screenshot' src={re4_screenshot_4} alt='re4_scr4' />
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className='avaliability'>Now Avaliable</div>
