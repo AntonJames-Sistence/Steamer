@@ -226,13 +226,9 @@ const GameShowPage = () => {
         });
     }
 
-    const displayButton = () => {
-        if(currentUser) {
-            return <span onClick={handleAddToCart}>Add to Cart</span>
-        } else {
-            return <span onClick={()=>{window.location.href = '/cart';}}>In Cart</span>
-        }
-    }
+    const isGameInCart = Object.values(cartGames).some(value => {
+        return value.id === game.id;
+    });
 
     const pageContent = (
         <div className='page-content-wrap'>
@@ -251,9 +247,10 @@ const GameShowPage = () => {
                                     { game.price !== '0.0' ? `$${game.price}` : 'Free To Play'}
                                 </div>
                                 <div className='add-to-cart'>
-                                    
-                                    <span onClick={handleAddToCart}>Add to Cart</span>
-                                    
+
+                                    { isGameInCart ? <span onClick={() => {window.location.href = '/cart';}}>In Cart</span> :
+                                    <span onClick={handleAddToCart}>Add to Cart</span> }
+
                                 </div>
                             </div>
                         </div>
