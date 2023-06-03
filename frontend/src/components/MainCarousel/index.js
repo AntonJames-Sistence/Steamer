@@ -34,10 +34,11 @@ const MainCarousel = () => {
     const dispatch = useDispatch();
     const games = useSelector(getGames);
 
-    console.log(games)
 
     useEffect(() => {
+        
         dispatch(fetchGames())
+    
     }, [dispatch])
 
     // const NextArrow = ({ onClick }) => (
@@ -51,7 +52,7 @@ const MainCarousel = () => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 1000,
+        speed: 700,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
@@ -68,7 +69,9 @@ const MainCarousel = () => {
         <Slider {...settings} ref={sliderRef}>
             <div className='carousel-slide'>
                 <div className='slide-content'>
-                    <img className='carousel-img' src={dd2} alt='DD2' />
+                    <a href={ `/games/${games[0].id}`}>
+                        <img className='carousel-img' src={dd2} alt='DD2' />
+                    </a>
                     <div className='info-capsule'>
                         <div className='game-title'>{games[0].title}</div>
 
@@ -98,7 +101,9 @@ const MainCarousel = () => {
 
             <div className='carousel-slide'>
                 <div className='slide-content'>
-                    <img className='carousel-img' src={re4} alt='RE4'/>
+                    <a href={`/games/${games[1].id}`}>
+                        <img className='carousel-img' src={re4} alt='RE4'/>
+                    </a>
                     <div className='info-capsule'>
                         <div className='game-title'>{games[1].title}</div>
 
@@ -129,7 +134,9 @@ const MainCarousel = () => {
 
             <div className='carousel-slide'>
                 <div className='slide-content'>
-                    <img className='carousel-img' src={la} alt='LostArk'/>
+                    <a href={`/games/${games[2].id}`}>
+                        <img className='carousel-img' src={la} alt='LostArk'/>
+                    </a>
                     <div className='info-capsule'>
                         <div className='game-title'>{games[2].title}</div>
 

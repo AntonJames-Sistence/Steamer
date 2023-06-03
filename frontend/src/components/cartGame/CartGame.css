@@ -1,0 +1,11 @@
+.details {
+    color: aliceblue;
+    font-size: 10px;
+}
+
+.box {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    margin: 10px;
+}

@@ -17,6 +17,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import slide1 from '../../resources/carousel/l2/l2.jpeg'
 import slide2 from '../../resources/carousel/l2/l22.jpeg'
 import slide3 from '../../resources/carousel/l2/l23.jpeg'
+import { fetchCartGame, fetchCartGames, getCartGames } from '../../store/cartItems';
 
 // helper method to parse date
 export const formatDate = (dateString) => {
@@ -28,15 +29,20 @@ export const formatDate = (dateString) => {
 const GameShowPage = () => {
     const dispatch = useDispatch();
     const { gameId } = useParams();
+
     const game = useSelector(getGame(gameId));
-    console.log(game)
+    const cartGames = useSelector(getCartGames);
+
+    const [errors, setErrors] = useState([])
+    
     const sliderRef = useRef(null);
     const [ signInModal, setSignInModal ] = useState(false);
 
     const currentUser = useSelector(state => state.session.user);
 
     useEffect(() => {
-        dispatch(fetchGame(gameId))
+        dispatch(fetchGame(gameId));
+        dispatch(fetchCartGames());
     }, [dispatch, gameId]);
 
 
@@ -202,6 +208,20 @@ const GameShowPage = () => {
         </div>
     )
 
+    // add item to cart handle
+    const handleAddToCart = () => {
+        if(currentUser) {
+            return dispatch(fetchCartGame(game.id))
+        } else {
+            return setSignInModal(true)
+        }
+        
+    }
+
+    const isGameInCart = Object.values(cartGames).some(value => {
+        return value.id === game.id;
+    });
+
     const pageContent = (
         <div className='page-content-wrap'>
             <div className='page-content-capsule'>
@@ -216,10 +236,13 @@ const GameShowPage = () => {
                         <div className='purchase-button-capsule'>
                             <div className='price-button-wrap'>
                                 <div className='show-price'>
-                                    ${game.price}
+                                    { game.price !== '0.0' ? `$${game.price}` : 'Free To Play'}
                                 </div>
                                 <div className='add-to-cart'>
-                                    <span>Add to Cart</span>
+
+                                    { isGameInCart ? <span onClick={() => {window.location.href = '/cart';}}>In Cart</span> :
+                                    <span onClick={handleAddToCart}>Add to Cart</span> }
+
                                 </div>
                             </div>
                         </div>

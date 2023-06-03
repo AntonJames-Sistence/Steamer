@@ -35,6 +35,10 @@ const ProfileButton = ( {currentUser} ) => {
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 200);
+        
     };
 
     return (

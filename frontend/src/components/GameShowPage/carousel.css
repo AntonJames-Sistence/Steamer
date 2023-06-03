@@ -25,7 +25,8 @@
 .info-holder {
     margin-left: 10px;
     z-index: 2;
-    /* margin-bottom: 5px; */
+    height: 300px;
+    max-height: 300px;
 }
 
 .show-game-description {
@@ -79,6 +80,7 @@
 }
 .show-tags-data {
     display: flex;
+    justify-content: baseline;
 }
 .show-tags-links {
     color: #67c1f5;

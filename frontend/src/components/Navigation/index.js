@@ -35,10 +35,10 @@ const Navigation = () => {
             <div className='global-navbar'>
 
                     <div className='logo'>
-                        <a href='#'>
+                        <a href='/'>
                         <img id='logo' src={logoPath} alt="Steamer logo" />
                         </a>
-                        <a href='#'>
+                        <a href='/'>
                         <div id='logo-name-holder'>STEAMER</div>
                         </a>
                     </div>
