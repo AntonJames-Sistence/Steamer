@@ -12,6 +12,9 @@ ApplicationRecord.transaction do
     User.destroy_all
     Game.destroy_all
     
+    ActiveStorage::Attachment.where(record_type: "Game", name: "images").find_each do |attachment|
+      attachment.purge
+    end
   
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
@@ -39,7 +42,7 @@ ApplicationRecord.transaction do
 
     puts "Creating games..."
 
-    Game.create!(
+    dd2 = Game.create!(
       title: "Darkest Dungeon II",
       genre: "RPG",
       details: "Darkest Dungeon II is a roguelike road trip of the damned. 
@@ -60,6 +63,22 @@ ApplicationRecord.transaction do
       publisher: "Red Hook Studios",
       price: 39.99
     )
+
+    images_to_attach = ['./app/assets/dd2/dd2_main.jpeg', './app/assets/dd2/dd2_mini_1.jpg', './app/assets/dd2/dd2_mini_2.jpg', './app/assets/dd2/dd2_mini_3.jpg', './app/assets/dd2/dd2_mini_4.jpg']
+
+    images_to_attach.each do |image_path|
+      image_file = File.open(image_path)
+      dd2.images.attach(io: image_file, filename: File.basename(image_path))
+    end
+
+    if dd2.images.attached?
+      puts "Images attached to game: #{dd2.images.map { |image| image.filename.to_s }}"
+    else
+      puts "No images attached to game."
+    end
+
+    # dd2_main_img = File.open('./app/assets/dd2/dd2_main.jpeg')
+    # dd2.images.attach(io: dd2_main_img, filename: 'dd2_main_img.jpeg')
 
     Game.create!(
       title: "Resident Evil 4",
@@ -95,22 +114,26 @@ ApplicationRecord.transaction do
                 action-packed free-to-play RPG.",
 
       description: "Embark on an odyssey for the Lost Ark in a vast, vibrant world: 
-      explore new lands, seek out lost treasures, and test yourself in thrilling action combat. 
-      Define your fighting style with your class and advanced class, and customize your skills, 
-      weapons, and gear to bring your might to bear as you fight against hordes of enemies, colossal 
-      bosses, and dark forces seeking the power of the Ark in this action-packed free-to-play RPG.
-      
-      Explore seven vast, varied continents and the seas between them to find vibrant cultures, 
-      strange and fantastical beasts, and all the unexpected marvels waiting to be discovered. 
-      Delve into the secrets of Arkesia, prove your might in battles and raids, compete against 
-      other players in PvP, travel to distant islands in search of hidden riches, face packs of 
-      enemies and colossal bosses in the open world, and more.",
+                    explore new lands, seek out lost treasures, and test yourself in thrilling action combat. 
+                    Define your fighting style with your class and advanced class, and customize your skills, 
+                    weapons, and gear to bring your might to bear as you fight against hordes of enemies, colossal 
+                    bosses, and dark forces seeking the power of the Ark in this action-packed free-to-play RPG.
+                    
+                    Explore seven vast, varied continents and the seas between them to find vibrant cultures, 
+                    strange and fantastical beasts, and all the unexpected marvels waiting to be discovered. 
+                    Delve into the secrets of Arkesia, prove your might in battles and raids, compete against 
+                    other players in PvP, travel to distant islands in search of hidden riches, face packs of 
+                    enemies and colossal bosses in the open world, and more.",
 
       release_date: Date.parse('Feb 11, 2022'),
       developer: "Smilegate RPG",
       publisher: "Amazon Games",
       price: 0
     )
+
+    # =================================== images for games ===================================
+
+    
   
     puts "Done!"
   end

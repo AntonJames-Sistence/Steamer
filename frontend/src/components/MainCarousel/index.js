@@ -6,11 +6,11 @@ import './MainCarousel.css'
 
 // images imports  ---------------------------------------------------------
 
-import dd2 from '../../resources/carousel/dd2/dd2.jpeg';
-import dd2_screenshot_1 from '../../resources/carousel/dd2/dd_screenshot_1.jpg';
-import dd2_screenshot_2 from '../../resources/carousel/dd2/dd_screenshot_2.jpg';
-import dd2_screenshot_3 from '../../resources/carousel/dd2/dd_screenshot_3.jpg';
-import dd2_screenshot_4 from '../../resources/carousel/dd2/dd_screenshot_4.jpg';
+// import dd2 from '../../resources/carousel/dd2/dd2.jpeg';
+// import dd2_screenshot_1 from '../../resources/carousel/dd2/dd_screenshot_1.jpg';
+// import dd2_screenshot_2 from '../../resources/carousel/dd2/dd_screenshot_2.jpg';
+// import dd2_screenshot_3 from '../../resources/carousel/dd2/dd_screenshot_3.jpg';
+// import dd2_screenshot_4 from '../../resources/carousel/dd2/dd_screenshot_4.jpg';
 
 import re4 from '../../resources/carousel/re4/re4.jpeg';
 import re4_screenshot_1 from '../../resources/carousel/re4/rs4_screenshot_1.jpg'
@@ -70,23 +70,23 @@ const MainCarousel = () => {
             <div className='carousel-slide'>
                 <div className='slide-content'>
                     <a href={ `/games/${games[0].id}`}>
-                        <img className='carousel-img' src={dd2} alt='DD2' />
+                        {/* <img className='carousel-img' src={dd2} alt='DD2' /> */}
                     </a>
                     <div className='info-capsule'>
                         <div className='game-title'>{games[0].title}</div>
 
                         <div className='screenshots'>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={dd2_screenshot_1} alt='dd2_scr1'/>
+                                {/* <img className='mini-screenshot' src={dd2_screenshot_1} alt='dd2_scr1'/> */}
                             </div>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={dd2_screenshot_2} alt='dd2_scr2' />
+                                {/* <img className='mini-screenshot' src={dd2_screenshot_2} alt='dd2_scr2' /> */}
                             </div>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={dd2_screenshot_3} alt='dd2_scr3' />
+                                {/* <img className='mini-screenshot' src={dd2_screenshot_3} alt='dd2_scr3' /> */}
                             </div>
                             <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={dd2_screenshot_4} alt='dd2_scr4' />
+                                {/* <img className='mini-screenshot' src={dd2_screenshot_4} alt='dd2_scr4' /> */}
                             </div>
                         </div>
 

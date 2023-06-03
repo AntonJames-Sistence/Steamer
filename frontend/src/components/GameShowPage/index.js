@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchGame, getGame } from '../../store/games';
+import { fetchGame, getCurrentGame } from '../../store/games';
 import { Modal } from '../../context/Modal';
 import LoginForm from '../LoginFormModal/LoginForm';
 
@@ -30,10 +30,8 @@ const GameShowPage = () => {
     const dispatch = useDispatch();
     const { gameId } = useParams();
 
-    const game = useSelector(getGame(gameId));
+    const game = useSelector(getCurrentGame);
     const cartGames = useSelector(getCartGames);
-
-    const [errors, setErrors] = useState([])
     
     const sliderRef = useRef(null);
     const [ signInModal, setSignInModal ] = useState(false);
@@ -62,15 +60,11 @@ const GameShowPage = () => {
         fade: true,
     };
 
-    const handleThumbnailHover = (index) => {
-        sliderRef.current.slickGoTo(index);
-    };
-
     const infoHolderComponent = (
         <div className='info-holder'>
 
             <div>
-                <img className='show-header-img' src={slide1} />
+                <img className='show-header-img' src={game.imageUrls[5]} alt="" />
             </div>
 
             <div className='show-game-description'>
@@ -106,21 +100,35 @@ const GameShowPage = () => {
         <Slider ref={sliderRef} {...settings}>
             <div className='show-carousel-slide'>
                 <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={slide1} alt="Slide 1" />
+                    <img className='show-slider-img' src={game.imageUrls[5]} alt="" />
                     
                     {infoHolderComponent}
                 </div>
             </div>
             <div className='show-carousel-slide'>
                 <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={slide2} alt="Slide 2" />
+                    <img className='show-slider-img' src={game.imageUrls[6]} alt="" />
                     
                     {infoHolderComponent}
                 </div>
             </div>
             <div className='show-carousel-slide'>
                 <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={slide3} alt="Slide 3" />
+                    <img className='show-slider-img' src={game.imageUrls[7]} alt="" />
+                    
+                    {infoHolderComponent}
+                </div>
+            </div>
+            <div className='show-carousel-slide'>
+                <div className='show-content-wrap'>
+                    <img className='show-slider-img' src={game.imageUrls[8]} alt="" />
+                    
+                    {infoHolderComponent}
+                </div>
+            </div>
+            <div className='show-carousel-slide'>
+                <div className='show-content-wrap'>
+                    <img className='show-slider-img' src={game.imageUrls[9]} alt="" />
                     
                     {infoHolderComponent}
                 </div>
@@ -128,36 +136,37 @@ const GameShowPage = () => {
         </Slider>
     )
 
+    const handleThumbnailHover = (index) => {
+        sliderRef.current.slickGoTo(index);
+    };
+
     const sliderThumbnail = (
         <div className="thumbnail-carousel-container">
                 <div className="thumbnail-carousel">
-                    <img className='test' 
-                        src={slide1} alt="Thumbnail 1"
+                    <img
+                        src={game.imageUrls[5]}
+                        alt=""
                         onMouseEnter={() => handleThumbnailHover(0)}
                         />
-                    <img className='test'
-                        src={slide2} 
-                        alt="Thumbnail 2"
+                    <img
+                        src={game.imageUrls[6]} 
+                        alt=""
                         onMouseEnter={() => handleThumbnailHover(1)}
                         />
-                    <img className='test'
-                        src={slide3}
-                        alt="Thumbnail 3"
+                    <img
+                        src={game.imageUrls[7]}
+                        alt=""
                         onMouseEnter={() => handleThumbnailHover(2)}
                         />
-                    <img className='test' 
-                        src={slide1} alt="Thumbnail 1"
-                        onMouseEnter={() => handleThumbnailHover(0)}
+                    <img
+                        src={game.imageUrls[8]}
+                        alt=""
+                        onMouseEnter={() => handleThumbnailHover(3)}
                         />
-                    <img className='test'
-                        src={slide2} 
-                        alt="Thumbnail 2"
-                        onMouseEnter={() => handleThumbnailHover(1)}
-                        />
-                    <img className='test'
-                        src={slide3}
-                        alt="Thumbnail 3"
-                        onMouseEnter={() => handleThumbnailHover(2)}
+                    <img
+                        src={game.imageUrls[9]}
+                        alt=""
+                        onMouseEnter={() => handleThumbnailHover(4)}
                         />
                 </div>
         </div>

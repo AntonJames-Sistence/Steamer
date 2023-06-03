@@ -7,7 +7,7 @@ import cartItemsReducer from './cartItems';
 // root reducer combine all reducers together for store
 const rootReducer = combineReducers({
   session: sessionReducer,
-  games: gamesReducer,
+  showGames: gamesReducer,
   cart: cartItemsReducer
 });
 

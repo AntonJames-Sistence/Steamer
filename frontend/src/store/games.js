@@ -4,7 +4,7 @@ const RECEIVE_GAMES = 'games/RECEIVE_GAMES';
 const receiveGame = (game) => {
     return {
         type: RECEIVE_GAME,
-        payload: game
+        game
     }
 };
 
@@ -17,9 +17,9 @@ const receiveGames = (games) => {
  
 // ======================================================
 
-export const getGame = (gameId) => (store) => {
-    if (store.games && store.games[gameId]) {
-        return store.games[gameId];
+export const getCurrentGame = (store) => {
+    if (store.showGames && store.showGames['currentGame']) {
+        return store.showGames['currentGame'];
     } else {
         return null;
     }
@@ -32,6 +32,7 @@ export const getGames = (store) => store.games ? Object.values(store.games) : []
 export const fetchGame = (gameId) => async dispatch => {
     const res = await fetch(`/api/games/${gameId}`);
     const gameInfo = await res.json();
+    console.log(gameInfo)
 
     dispatch(receiveGame(gameInfo));
 };
@@ -48,9 +49,11 @@ export const fetchGames = () => async dispatch => {
 const gamesReducer = (state = {}, action) => {
     Object.freeze(state);
 
+    const nextState = {...state}
     switch (action.type) {
         case RECEIVE_GAME:
-            return {...state, ...action.payload};
+            nextState['currentGame'] = action.game
+            return nextState
         case RECEIVE_GAMES:
             return {...state, ...action.games};
         default:
