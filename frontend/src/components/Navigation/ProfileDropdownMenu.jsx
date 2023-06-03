@@ -37,7 +37,7 @@ const ProfileButton = ( {currentUser} ) => {
         dispatch(sessionActions.logout());
         setTimeout(() => {
           window.location.href = '/';
-        }, 300);
+        }, 200);
         
     };
 
