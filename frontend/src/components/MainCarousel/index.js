@@ -7,6 +7,7 @@ import './MainCarousel.css'
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGames, getGames } from '../../store/games';
+import SliderItem from './SliderItem';
 
 
 // ---------------------------------------------------------
@@ -48,102 +49,13 @@ const MainCarousel = () => {
 
     const sliderCapsule = (
         <Slider {...settings} ref={sliderRef}>
-            <div className='carousel-slide'>
-                <div className='slide-content'>
-                    <a href={ `/games/${games[0].id}`}>
-                        <img className='carousel-img' src={games[0].imageUrls[0]} alt='' />
-                    </a>
-                    <div className='info-capsule'>
-                        <div className='game-title'>{games[0].title}</div>
+            
+            <SliderItem game={games[0]} />
 
-                        <div className='screenshots'>
-                            <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={games[0].imageUrls[1]} alt=''/>
-                            </div>
-                            <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={games[0].imageUrls[2]} alt='' />
-                            </div>
-                            <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={games[0].imageUrls[3]} alt='' />
-                            </div>
-                            <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={games[0].imageUrls[4]} alt='' />
-                            </div>
-                        </div>
+            <SliderItem game={games[1]} />
 
-                        <div className='avaliability'>Now Avaliable</div>
-
-                        <div className='top-seller-icon'>Top Seller</div>
-
-                        <div className='price'>${games[0].price}</div>
-                    </div>
-                </div>
-            </div>
-
-            <div className='carousel-slide'>
-                <div className='slide-content'>
-                    <a href={`/games/${games[1].id}`}>
-                        <img className='carousel-img' src={games[1].imageUrls[0]} alt=''/>
-                    </a>
-                    <div className='info-capsule'>
-                        <div className='game-title'>{games[1].title}</div>
-
-                        <div className='screenshots'>
-                            <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={games[1].imageUrls[1]} alt='' />
-                            </div>
-                            <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={games[1].imageUrls[2]} alt='' />
-                            </div>
-                            <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={games[1].imageUrls[3]} alt='' />
-                            </div>
-                            <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={games[1].imageUrls[4]} alt='' />
-                            </div>
-                        </div>
-
-                        <div className='avaliability'>Now Avaliable</div>
-
-                        <div className='top-seller-icon'>Top Seller</div>
-
-                        <div className='price'>${games[1].price}</div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div className='carousel-slide'>
-                <div className='slide-content'>
-                    <a href={`/games/${games[2].id}`}>
-                        <img className='carousel-img' src={games[2].imageUrls[0]} alt=''/>
-                    </a>
-                    <div className='info-capsule'>
-                        <div className='game-title'>{games[2].title}</div>
-
-                        <div className='screenshots'>
-                            <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={games[2].imageUrls[1]} alt='' />
-                            </div>
-                            <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={games[2].imageUrls[2]} alt='' />
-                            </div>
-                            <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={games[2].imageUrls[3]} alt='' />
-                            </div>
-                            <div className='screenshot-holder'>
-                                <img className='mini-screenshot' src={games[2].imageUrls[4]} alt='' />
-                            </div>
-                        </div>
-
-                        <div className='avaliability'>Just Updated</div>
-
-                        <div className='top-seller-icon'>Top Seller</div>
-
-                        <div className='price'>{games[2].price === "0.0" ? 'Free to Play' : games[2].price}</div>
-                    </div>
-                </div> 
-            </div>
+            <SliderItem game={games[2]} />
+            
         </Slider>
     )
   
