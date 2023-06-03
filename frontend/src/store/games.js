@@ -11,7 +11,7 @@ const receiveGame = (game) => {
 const receiveGames = (games) => {
     return {
         type: RECEIVE_GAMES,
-        games: games
+        games
     }
 }
  
@@ -25,14 +25,13 @@ export const getCurrentGame = (store) => {
     }
 };
 
-export const getGames = (store) => store.games ? Object.values(store.games) : [];
+export const getGames = (store) => store.showGames ? Object.values(store.showGames) : [];
 
 // ======================================================
 
 export const fetchGame = (gameId) => async dispatch => {
     const res = await fetch(`/api/games/${gameId}`);
     const gameInfo = await res.json();
-    console.log(gameInfo)
 
     dispatch(receiveGame(gameInfo));
 };

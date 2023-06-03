@@ -14,9 +14,6 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import slide1 from '../../resources/carousel/l2/l2.jpeg'
-import slide2 from '../../resources/carousel/l2/l22.jpeg'
-import slide3 from '../../resources/carousel/l2/l23.jpeg'
 import { fetchCartGame, fetchCartGames, getCartGames } from '../../store/cartItems';
 
 // helper method to parse date
