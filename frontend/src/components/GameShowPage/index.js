@@ -48,46 +48,22 @@ const GameShowPage = () => {
         autoplay: true,
         autoplaySpeed: 2000,
         fade: true,
+        pauseOnHover: true,
     };
 
     const slider = (
         <Slider ref={sliderRef} {...settings}>
-            <div className='show-carousel-slide'>
-                <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={game.imageUrls[0]} alt="" />
-                    
-                    <InfoHolder game={game} />
-                </div>
+        {game.imageUrls.map((imageUrl, index) => (
+          <div className="show-carousel-slide" key={index}>
+            <div className="show-content-wrap">
+              <img className="show-slider-img" 
+              src={imageUrl} 
+              alt="" />
+              <InfoHolder game={game} />
             </div>
-            <div className='show-carousel-slide'>
-                <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={game.imageUrls[1]} alt="" />
-                    
-                    <InfoHolder game={game} />
-                </div>
-            </div>
-            <div className='show-carousel-slide'>
-                <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={game.imageUrls[2]} alt="" />
-                    
-                    <InfoHolder game={game} />
-                </div>
-            </div>
-            <div className='show-carousel-slide'>
-                <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={game.imageUrls[3]} alt="" />
-                    
-                    <InfoHolder game={game} />
-                </div>
-            </div>
-            <div className='show-carousel-slide'>
-                <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={game.imageUrls[4]} alt="" />
-                    
-                    <InfoHolder game={game} />
-                </div>
-            </div>
-        </Slider>
+          </div>
+        ))}
+      </Slider>
     )
 
     const handleThumbnailHover = (index) => {
@@ -96,33 +72,16 @@ const GameShowPage = () => {
 
     const sliderThumbnail = (
         <div className="thumbnail-carousel-container">
-                <div className="thumbnail-carousel">
-                    <img
-                        src={game.imageUrls[0]}
-                        alt=""
-                        onMouseEnter={() => handleThumbnailHover(0)}
-                        />
-                    <img
-                        src={game.imageUrls[1]} 
-                        alt=""
-                        onMouseEnter={() => handleThumbnailHover(1)}
-                        />
-                    <img
-                        src={game.imageUrls[2]}
-                        alt=""
-                        onMouseEnter={() => handleThumbnailHover(2)}
-                        />
-                    <img
-                        src={game.imageUrls[3]}
-                        alt=""
-                        onMouseEnter={() => handleThumbnailHover(3)}
-                        />
-                    <img
-                        src={game.imageUrls[4]}
-                        alt=""
-                        onMouseEnter={() => handleThumbnailHover(4)}
-                        />
-                </div>
+            <div className="thumbnail-carousel">
+                {game.imageUrls.map((imageUrl, index) => (
+                <img
+                    src={imageUrl}
+                    alt=""
+                    key={index}
+                    onMouseEnter={() => handleThumbnailHover(index)}
+                />
+                ))}
+            </div>
         </div>
     )
 

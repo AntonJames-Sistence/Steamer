@@ -103,16 +103,22 @@
     width: 400px;
     overflow-x: auto;
     white-space: nowrap;
-    transition: transform 0.3s ease-in-out;
 }
 .thumbnail-carousel img {
     width: 90px;
     height: 50px;
     object-fit: cover;
     margin: 3px 3px 3px 3px;
+    opacity: 0.5;
 }
 
 .thumbnail-carousel-container {
     position: absolute;
     top: 275px;
+}
+
+.thumbnail-carousel img:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    border: 1px solid #8f98a0;
 }
