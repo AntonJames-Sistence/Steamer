@@ -1,9 +1,16 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './StoreNavBar.css'
+import { fetchCartGames, getCartGames } from '../../store/cartItems';
 
 const StoreNavBar = () => {
     const currentUser = useSelector(state => state.session.user);
+    const cartItems = useSelector(getCartGames);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchCartGames())
+    }, [dispatch])
 
     const [search, setSearch] = useState('');
 
@@ -11,7 +18,7 @@ const StoreNavBar = () => {
         <div className='nav-wrap-container'>
             <div className='nav-wrap'>
 
-                { currentUser ? <a href='/cart' className='cart-button'>cart()</a> : <div id='space-holder'></div>}
+                { currentUser ? <a href='/cart' className='cart-button'>cart({cartItems.length})</a> : <div id='space-holder'></div>}
                 
                 <div className="store-nav-bg">
 

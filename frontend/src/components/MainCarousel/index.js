@@ -18,18 +18,8 @@ const MainCarousel = () => {
     const games = useSelector(getGames);
 
     useEffect(() => {
-        
         dispatch(fetchGames())
-    
     }, [dispatch])
-
-    // const NextArrow = ({ onClick }) => (
-    //     <button onClick={onClick}>Next</button>
-    // );
-    
-    // const PrevArrow = ({ onClick }) => (
-    //     <button onClick={onClick}>Previous</button>
-    // );
     
     const settings = {
         dots: true,
@@ -41,8 +31,6 @@ const MainCarousel = () => {
         fade: true,
         autoplaySpeed: 3000,
         pauseOnHover: true,
-        nextArrow: null, //<NextArrow />,
-        prevArrow: null //<PrevArrow />,
     };
 
     if(games.length === 0) return (<></>)
