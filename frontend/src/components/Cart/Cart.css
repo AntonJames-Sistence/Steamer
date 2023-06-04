@@ -33,7 +33,7 @@
     background-position: bottom center;
     background-repeat: no-repeat;
     width: 640px;
-    height: 80px;
+    height: 70px;
 }
 
 /* ============================================================================================ */
@@ -41,7 +41,7 @@
 .cart-games-list-capsule {
     display: flex;
     justify-content: center;
-    min-height: 500px;
+    min-height: 300px;
 }
 .cart-games-list {
     width: 640px;
@@ -52,6 +52,7 @@
     margin: 5px;
     background-color: rgba(0,0,0,0.2);
     max-height: 160px;
+    box-shadow: 0px 0 10px 0px #000;
 }
 .cart-game-img {
     height: 110px;

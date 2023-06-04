@@ -19,7 +19,7 @@ const CartGameItem = ( { game } ) => {
                 <h3 className='cart-title'>{title}</h3>
 
                 <div className='space-between'>
-                    <span className="cart-price">${price}</span>
+                    <span className="cart-price">{price === '0.0' ? <></> : '$' + price }</span>
                     <a onClick={handleRemove} className='cart-remove'>Remove</a>
                 </div>
             </div>
