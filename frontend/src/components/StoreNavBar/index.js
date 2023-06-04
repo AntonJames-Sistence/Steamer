@@ -24,8 +24,12 @@ const StoreNavBar = () => {
 
                     <div className="store-nav">
                         <div className='store-nav-tab-wrap'>
-                            <div className="store-nav-tab" id='fst-child'>Your Store</div>
-                            <div className="store-nav-tab">New & Noteworthy</div>
+                            <a href='/'>
+                                <div className="store-nav-tab" id='fst-child'>Your Store</div>
+                            </a>
+                            <a href='/games/2'>
+                                <div className="store-nav-tab">New & Noteworthy</div>
+                            </a>
                             <div className="store-nav-tab">Categories</div>
                             <div className="store-nav-tab">News</div>
                         </div>

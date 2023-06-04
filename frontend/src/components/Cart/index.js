@@ -26,7 +26,21 @@ const Cart = () => {
 
     return (
         <>
-            <div className="temp">{eachGame()}</div>
+            <div className="cart-header-capsule-wrap">
+                <div className="cart-header-capsule">
+                    <div className="cart-nav-links">
+                        <a href="/">All Products</a>
+                        <span> {' > '} Your Shopping Cart</span>
+                    </div>
+                    
+                <h2 className="cart-title-header">Your Shopping Cart</h2>
+                
+                <div className="cart-bg-holder"></div>
+            </div>
+            </div>
+            <div className="cart-games-list-capsule">
+                <div className="cart-games-list">{eachGame()}</div>
+            </div>
         </>
     )
 }
