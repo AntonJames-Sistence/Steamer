@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchGame, getCurrentGame } from '../../store/games';
 import { Modal } from '../../context/Modal';
 import LoginForm from '../LoginFormModal/LoginForm';
+import { fetchCartGame, fetchCartGames, getCartGames } from '../../store/cartItems';
+import InfoHolder, { formatDate } from './InfoHolder';
 
 import './GameShowPage.css'
-import './sliderHeader.css'
 import './carousel.css'
 import './pageContent.css'
 
@@ -14,14 +15,6 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { fetchCartGame, fetchCartGames, getCartGames } from '../../store/cartItems';
-
-// helper method to parse date
-export const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', options);
-};
 
 const GameShowPage = () => {
     const dispatch = useDispatch();
@@ -57,77 +50,41 @@ const GameShowPage = () => {
         fade: true,
     };
 
-    const infoHolderComponent = (
-        <div className='info-holder'>
-
-            <div>
-                <img className='show-header-img' src={game.imageUrls[0]} alt="" />
-            </div>
-
-            <div className='show-game-description'>
-                {game.details}
-            </div>
-
-            <div className='dev-pub-info'>
-                <div className='release-date'>
-                    <div>Release Date:</div>
-                    <div className='show-date'>{formatDate(game.releaseDate)}</div>
-                </div>
-                <div className='developer'>
-                    <div>Developer:</div>
-                    <div className='show-developer'>{game.developer}</div>
-                </div>
-                <div className='publisher'>
-                    <div>Publisher:</div>
-                    <div className='show-publisher'>{game.publisher}</div>
-                </div>
-            </div>
-
-            <div className='show-genre'>
-                <div className='show-tags'>Popular user-defined tags for this product:</div>
-                <div className='show-tags-data'>
-                    <a className='show-tags-links' href='#'>{game.genre}</a>
-                </div>
-            </div>
-
-        </div>
-    )
-
     const slider = (
         <Slider ref={sliderRef} {...settings}>
             <div className='show-carousel-slide'>
                 <div className='show-content-wrap'>
                     <img className='show-slider-img' src={game.imageUrls[0]} alt="" />
                     
-                    {infoHolderComponent}
+                    <InfoHolder game={game} />
                 </div>
             </div>
             <div className='show-carousel-slide'>
                 <div className='show-content-wrap'>
                     <img className='show-slider-img' src={game.imageUrls[1]} alt="" />
                     
-                    {infoHolderComponent}
+                    <InfoHolder game={game} />
                 </div>
             </div>
             <div className='show-carousel-slide'>
                 <div className='show-content-wrap'>
                     <img className='show-slider-img' src={game.imageUrls[2]} alt="" />
                     
-                    {infoHolderComponent}
+                    <InfoHolder game={game} />
                 </div>
             </div>
             <div className='show-carousel-slide'>
                 <div className='show-content-wrap'>
                     <img className='show-slider-img' src={game.imageUrls[3]} alt="" />
                     
-                    {infoHolderComponent}
+                    <InfoHolder game={game} />
                 </div>
             </div>
             <div className='show-carousel-slide'>
                 <div className='show-content-wrap'>
                     <img className='show-slider-img' src={game.imageUrls[4]} alt="" />
                     
-                    {infoHolderComponent}
+                    <InfoHolder game={game} />
                 </div>
             </div>
         </Slider>
@@ -221,7 +178,6 @@ const GameShowPage = () => {
         } else {
             return setSignInModal(true)
         }
-        
     }
 
     const isGameInCart = Object.values(cartGames).some(value => {
