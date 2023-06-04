@@ -1,4 +1,4 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import StoreNavBar from "./components/StoreNavBar";
 import LoginInvite from "./components/LoginInvite";
@@ -18,8 +18,14 @@ function App() {
 
         <Switch>
 
-          <Route exact path="/games/:gameId" component={GameShowPage} />
-          <Route exact path="/cart" component={Cart} />
+          <Route exact path="/games/:gameId">
+            <GameShowPage />
+          </Route>
+
+          <Route exact path="/cart">
+            {currentUser ? <Cart /> : <Redirect to="/" />}
+          </Route>
+
           <Route path="/"> 
             <HomePage />
           </Route>

@@ -1,9 +1,13 @@
 class Api::CartItemsController < ApplicationController
 
     def index
+        if current_user
         # nice selector only those games with user id // also N+1 query selector
-        @cart_items = CartItem.includes(:game, :user).where(user_id: current_user.id)
-        render :index
+            @cart_items = CartItem.includes(:game, :user).where(user_id: current_user.id)
+            render :index
+        else
+            render json: { response: {} }
+        end
     end
 
     def create

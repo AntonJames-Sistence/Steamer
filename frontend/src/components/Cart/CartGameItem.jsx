@@ -1,8 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { removeGameFromCart } from '../../store/cartItems';
-import './CartGame.css'
 
-const CartGame = ( { game } ) => {
+const CartGameItem = ( { game } ) => {
     const { id, title, price } = game;
     const dispatch = useDispatch();
 
@@ -19,4 +18,4 @@ const CartGame = ( { game } ) => {
     )
 }
 
-export default CartGame;
+export default CartGameItem;
