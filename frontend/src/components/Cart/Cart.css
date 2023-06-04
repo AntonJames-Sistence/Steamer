@@ -1,3 +1,92 @@
-.temp {
-    min-height: 600px;
+.cart-header-capsule {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.cart-header-capsule-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.cart-nav-links {
+    color: #56707f;
+    font-size: 8px;
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: normal;
+    padding-top: 10px;
+    width: 630px;
+}
+.cart-nav-links > a:hover {
+    color: #fff;
+}
+
+.cart-title-header{
+    color: #ffffff;
+    font-size: 22px;
+    font-family: "Motiva Sans", Sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-shadow: 1px 1px 0 rgba( 0, 0, 0, 0.4 );
+    margin-top: 6px;
+    background-image: url('../../resources/cart-bg.png');
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    width: 640px;
+    height: 70px;
+}
+
+/* ============================================================================================ */
+
+.cart-games-list-capsule {
+    display: flex;
+    justify-content: center;
+    min-height: 300px;
+}
+.cart-games-list {
+    width: 640px;
+    display: flex;
+}
+
+.game-box {
+    margin: 5px;
+    background-color: rgba(0,0,0,0.2);
+    max-height: 160px;
+    box-shadow: 0px 0 10px 0px #000;
+}
+.cart-game-img {
+    height: 110px;
+    width: 200px;
+    border: 2px solid black;
+    border-radius: 3px;
+    background-size: cover;
+}
+
+/* ============================================================================================ */
+
+.cart-title {
+    color: #c7d5e0;
+    text-shadow: 1px 1px 0 rgba( 0, 0, 0, 0.8 );
+    margin-top: 3px;
+    margin-left: 3px;
+}
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+.cart-price {
+    color: #c7d5e0;
+    font-size: 10px;
+    margin-top: 3px;
+    margin-left: 3px;
+}
+.cart-remove {
+    color: #56707f;
+    text-decoration: underline;
+    font-size: 11px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.cart-remove:hover {
+    color: #67c1f5;
 }

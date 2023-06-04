@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCartGames, getCartGames, getCartItems, removeGameFromCart } from "../../store/cartItems";
+import { fetchCartGames, getCartGames } from "../../store/cartItems";
+import CartGameItem from "./CartGameItem";
 
 import './Cart.css'
-import CartGame from "../cartGame";
-
+import './cartCheckout.css'
 
 const Cart = () => {
     const dispatch = useDispatch();
 
     const cartGames = useSelector(getCartGames);
-    // const cartItems = useSelector(getCartItems);
+    console.log(cartGames)
 
     useEffect(() => {
         dispatch(fetchCartGames())
@@ -20,18 +20,57 @@ const Cart = () => {
 
     const eachGame = () => {
         return cartGames.map((game) => {
-            return (
-                <>
-                    <CartGame game={game} />
-                </>
-            )
+            return <CartGameItem game={game} key={game.id} />
         })
     }
 
+    const getTotal = () => {
+        return cartGames.reduce((total, game) => total + parseFloat(game.price), 0);
+    };
+
+    const cartCheckout = (
+        <div className="cart-checkout-area-wrap">
+            <div className="cart-checkout-area">
+                <div className="cart-estimated-holder">
+                    <span>Estimated total</span>
+                    <div>${getTotal()}</div>
+                </div>
+
+                <div className="checkout-span">Is this a purchase for yourself or is it a gift? Select one to continue to checkout.</div>
+
+                <div className="cart-checkout-buttons-capsule">
+                    <a href="#" className="cart-checkout-buttons">Purchase for myself</a>
+                    <a href="#" className="cart-checkout-buttons">Purchase as a gift</a>
+                </div>
+            </div>
+            
+        </div>
+    )
+
     return (
         <>
-            <div className="temp">{eachGame()}</div>
-            
+            <div className="cart-header-capsule-wrap">
+                <div className="cart-header-capsule">
+                    <div className="cart-nav-links">
+                        <a href="/">All Products</a>
+                        <span> {' > '} Your Shopping Cart</span>
+                    </div>
+                    
+                <h2 className="cart-title-header">Your Shopping Cart</h2>
+
+                <div className="cart-bg-holder"></div>
+            </div>
+            </div>
+            <div className="cart-games-list-capsule">
+                <div className="cart-games-list">{eachGame()}</div>
+            </div>
+
+            {cartGames.length === 0 ? <></> : cartCheckout}
+            <div className="continue-shopping-capsule">
+                <div className="continue-shopping-wrap">
+                    <a href="/" className="continue-shopping">Continue Shopping</a>
+                </div>
+            </div>
         </>
     )
 }

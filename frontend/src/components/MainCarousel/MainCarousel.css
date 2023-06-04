@@ -16,10 +16,9 @@
 
 .info-capsule {
     color: #fff;
-    z-index: -2;
+    z-index: 3;
     background-image: url('../../resources/slider_background.jpeg');
     box-shadow: 0px 0 5px 0px #000;
-    /* border-radius: 7px; */
 }
 
 .avaliability {
@@ -66,8 +65,7 @@
     padding-left: 2%;
     padding-right: 2%;
     padding-bottom: 20px;
-    /* padding-top: 20px; */
-    /* z-index: -1; */
+    
 }
 
 .carousel-header-text {
@@ -116,4 +114,11 @@
 .mini-screenshot {
     height: auto;
     width: 90px;
+    opacity: 0.5;
 }
+.mini-screenshot:hover {
+    transform: scale(1.2);
+    z-index: 1;
+    opacity: 1;
+}
+

@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchGame, getGame } from '../../store/games';
+import { fetchGame, getCurrentGame } from '../../store/games';
 import { Modal } from '../../context/Modal';
 import LoginForm from '../LoginFormModal/LoginForm';
+import { fetchCartGame, fetchCartGames, getCartGames } from '../../store/cartItems';
+import InfoHolder, { formatDate } from './InfoHolder';
 
 import './GameShowPage.css'
-import './sliderHeader.css'
 import './carousel.css'
 import './pageContent.css'
 
@@ -14,26 +15,13 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import slide1 from '../../resources/carousel/l2/l2.jpeg'
-import slide2 from '../../resources/carousel/l2/l22.jpeg'
-import slide3 from '../../resources/carousel/l2/l23.jpeg'
-import { fetchCartGame, fetchCartGames, getCartGames } from '../../store/cartItems';
-
-// helper method to parse date
-export const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', options);
-};
 
 const GameShowPage = () => {
     const dispatch = useDispatch();
     const { gameId } = useParams();
 
-    const game = useSelector(getGame(gameId));
+    const game = useSelector(getCurrentGame);
     const cartGames = useSelector(getCartGames);
-
-    const [errors, setErrors] = useState([])
     
     const sliderRef = useRef(null);
     const [ signInModal, setSignInModal ] = useState(false);
@@ -60,106 +48,40 @@ const GameShowPage = () => {
         autoplay: true,
         autoplaySpeed: 2000,
         fade: true,
+        pauseOnHover: true,
     };
+
+    const slider = (
+        <Slider ref={sliderRef} {...settings}>
+        {game.imageUrls.map((imageUrl, index) => (
+          <div className="show-carousel-slide" key={index}>
+            <div className="show-content-wrap">
+              <img className="show-slider-img" 
+              src={imageUrl} 
+              alt="" />
+              <InfoHolder game={game} />
+            </div>
+          </div>
+        ))}
+      </Slider>
+    )
 
     const handleThumbnailHover = (index) => {
         sliderRef.current.slickGoTo(index);
     };
 
-    const infoHolderComponent = (
-        <div className='info-holder'>
-
-            <div>
-                <img className='show-header-img' src={slide1} />
-            </div>
-
-            <div className='show-game-description'>
-                {game.details}
-            </div>
-
-            <div className='dev-pub-info'>
-                <div className='release-date'>
-                    <div>Release Date:</div>
-                    <div className='show-date'>{formatDate(game.releaseDate)}</div>
-                </div>
-                <div className='developer'>
-                    <div>Developer:</div>
-                    <div className='show-developer'>{game.developer}</div>
-                </div>
-                <div className='publisher'>
-                    <div>Publisher:</div>
-                    <div className='show-publisher'>{game.publisher}</div>
-                </div>
-            </div>
-
-            <div className='show-genre'>
-                <div className='show-tags'>Popular user-defined tags for this product:</div>
-                <div className='show-tags-data'>
-                    <a className='show-tags-links' href='#'>{game.genre}</a>
-                </div>
-            </div>
-
-        </div>
-    )
-
-    const slider = (
-        <Slider ref={sliderRef} {...settings}>
-            <div className='show-carousel-slide'>
-                <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={slide1} alt="Slide 1" />
-                    
-                    {infoHolderComponent}
-                </div>
-            </div>
-            <div className='show-carousel-slide'>
-                <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={slide2} alt="Slide 2" />
-                    
-                    {infoHolderComponent}
-                </div>
-            </div>
-            <div className='show-carousel-slide'>
-                <div className='show-content-wrap'>
-                    <img className='show-slider-img' src={slide3} alt="Slide 3" />
-                    
-                    {infoHolderComponent}
-                </div>
-            </div>
-        </Slider>
-    )
-
     const sliderThumbnail = (
         <div className="thumbnail-carousel-container">
-                <div className="thumbnail-carousel">
-                    <img className='test' 
-                        src={slide1} alt="Thumbnail 1"
-                        onMouseEnter={() => handleThumbnailHover(0)}
-                        />
-                    <img className='test'
-                        src={slide2} 
-                        alt="Thumbnail 2"
-                        onMouseEnter={() => handleThumbnailHover(1)}
-                        />
-                    <img className='test'
-                        src={slide3}
-                        alt="Thumbnail 3"
-                        onMouseEnter={() => handleThumbnailHover(2)}
-                        />
-                    <img className='test' 
-                        src={slide1} alt="Thumbnail 1"
-                        onMouseEnter={() => handleThumbnailHover(0)}
-                        />
-                    <img className='test'
-                        src={slide2} 
-                        alt="Thumbnail 2"
-                        onMouseEnter={() => handleThumbnailHover(1)}
-                        />
-                    <img className='test'
-                        src={slide3}
-                        alt="Thumbnail 3"
-                        onMouseEnter={() => handleThumbnailHover(2)}
-                        />
-                </div>
+            <div className="thumbnail-carousel">
+                {game.imageUrls.map((imageUrl, index) => (
+                <img
+                    src={imageUrl}
+                    alt=""
+                    key={index}
+                    onMouseEnter={() => handleThumbnailHover(index)}
+                />
+                ))}
+            </div>
         </div>
     )
 
@@ -215,7 +137,6 @@ const GameShowPage = () => {
         } else {
             return setSignInModal(true)
         }
-        
     }
 
     const isGameInCart = Object.values(cartGames).some(value => {

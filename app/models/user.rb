@@ -40,6 +40,9 @@ class User < ApplicationRecord
         length: { in: 6..255 }, 
         allow_nil: true
 
+    has_many :cart_items,
+        dependent: :destroy
+
     # ================================ Find By Credentials ================================
 
     def self.find_by_credentials(credential, password) # able to search username or email

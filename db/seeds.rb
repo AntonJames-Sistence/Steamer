@@ -6,17 +6,25 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+# require_relative './generate.rb'
+
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     User.destroy_all
     Game.destroy_all
+    CartItem.destroy_all
     
+    # line below doesnt work for online part of AWS
+    ActiveStorage::Attachment.where(record_type: "Game", name: "images").find_each do |attachment|
+      attachment.purge
+    end
   
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
     ApplicationRecord.connection.reset_pk_sequence!('games')
+    ApplicationRecord.connection.reset_pk_sequence!('cart_items')
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
@@ -60,6 +68,14 @@ ApplicationRecord.transaction do
       publisher: "Red Hook Studios",
       price: 39.99
     )
+    # attach_images_to_dd2_game # generating images and uploading them to AWS
+
+    # images_to_attach = ['./app/assets/dd2/dd2_main.jpeg', './app/assets/dd2/dd2_mini_1.jpg', './app/assets/dd2/dd2_mini_2.jpg', './app/assets/dd2/dd2_mini_3.jpg', './app/assets/dd2/dd2_mini_4.jpg']
+
+    # images_to_attach.each do |image_path|
+    #   image_file = File.open(image_path)
+    #   dd2.images.attach(io: image_file, filename: File.basename(image_path))
+    # end
 
     Game.create!(
       title: "Resident Evil 4",
@@ -95,22 +111,26 @@ ApplicationRecord.transaction do
                 action-packed free-to-play RPG.",
 
       description: "Embark on an odyssey for the Lost Ark in a vast, vibrant world: 
-      explore new lands, seek out lost treasures, and test yourself in thrilling action combat. 
-      Define your fighting style with your class and advanced class, and customize your skills, 
-      weapons, and gear to bring your might to bear as you fight against hordes of enemies, colossal 
-      bosses, and dark forces seeking the power of the Ark in this action-packed free-to-play RPG.
-      
-      Explore seven vast, varied continents and the seas between them to find vibrant cultures, 
-      strange and fantastical beasts, and all the unexpected marvels waiting to be discovered. 
-      Delve into the secrets of Arkesia, prove your might in battles and raids, compete against 
-      other players in PvP, travel to distant islands in search of hidden riches, face packs of 
-      enemies and colossal bosses in the open world, and more.",
+                    explore new lands, seek out lost treasures, and test yourself in thrilling action combat. 
+                    Define your fighting style with your class and advanced class, and customize your skills, 
+                    weapons, and gear to bring your might to bear as you fight against hordes of enemies, colossal 
+                    bosses, and dark forces seeking the power of the Ark in this action-packed free-to-play RPG.
+                    
+                    Explore seven vast, varied continents and the seas between them to find vibrant cultures, 
+                    strange and fantastical beasts, and all the unexpected marvels waiting to be discovered. 
+                    Delve into the secrets of Arkesia, prove your might in battles and raids, compete against 
+                    other players in PvP, travel to distant islands in search of hidden riches, face packs of 
+                    enemies and colossal bosses in the open world, and more.",
 
       release_date: Date.parse('Feb 11, 2022'),
       developer: "Smilegate RPG",
       publisher: "Amazon Games",
       price: 0
     )
+
+    # =================================== images for games ===================================
+
+    
   
     puts "Done!"
   end
