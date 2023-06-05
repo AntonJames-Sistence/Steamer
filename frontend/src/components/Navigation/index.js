@@ -48,7 +48,7 @@ const Navigation = () => {
                     </div>
 
                     <div className='nav-links-container'>
-                        <a href='#' className='nav-link'>Store</a>
+                        <a href='/' className='nav-link'>Store</a>
                         <a href='#' className='nav-link'>Community</a>
                         <a href='#' className='nav-link'>About</a>
                         <a href='#' className='nav-link'>Support</a>

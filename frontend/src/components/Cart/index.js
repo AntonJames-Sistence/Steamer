@@ -25,7 +25,8 @@ const Cart = () => {
     }
 
     const getTotal = () => {
-        return cartGames.reduce((total, game) => total + parseFloat(game.price), 0);
+        const total = cartGames.reduce((total, game) => total + parseFloat(game.price), 0);
+        return total.toFixed(2);
     };
 
     const cartCheckout = (

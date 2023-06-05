@@ -45,7 +45,10 @@
 }
 .cart-games-list {
     width: 640px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+    justify-items: center;
+    min-height: 300px;
 }
 
 .game-box {
