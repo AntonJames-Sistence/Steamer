@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # require_relative './generate.rb'
+require 'open-uri'
 
 ApplicationRecord.transaction do 
     puts "Destroying tables..."

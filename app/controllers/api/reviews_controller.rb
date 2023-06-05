@@ -1,4 +1,10 @@
 class Api::ReviewsController < ApplicationController
+    before_action :require_logged_in, only: [:create, :update, :destroy]
+
+    def index
+        @reviews = Review.includes(:author, :review_votes).where(game_id: params[:game_id])
+        render :index
+    end
 
     def create
         # generate new instance with strong params taken from user
@@ -9,11 +15,26 @@ class Api::ReviewsController < ApplicationController
         @review.author_id = current_user.id
 
         if @review.save!
-            # render :show
-            render json: { review: @review }, status: :ok
+            render 'api/reviews/show'
         else
             render json: { errors: @review.errors.full_messages }, status: :unauthorized
         end
+    end
+
+    def update
+        @review = Review.find(params[:id])
+        @review.assign_attributes(review_params)
+        
+        if @review.save!
+          render :show
+        else
+          render json: { errors: @review.errors.full_messages }, status: :unauthorized
+        end
+    end
+
+    def destroy
+        @review = Review.find(params[:id])
+        @review.destroy
     end
 
 

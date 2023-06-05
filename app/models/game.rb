@@ -23,4 +23,7 @@ class Game < ApplicationRecord
 
     has_many :cart_items,
     dependent: :destroy
+
+    has_many :reviews,
+    dependent: :destroy
 end
