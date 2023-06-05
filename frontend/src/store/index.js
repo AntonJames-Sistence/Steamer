@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import gamesReducer from './games';
 import cartItemsReducer from './cartItems';
+import reviewsReducer from './reviews';
 
 // root reducer combine all reducers together for store
 const rootReducer = combineReducers({
   session: sessionReducer,
   showGames: gamesReducer,
-  cart: cartItemsReducer
+  cart: cartItemsReducer,
+  reviews: reviewsReducer,
 });
 
 // enhancer for using redux-logger

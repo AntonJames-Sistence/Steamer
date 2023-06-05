@@ -89,6 +89,7 @@
     font-size: 11px;
     cursor: pointer;
     margin-right: 5px;
+    margin-bottom: 10px;
 }
 .cart-remove:hover {
     color: #67c1f5;

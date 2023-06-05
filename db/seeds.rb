@@ -14,6 +14,7 @@ ApplicationRecord.transaction do
     User.destroy_all
     Game.destroy_all
     CartItem.destroy_all
+    Review.destroy_all
     
     # ActiveStorage::Attachment.where(record_type: "Game", name: "images").find_each do |attachment|
     #   attachment.purge
@@ -24,6 +25,7 @@ ApplicationRecord.transaction do
     ApplicationRecord.connection.reset_pk_sequence!('users')
     ApplicationRecord.connection.reset_pk_sequence!('games')
     ApplicationRecord.connection.reset_pk_sequence!('cart_items')
+    ApplicationRecord.connection.reset_pk_sequence!('reviews')
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:

@@ -14,6 +14,7 @@ import './pageContent.css'
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import GameReviewForm from './GameReviews';
 
 
 const GameShowPage = () => {
@@ -203,7 +204,7 @@ const GameShowPage = () => {
                         </div>
 
                         <div className='buttons-block'>
-                            <a href='/'>Visit the website</a>
+                            <a href={`/games/${game.id}`}>Visit the website</a>
                             <a href='/'>View update history</a>
                             <a href='/'>Read related news</a>
                             <a href='/'>View discussions</a>
@@ -224,6 +225,7 @@ const GameShowPage = () => {
             </div>
             {!currentUser ? signInInvite : <></>}
             {pageContent}
+            <GameReviewForm />
         </>
     )
 
