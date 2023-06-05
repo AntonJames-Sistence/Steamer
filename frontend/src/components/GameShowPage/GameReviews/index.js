@@ -1,19 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { createReview, deleteReview } from "../../../store/reviews";
+import { createReview, deleteReview, getReviews, receiveReviews } from "../../../store/reviews";
 
 const GameReviewForm = () => {
     const [ reviewBody, setReviewBody ] = useState('');
     const [ recommended, setRecommended ] = useState(null);
     const { gameId } = useParams();
+    const reviews = useSelector(getReviews);
 
     const dispatch = useDispatch();
+    
+    console.log(reviews)
+    useEffect(() => {
+        dispatch(receiveReviews(gameId));
+    }, [dispatch])
 
-    // temporary lines
-    const reviews = useSelector( state => state.reviews.length > 0 ? Object.values(state.reviews) : [] );
-    let reviewId;
-    if (reviews.length > 0) reviewId = reviews[0].id
+    
 
     const handleReviewSubmit = (e) => {
         e.preventDefault();
@@ -30,13 +33,18 @@ const GameReviewForm = () => {
     const handleRemoveReview = (e) => {
         e.preventDefault();
 
-        const reviewInfo = {
-            gameId,
-            reviewId
-        }
+        
 
-        dispatch(deleteReview(reviewInfo));
+        // dispatch(deleteReview(???));
     }
+
+    const displayReviews = (
+        <>
+            <ul>
+                {}
+            </ul>
+        </>
+    )
     
     return (
         <>
@@ -66,7 +74,7 @@ const GameReviewForm = () => {
                 </label>
                 <button>Submit</button>
             </form>
-            <button onClick={handleRemoveReview}>remove</button>
+            {/* <button onClick={handleRemoveReview}>remove</button> */}
         </>
     )
 }
