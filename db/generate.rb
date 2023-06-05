@@ -3,9 +3,9 @@ require 'active_storage'
 require "active_job/railtie"
 require "active_storage/engine"
 
-ActiveStorage::Attachment.where(record_type: "Game", name: "images").find_each do |attachment|
-  attachment.purge
-end
+# ActiveStorage::Attachment.where(record_type: "Game", name: "images").find_each do |attachment|
+#   attachment.purge
+# end
 
 def attach_images_to_dd2_game
   # Ensure the Active Storage service is configured
