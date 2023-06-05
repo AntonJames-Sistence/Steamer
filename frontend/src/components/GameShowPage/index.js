@@ -17,6 +17,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import GameReviewForm from './GameReviews';
 import AllReviews from './GameReviews/AllReviews';
+import { getCurrentUser } from '../../store/session';
 
 
 const GameShowPage = () => {
@@ -29,7 +30,7 @@ const GameShowPage = () => {
     const sliderRef = useRef(null);
     const [ signInModal, setSignInModal ] = useState(false);
 
-    const currentUser = useSelector(state => state.session.user);
+    const currentUser = useSelector(getCurrentUser);
 
     useEffect(() => {
         dispatch(fetchGame(gameId));

@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { createReview, deleteReview, getReviews, receiveReviews } from "../../../store/reviews";
+import { createReview, getReviews, receiveReviews } from "../../../store/reviews";
+import { getCurrentUser } from "../../../store/session";
+import OwnerReviewRep from "./OwnerReviewRep";
 
 const GameReviewForm = () => {
     const [ reviewBody, setReviewBody ] = useState('');
     const [ recommended, setRecommended ] = useState(null);
     const { gameId } = useParams();
     const reviews = useSelector(getReviews);
+    const currentUser = useSelector(getCurrentUser);
     const dispatch = useDispatch();
     
     useEffect(() => {
@@ -31,9 +34,8 @@ const GameReviewForm = () => {
         // dispatch(deleteReview(???));
     }
 
-    
-    return (
-        <>
+    const ReviewForm = (
+        <div className="review-form-box">
             <form onSubmit={handleReviewSubmit}>
                 <textarea
                 value={reviewBody}
@@ -61,7 +63,17 @@ const GameReviewForm = () => {
                 <button>Submit</button>
             </form>
             <button onClick={handleEditReview}>edit</button>
-        </>
+        </div>
+    )
+
+    const OwnerReview = reviews.find(
+        (review) => currentUser.id === review.author.id
+    );
+
+    const displayOwnerReview = OwnerReview && <OwnerReviewRep review={OwnerReview} />;
+    
+    return (
+        <>{displayOwnerReview || ReviewForm}</>
     )
 }
 

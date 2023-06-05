@@ -105,6 +105,8 @@ export const logout = () => async (dispatch) => {
     return response;
 };
 
+export const getCurrentUser = (state) => state.session.user
+
 // ========================== Session Reducer ==========================
 
 // session reducer takes initial state, in case app havs logged in user
