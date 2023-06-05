@@ -26,9 +26,9 @@ class Api::ReviewsController < ApplicationController
         @review.assign_attributes(review_params)
         
         if @review.save!
-          render :show
+            render 'api/reviews/show'
         else
-          render json: { errors: @review.errors.full_messages }, status: :unauthorized
+            render json: { errors: @review.errors.full_messages }, status: :unauthorized
         end
     end
 
