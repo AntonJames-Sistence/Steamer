@@ -36,14 +36,24 @@ const MainCarousel = () => {
 
     if(games.length === 0) return (<></>)
 
+    // game slider randomizer
+    const shuffle = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    };
+
+    const shuffledGames = shuffle(games);
+    const selectedGames = shuffledGames.slice(0, 5);
+
     const sliderCapsule = (
         <Slider {...settings} ref={sliderRef}>
-            
-            <SliderItem game={games[0]} />
 
-            <SliderItem game={games[1]} />
-
-            <SliderItem game={games[2]} />
+            {selectedGames.map((game) => (
+                <SliderItem key={game.id} game={game} />
+            ))}
             
         </Slider>
     )
