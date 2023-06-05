@@ -8,15 +8,11 @@ const GameReviewForm = () => {
     const [ recommended, setRecommended ] = useState(null);
     const { gameId } = useParams();
     const reviews = useSelector(getReviews);
-
     const dispatch = useDispatch();
     
-    console.log(reviews)
     useEffect(() => {
         dispatch(receiveReviews(gameId));
     }, [dispatch])
-
-    
 
     const handleReviewSubmit = (e) => {
         e.preventDefault();
@@ -30,21 +26,11 @@ const GameReviewForm = () => {
         dispatch(createReview(review));
     }
 
-    const handleRemoveReview = (e) => {
-        e.preventDefault();
-
+    const handleEditReview = () => {
         
-
         // dispatch(deleteReview(???));
     }
 
-    const displayReviews = (
-        <>
-            <ul>
-                {}
-            </ul>
-        </>
-    )
     
     return (
         <>
@@ -74,7 +60,7 @@ const GameReviewForm = () => {
                 </label>
                 <button>Submit</button>
             </form>
-            {/* <button onClick={handleRemoveReview}>remove</button> */}
+            <button onClick={handleEditReview}>edit</button>
         </>
     )
 }

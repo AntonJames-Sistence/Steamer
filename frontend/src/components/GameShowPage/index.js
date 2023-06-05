@@ -10,11 +10,13 @@ import InfoHolder, { formatDate } from './InfoHolder';
 import './GameShowPage.css'
 import './carousel.css'
 import './pageContent.css'
+import './GameReviews/GameReviews.css'
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import GameReviewForm from './GameReviews';
+import AllReviews from './GameReviews/AllReviews';
 
 
 const GameShowPage = () => {
@@ -224,8 +226,10 @@ const GameShowPage = () => {
                 {sliderThumbnail}
             </div>
             {!currentUser ? signInInvite : <></>}
+            {/* this has to be modified after implementing library */}
+            {currentUser ? <GameReviewForm /> : <></>} 
             {pageContent}
-            <GameReviewForm />
+            <AllReviews />
         </>
     )
 
