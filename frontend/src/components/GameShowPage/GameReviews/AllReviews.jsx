@@ -13,10 +13,10 @@ const AllReviews = () => {
     }, [dispatch]);
 
     const displayReviews = (
-        reviews.map((review) => {
-            return <div>{review.body}</div>
+        reviews.map((review, index) => {
+            return <div key={index}>{review.body}</div>;
         })
-    )   
+    );
 
     return (
         <>

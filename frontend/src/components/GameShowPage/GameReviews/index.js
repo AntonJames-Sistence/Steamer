@@ -72,6 +72,7 @@ const GameReviewForm = () => {
 
     const displayOwnerReview = OwnerReview && <OwnerReviewRep review={OwnerReview} />;
     
+    if(!reviews) return <></>
     return (
         <>{displayOwnerReview || ReviewForm}</>
     )
