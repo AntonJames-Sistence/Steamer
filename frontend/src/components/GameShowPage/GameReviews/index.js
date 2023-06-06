@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { createReview, getReviews, receiveReviews, updateReview } from "../../../store/reviews";
+import { createReview, deleteReview, getReviews, receiveReviews, updateReview } from "../../../store/reviews";
 import { getCurrentUser } from "../../../store/session";
 import OwnerReviewRep from "./OwnerReviewRep";
 
@@ -15,11 +15,10 @@ const GameReviewForm = () => {
     const currentUser = useSelector(getCurrentUser);
     const dispatch = useDispatch();
     
-    const OwnerReview = reviews.find(
+    const ownerReview = reviews.find(
         (review) => currentUser.id === review.author.id
     );
 
-    console.log(showForm)
 
     useEffect(() => {
         dispatch(receiveReviews(gameId));
@@ -28,8 +27,8 @@ const GameReviewForm = () => {
     // switch to false in case we have owner review on landing of the page
     useEffect(() => {
         if (reviews) {
-          const OwnerReview = reviews.find((review) => currentUser.id === review.author.id);
-          if (OwnerReview) setShowForm(false);
+          const ownerReview = reviews.find((review) => currentUser.id === review.author.id);
+          if (ownerReview) setShowForm(false);
         }
     }, [reviews, currentUser.id]);
 
@@ -37,13 +36,13 @@ const GameReviewForm = () => {
         e.preventDefault();
 
         const review = {
-            ...OwnerReview,
+            ...ownerReview,
             body: reviewBody,
             recommended: recommended,
             gameId: gameId
         };
-
-        OwnerReview ? dispatch(updateReview(review)) : dispatch(createReview(review));
+        debugger
+        ownerReview ? dispatch(updateReview(review)) : dispatch(createReview(review));
         setShowForm(false);
         setReviewBody('');
     };
@@ -51,9 +50,17 @@ const GameReviewForm = () => {
     const handleEditReview = (e) => {
         e.preventDefault();
         setShowForm(true);
-        OwnerReview ? setReviewBody(OwnerReview.body) : setReviewBody('');
-        OwnerReview ? setRecommended(OwnerReview.recommended) : setRecommended(null);
+        ownerReview ? setReviewBody(ownerReview.body) : setReviewBody('');
+        ownerReview ? setRecommended(ownerReview.recommended) : setRecommended(null);
     };
+
+    const handleDeleteReview = (e) => {
+        e.preventDefault();
+        debugger
+        dispatch(deleteReview(ownerReview.id));
+        setReviewBody('');
+        setRecommended(null);
+    }
 
     const ReviewForm = showForm && (
         <div className="review-form-box">
@@ -85,21 +92,22 @@ const GameReviewForm = () => {
                 </label>
                 <button>Submit</button>
               </form>
-              <button onClick={() => setShowForm(false)}>Cancel</button>
+              {ownerReview ? <button onClick={() => setShowForm(false)}>Cancel</button> : <></>}
+              {ownerReview ? <button onClick={handleDeleteReview}>Delete</button> : <></>}
         </div> 
     )
 
     
     // need to modify later after implementing game library
-    const displayOwnerReview = OwnerReview && <OwnerReviewRep review={OwnerReview} />;
-    
+    const displayownerReview = ownerReview && <OwnerReviewRep review={ownerReview} />;
     
 
     return (
         <>
-            {displayOwnerReview}
+            {/* {!showForm ? <OwnerReviewRep review={ownerReview} /> : <></>} */}
+            {!showForm ? displayownerReview : <></>}
             {ReviewForm}
-            <button onClick={handleEditReview}>Edit review</button>
+            {ownerReview && !showForm ? <button onClick={handleEditReview}>Edit review</button> : <></>}
         </>
     )
 }

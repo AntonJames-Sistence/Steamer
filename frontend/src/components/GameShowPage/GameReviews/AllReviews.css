@@ -1,0 +1,30 @@
+.all-reviews-wrap {
+    display: flex;
+    justify-content: center;
+}
+.all-reviews-capsule {
+    width: 640px;
+    display: flex;
+    flex-direction: column;
+}
+
+.all-review-statistic {
+    border-bottom: 1px solid #000;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.all-review-statistic > div {
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: normal;
+    color: #c6d4df;
+    padding-top: 10px;
+    font-size: 12px;
+}
+
+.all-reviews-review-container {
+    height: 50px;
+    width: 100px;
+    box-shadow: 0px 0 10px 0px #000;
+    padding: 20px;
+    margin: 20px;
+}

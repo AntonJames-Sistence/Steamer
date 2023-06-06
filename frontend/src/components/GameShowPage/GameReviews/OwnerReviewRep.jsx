@@ -8,10 +8,7 @@ const OwnerReviewRep = ({review}) => {
 
     return (
         <div>
-            <div>{body} under development</div>
-            <div>
-                <button onClick={e=>dispatch(deleteReview(id))}>Remove</button>
-            </div>
+            <div>{body}</div>
         </div>
     )
 }
