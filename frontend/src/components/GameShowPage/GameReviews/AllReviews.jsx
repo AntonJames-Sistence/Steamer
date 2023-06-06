@@ -13,9 +13,25 @@ const AllReviews = () => {
         dispatch(receiveReviews(gameId));
     }, [dispatch]);
 
+    // custom function for formating date string from backend
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const formattedDate = date.toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric"
+        });
+        return formattedDate;
+    };
+
     const displayReviews = (
         reviews.map((review, index) => {
             return <div className="all-reviews-review-container" key={index}>
+                        <div className="all-review-rec">
+                            <div className={review.recommended ? 'all-thumb-up' : 'all-thumb-down'}></div>
+                            <div className="all-recommended">{review.recommended ? 'Recommended' : 'Not Recommended'}</div>
+                            <img className="all-mini-logo"></img>
+                        </div>
                         <div className="review-column-holder">
                             <div className="review-left-col">
                                 <div className="player-avatar">
@@ -25,7 +41,33 @@ const AllReviews = () => {
                                 </div>
                             </div>
                             <div className="review-right-col">
-                                {review.body}
+                                <div className="right-col-top">
+                                    <span>posted: {formatDate(review.createdAt)}</span>
+                                    <div className="right-col-review-body">{review.body}</div>
+                                </div>
+                                <div className="right-col-bottom">
+                                    <span>Was this review helpful?</span>
+                                    <div className="votes-wrap">
+                                        <div className="votes">
+                                            <span>
+                                                <i className="icon-thumb-up"></i>
+                                                Yes
+                                            </span>
+                                        </div>
+                                        <div className="votes">
+                                            <span>
+                                                <i className="icon-thumb-down"></i>
+                                                No
+                                            </span>
+                                        </div>
+                                        <div className="votes">
+                                            <span>
+                                                <i className="icon-funny"></i>
+                                                Funny
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>;
