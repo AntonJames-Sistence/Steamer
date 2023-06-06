@@ -41,7 +41,7 @@ const GameReviewForm = () => {
             recommended: recommended,
             gameId: gameId
         };
-        debugger
+
         ownerReview ? dispatch(updateReview(review)) : dispatch(createReview(review));
         setShowForm(false);
         setReviewBody('');
@@ -56,7 +56,7 @@ const GameReviewForm = () => {
 
     const handleDeleteReview = (e) => {
         e.preventDefault();
-        debugger
+        
         dispatch(deleteReview(ownerReview.id));
         setReviewBody('');
         setRecommended(null);
