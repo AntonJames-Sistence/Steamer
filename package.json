@@ -3,5 +3,29 @@
     "react-responsive-carousel": "^3.2.23",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1"
-  }
+  },
+  "name": "steamer",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "version": "1.0.0",
+  "directories": {
+    "lib": "lib"
+  },
+  "engines": {
+    "node": "16.19.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntonJames-Sistence/PlaySteamer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AntonJames-Sistence/PlaySteamer/issues"
+  },
+  "homepage": "https://github.com/AntonJames-Sistence/PlaySteamer#readme"
 }

@@ -10,7 +10,7 @@ const Cart = () => {
     const dispatch = useDispatch();
 
     const cartGames = useSelector(getCartGames);
-    console.log(cartGames)
+    // console.log(cartGames)
 
     useEffect(() => {
         dispatch(fetchCartGames())

@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: Steamer_production
-  username: Steamer
-  password: <%= ENV["STEAMER_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
