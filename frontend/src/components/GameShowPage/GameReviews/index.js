@@ -8,88 +8,98 @@ import OwnerReviewRep from "./OwnerReviewRep";
 const GameReviewForm = () => {
     const [ reviewBody, setReviewBody ] = useState('');
     const [ recommended, setRecommended ] = useState(null);
-    const [editMode, setEditMode] = useState(false);
+    const [showForm, setShowForm] = useState(true);
 
     const { gameId } = useParams();
     const reviews = useSelector(getReviews);
     const currentUser = useSelector(getCurrentUser);
     const dispatch = useDispatch();
     
+    const OwnerReview = reviews.find(
+        (review) => currentUser.id === review.author.id
+    );
+
+    console.log(showForm)
+
     useEffect(() => {
         dispatch(receiveReviews(gameId));
-    }, [dispatch])
+    }, [dispatch, gameId]);
+
+    // switch to false in case we have owner review on landing of the page
+    useEffect(() => {
+        if (reviews) {
+          const OwnerReview = reviews.find((review) => currentUser.id === review.author.id);
+          if (OwnerReview) setShowForm(false);
+        }
+    }, [reviews, currentUser.id]);
 
     const handleReviewSubmit = (e) => {
         e.preventDefault();
 
         const review = {
-            ...OwnerReview, //be careful here
+            ...OwnerReview,
             body: reviewBody,
             recommended: recommended,
             gameId: gameId
         };
 
         OwnerReview ? dispatch(updateReview(review)) : dispatch(createReview(review));
-        setEditMode(false);
+        setShowForm(false);
         setReviewBody('');
     };
 
-    const OwnerReview = reviews.find(
-        (review) => currentUser.id === review.author.id
-    );
-
-    const handleEditReview = () => {
-        setEditMode(true);
+    const handleEditReview = (e) => {
+        e.preventDefault();
+        setShowForm(true);
         OwnerReview ? setReviewBody(OwnerReview.body) : setReviewBody('');
         OwnerReview ? setRecommended(OwnerReview.recommended) : setRecommended(null);
     };
 
-    const ReviewForm = (
-        <>
-           {!editMode ? (
-                <div>
-                    <button onClick={handleEditReview}>Edit</button>
-                </div>
-            ) : (
-                <div className="review-form-box">
-                    <form onSubmit={handleReviewSubmit}>
-                        <textarea
-                        value={reviewBody}
-                        onChange={(e) => setReviewBody(e.target.value)}
-                        />
+    const ReviewForm = showForm && (
+        <div className="review-form-box">
+              <form onSubmit={handleReviewSubmit}>
+                <textarea
+                  value={reviewBody}
+                  onChange={(e) => setReviewBody(e.target.value)}
+                />
+      
+                <label>
+                  <input
+                    type="radio"
+                    value={true}
+                    checked={recommended === true}
+                    onChange={() => setRecommended(true)}
+                  />
+                  Recommended
 
-                        <label>
-                        <input
-                            type="radio"
-                            value={true}
-                            checked={recommended === true}
-                            onChange={() => setRecommended(true)}
-                        />
-                        Recommended </label>
-                        <label>
-                        <input
-                            type="radio"
-                            value={false}
-                            checked={recommended === false}
-                            onChange={() => setRecommended(false)}
-                        />
-                        Not Recommended
-                        </label>
-                        <button>Submit</button>
-                    </form>
-                    <button onClick={() => setEditMode(false)}>Cancel</button>
-                </div>
-            )}
-        </>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    value={false}
+                    checked={recommended === false}
+                    onChange={() => setRecommended(false)}
+                  />
+                  Not Recommended
+
+                </label>
+                <button>Submit</button>
+              </form>
+              <button onClick={() => setShowForm(false)}>Cancel</button>
+        </div> 
     )
 
-
+    
+    // need to modify later after implementing game library
     const displayOwnerReview = OwnerReview && <OwnerReviewRep review={OwnerReview} />;
     
-    if(!reviews) return <></>
+    
+
     return (
         <>
+            {displayOwnerReview}
             {ReviewForm}
+            <button onClick={handleEditReview}>Edit review</button>
         </>
     )
 }
