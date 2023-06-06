@@ -1,0 +1,50 @@
+.review-form-wrap {
+    display: flex;
+    justify-content: center;
+}
+.review-form-capsule {
+    width: 640px;
+    background: -webkit-linear-gradient(-60deg, rgba(97,100,101,0.3) 0%,rgba(226,244,255,0.3) 100%);
+    background: -o-linear-gradient(-60deg, rgba(97,100,101,0.3) 0%,rgba(226,244,255,0.3) 100%);
+    background: -ms-linear-gradient(-60deg, rgba(97,100,101,0.3) 0%,rgba(226,244,255,0.3) 100%);
+    background: linear-gradient(135deg, rgba(97,100,101,0.3) 0%,rgba(226,244,255,0.3) 100%);
+}
+
+.actions-holder {
+    margin-top: 15px;
+    
+}
+.install-play-button {
+    background: linear-gradient( to bottom, rgba(193,228,249,1) 5%, rgba(148,183,202,1) 95%);
+    display: inline-block;
+    cursor: pointer;
+    color: #2B5066;
+    border: 1.5px solid #17202f;
+    border-radius: 4px;
+    margin-left: 10px;
+    padding: 0 10px;
+    font-size: 12px;
+    line-height: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.install-play-button:hover {
+    color: #ffffff;
+    background: linear-gradient( to bottom, rgba(102,192,244,1) 5%, rgba(47,137,188,1) 95%);
+}
+
+.review-offer {
+    font-size: 16px;
+    margin: 10px 10px 10px 10px;
+    color: #66c0f4;
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: 300;
+    border-top: 1px solid #212c3d;
+    padding-top: 10px;
+}
+.review-rules {
+    font-size: 10px;
+    line-height: 17px;
+    color: #8f98a0;
+    margin: 10px 10px 10px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}

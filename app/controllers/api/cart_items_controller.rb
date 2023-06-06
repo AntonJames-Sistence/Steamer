@@ -2,7 +2,7 @@ class Api::CartItemsController < ApplicationController
 
     def index
         if current_user
-        # nice selector only those games with user id // also N+1 query selector
+            # nice selector only those games with user id // also N+1 query selector
             @cart_items = CartItem.includes(:game, :user).where(user_id: current_user.id)
             render :index
         else
@@ -25,8 +25,6 @@ class Api::CartItemsController < ApplicationController
         @cart_items = CartItem.includes(:game, :user).where(user_id: current_user.id, game_id: params[:id])
         @game = @cart_items[0]
         @game.destroy
-        # render json: {item: @cart_item}
-        # render json: {message: 'Done'}
     end
 
     private 

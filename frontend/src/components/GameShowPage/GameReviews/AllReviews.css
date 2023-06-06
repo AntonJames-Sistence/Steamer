@@ -1,0 +1,190 @@
+.all-reviews-wrap {
+    display: flex;
+    justify-content: center;
+}
+.all-reviews-capsule {
+    width: 640px;
+    display: flex;
+    flex-direction: column;
+}
+
+.all-reviews-statistic {
+    border-bottom: 1px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.all-reviews-header {
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: normal;
+    color: #c6d4df;
+    padding-top: 10px;
+    font-size: 10px;
+}
+
+.all-reviews-under-header {
+    font-size: 10px;
+    color: #ffffff;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    letter-spacing: 1px;
+    font-family: "Motiva Sans", Sans-serif;
+}
+.all-reviews-under-header > span {
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 400;
+    color: #56707f;
+}
+
+.all-reviews-review-container {
+    max-width: 420px;
+    box-shadow: 0px 0 10px 0px #000;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    /* background-color: rgba( 0, 0, 0, 0.2 ); */
+    background: #274156;
+}
+
+.review-column-holder {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.review-right-col {
+    margin-left: 20px;
+}
+.review-left-col {
+    opacity: 0.5;
+    min-width: 80px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.review-left-col:hover {
+    opacity: 1;
+}
+.player-avatar {
+    background-image: url(../../../resources/userIcon.jpeg);
+    background-position: center;
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.606);
+}
+.players-name {
+    color: #c1dbf4;
+    font-size: 10px;
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+/* .review-right-col {
+} */
+.right-col-top > span {
+    font-size: 7px;
+    text-transform: uppercase;
+    font-style: normal;
+    color: #8091a2;
+    display: inline-block;
+    opacity: 0.6;
+    font-family: "Motiva Sans", Sans-serif;
+}
+.right-col-review-body {
+    font-size: 12px;
+    line-height: 17px;
+    color: #e1eef9;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    margin-top: 3px;
+    border-bottom: 1px solid #000;
+    width: 289px;
+}
+
+/* .right-col-bottom {
+
+} */
+.right-col-bottom > span {
+    display: inline-block;
+    margin-right: 9px;
+    color: #8091a2;
+    font-size: 9px;
+    opacity: 0.6;
+}
+/* .votes-wrap {
+} */
+.votes {
+    display: inline-block;
+    cursor: pointer;
+    color: #66c0f4;
+    background: #212c3d;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 2px;
+    font-size: 11px;
+    margin-right: 3px;
+}
+.votes:hover {
+    color: #fff;
+    background: #66c0f4;
+}
+
+.votes > span {
+    padding: 0 5px;
+}
+.icon-thumb-up, .icon-thumb-down, .icon-funny {
+    width: 11px;
+    height: 11px;
+    background: url(../../../resources/icons.png);
+    background-position: -73px -10px;
+    display: inline-block;
+    vertical-align: bottom;
+}
+.icon-thumb-down {
+    background: url(../../../resources/icons.png);
+    background-position: -42px -10px;
+}
+.icon-funny {
+    background: url(../../../resources/icons.png);
+    background-position: -136px -10px;
+}
+
+.all-review-rec {
+    margin: -3px 0px 10px 10px;
+    display: block;
+    background: rgba( 0, 0, 0, 0.2 );
+    height: 30px;
+    cursor: pointer;
+}
+.all-review-rec:hover {
+    background: rgba( 255, 255, 255, 0.1 );
+}
+.all-thumb-up, .all-thumb-down {
+    background: url(../../../resources/thumbsUp.png);
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+.all-thumb-down {
+    background: url(../../../resources/thumbsDown.png);
+}
+.all-recommended {
+    font-size: 12px;
+    color: #d6d7d8;
+    font-family: "Motiva Sans", Sans-serif;
+    padding-top: 10px;
+    margin-left: 40px;
+}
+.all-mini-logo {
+    float: right;
+    margin-right: 5px;
+    margin-top: -14px;
+    opacity: 0.5;
+    background: url(../../../resources/logo.png);
+    background-position: center;
+    background-size: cover;
+    height: 14px;
+    width: 14px;
+}

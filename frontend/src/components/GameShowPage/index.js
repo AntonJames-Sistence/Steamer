@@ -10,10 +10,14 @@ import InfoHolder, { formatDate } from './InfoHolder';
 import './GameShowPage.css'
 import './carousel.css'
 import './pageContent.css'
+import './GameReviews/GameReviews.css'
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import GameReviewForm from './GameReviews';
+import AllReviews from './GameReviews/AllReviews';
+import { getCurrentUser } from '../../store/session';
 
 
 const GameShowPage = () => {
@@ -26,7 +30,7 @@ const GameShowPage = () => {
     const sliderRef = useRef(null);
     const [ signInModal, setSignInModal ] = useState(false);
 
-    const currentUser = useSelector(state => state.session.user);
+    const currentUser = useSelector(getCurrentUser);
 
     useEffect(() => {
         dispatch(fetchGame(gameId));
@@ -203,7 +207,7 @@ const GameShowPage = () => {
                         </div>
 
                         <div className='buttons-block'>
-                            <a href='/'>Visit the website</a>
+                            <a href={`/games/${game.id}`}>Visit the website</a>
                             <a href='/'>View update history</a>
                             <a href='/'>Read related news</a>
                             <a href='/'>View discussions</a>
@@ -223,7 +227,10 @@ const GameShowPage = () => {
                 {sliderThumbnail}
             </div>
             {!currentUser ? signInInvite : <></>}
+            {/* this has to be modified after implementing library */}
+            {currentUser ? <GameReviewForm /> : <></>} 
             {pageContent}
+            <AllReviews />
         </>
     )
 

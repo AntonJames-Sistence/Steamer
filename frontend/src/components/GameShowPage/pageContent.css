@@ -201,6 +201,7 @@
     font-weight: 300;
     color: #67c1f5;
     font-size: 8px;
+    white-space: nowrap;
 }
 .game-details-block > a:hover {
     color: #ffffff;
