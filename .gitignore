@@ -31,3 +31,6 @@
 # additional ignores
 .byebug_history
 .DS_Store
+
+# ignore public folder
+/public
