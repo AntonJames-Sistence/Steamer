@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { deleteReview } from "../../../store/reviews";
+
 
 
 const OwnerReviewRep = ({review}) => {

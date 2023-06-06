@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getReviews, receiveReviews } from "../../../store/reviews";
 import './AllReviews.css'
+import './GameReviews.css'
 
 const AllReviews = () => {
     const { gameId } = useParams();
@@ -70,7 +71,7 @@ const AllReviews = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>;
+                    </div>
         })
     );
 

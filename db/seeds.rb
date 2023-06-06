@@ -303,7 +303,24 @@ ApplicationRecord.transaction do
     #   dd2.images.attach(io: image_file, filename: File.basename(image_path))
     # end
     
-    
+    # =================================== reviews for games ===================================
+
+    user_ids = (1..10).to_a
+    game_ids = (1..8).to_a
+
+    50.times do
+      author_id = user_ids.sample
+      game_id = game_ids.sample
+
+      unless Review.exists?(author_id: author_id, game_id: game_id)
+        Review.create!(
+          author_id: author_id,
+          game_id: game_id,
+          body: Faker::Lorem.sentence,
+          recommended: [true, false].sample
+        )
+      end
+    end
   
     puts "Done!"
   end

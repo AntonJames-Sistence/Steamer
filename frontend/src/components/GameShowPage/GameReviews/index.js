@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { createReview, deleteReview, getReviews, receiveReviews, updateReview } from "../../../store/reviews";
 import { getCurrentUser } from "../../../store/session";
 import OwnerReviewRep from "./OwnerReviewRep";
+import { getCurrentGame } from "../../../store/games";
 
 const GameReviewForm = () => {
     const [ reviewBody, setReviewBody ] = useState('');
@@ -13,6 +14,7 @@ const GameReviewForm = () => {
     const { gameId } = useParams();
     const reviews = useSelector(getReviews);
     const currentUser = useSelector(getCurrentUser);
+    const currentGame = useSelector(getCurrentGame);
     const dispatch = useDispatch();
     
     const ownerReview = reviews.find(
@@ -63,37 +65,52 @@ const GameReviewForm = () => {
     }
 
     const ReviewForm = showForm && (
-        <div className="review-form-box">
-              <form onSubmit={handleReviewSubmit}>
-                <textarea
-                  value={reviewBody}
-                  onChange={(e) => setReviewBody(e.target.value)}
-                />
-      
-                <label>
-                  <input
-                    type="radio"
-                    value={true}
-                    checked={recommended === true}
-                    onChange={() => setRecommended(true)}
-                  />
-                  Recommended
+        <div className="review-form-wrap">
+            <div className="review-form-capsule">
+                <div className="review-form-header-capsule">
+                    <div className="actions-holder">
+                        <div className="install-play-button">Install Steamer</div>
+                        <div className="install-play-button">Play Now</div>
+                    </div>
+                    <div className="review-offer">Write a review for {currentGame.title}</div>
+                    <p className="review-rules">
+                        Please describe what you liked or disliked about this game and whether you recommend it to others.<br/>
+                        Please remember to be polite and follow the
+                    </p>
+                </div>
+                <div className="review-form-body-capsule">
+                    <form onSubmit={handleReviewSubmit}>
+                        <textarea
+                        value={reviewBody}
+                        onChange={(e) => setReviewBody(e.target.value)}
+                        />
+            
+                        <label>
+                        <input
+                            type="radio"
+                            value={true}
+                            checked={recommended === true}
+                            onChange={() => setRecommended(true)}
+                        />
+                        Recommended
 
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    value={false}
-                    checked={recommended === false}
-                    onChange={() => setRecommended(false)}
-                  />
-                  Not Recommended
+                        </label>
+                        <label>
+                        <input
+                            type="radio"
+                            value={false}
+                            checked={recommended === false}
+                            onChange={() => setRecommended(false)}
+                        />
+                        Not Recommended
 
-                </label>
-                <button>Submit</button>
-              </form>
-              {ownerReview ? <button onClick={() => setShowForm(false)}>Cancel</button> : <></>}
-              {ownerReview ? <button onClick={handleDeleteReview}>Delete</button> : <></>}
+                        </label>
+                        <button>Submit</button>
+                        {ownerReview ? <button onClick={() => setShowForm(false)}>Cancel</button> : <></>}
+                        {ownerReview ? <button onClick={handleDeleteReview}>Delete</button> : <></>}
+                    </form>
+              </div>
+            </div>
         </div> 
     )
 
