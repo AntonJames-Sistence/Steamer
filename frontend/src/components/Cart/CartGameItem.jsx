@@ -16,7 +16,7 @@ const CartGameItem = ( { game } ) => {
             </a>
 
             <div className='cart-game-details'>
-                <h3 className='cart-title'>{title}</h3>
+                <div className='cart-title'>{title}</div>
 
                 <div className='space-between'>
                     <span className="cart-price">{price === '0.0' ? <></> : '$' + price }</span>

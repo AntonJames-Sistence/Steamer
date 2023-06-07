@@ -31,7 +31,7 @@ const MainCarousel = () => {
         fade: true,
         autoplaySpeed: 3000,
         pauseOnHover: true,
-        arrows: false
+        arrows: true
     };
 
     if(games.length === 0) return (<></>)

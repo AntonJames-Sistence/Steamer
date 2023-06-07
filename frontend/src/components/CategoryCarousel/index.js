@@ -4,10 +4,10 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './CategoryCarousel.css'
 
-import story_rich from '../../resources/carousel/category_slider_img/story_rich.png'
-import rpg from '../../resources/carousel/category_slider_img/rpg.png'
-import action from '../../resources/carousel/category_slider_img/action.png'
-import horror from '../../resources/carousel/category_slider_img/horror.png'
+import story_rich from '../../resources/carousel/story_rich.png'
+import rpg from '../../resources/carousel/rpg.png'
+import action from '../../resources/carousel/action.png'
+import horror from '../../resources/carousel/horror.png'
 
 
 const CategoryCarousel = () => {
@@ -23,8 +23,8 @@ const CategoryCarousel = () => {
         fade: false,
         autoplaySpeed: 3000,
         pauseOnHover: true,
-        nextArrow: null, //<NextArrow />,
-        prevArrow: null //<PrevArrow />,
+        nextArrow: null,
+        prevArrow: null,
     };
 
     return (
@@ -34,46 +34,48 @@ const CategoryCarousel = () => {
         <div className="otside-slider-wrap">
 
             <div className="title-slider-wrap">
-            <div className="carousel-header-text" id="category-browse-text">Browse By Category</div>
-                <Slider {...settings} ref={sliderRef}>
+                <div className="carousel-header-text" id="category-browse-text">Browse By Category</div>
+                <div className="category-carousel-capsule">
+                    <Slider {...settings} ref={sliderRef}>
 
-                    <a href="#" className="transform">
-                        <img id="category-image" src={story_rich} alt="story_rich"/>
-                        <div className="red-category-item">
-                            <div className="category-text-capsule">
-                                <span className="category-text">Story-Rich</span>
+                        <a href="#" className="transform">
+                            <img id="category-image" src={story_rich} alt="story_rich"/>
+                            <div className="red-category-item">
+                                <div className="category-text-capsule">
+                                    <span className="category-text">Story-Rich</span>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
 
-                    <a href="#" className="transform">
-                        <img id="category-image" src={rpg} alt="rpg"/>
-                        <div className="blue-category-item">
-                            <div className="category-text-capsule">
-                                <span className="category-text">Role-playing</span>
+                        <a href="#" className="transform">
+                            <img id="category-image" src={rpg} alt="rpg"/>
+                            <div className="blue-category-item">
+                                <div className="category-text-capsule">
+                                    <span className="category-text">Role-playing</span>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
 
-                    <a href="#" className="transform">
-                        <img id="category-image" src={action} alt="action"/>
-                        <div className="yellow-category-item">
-                            <div className="category-text-capsule">
-                                <span className="category-text">Action</span>
+                        <a href="#" className="transform">
+                            <img id="category-image" src={action} alt="action"/>
+                            <div className="yellow-category-item">
+                                <div className="category-text-capsule">
+                                    <span className="category-text">Action</span>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
 
-                    <a href="#" className="transform">
-                        <img id="category-image" src={horror} alt="horror"/>
-                        <div className="green-category-item">
-                            <div className="category-text-capsule">
-                                <span className="category-text">Horror</span>
+                        <a href="#" className="transform">
+                            <img id="category-image" src={horror} alt="horror"/>
+                            <div className="green-category-item">
+                                <div className="category-text-capsule">
+                                    <span className="category-text">Horror</span>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
 
-                </Slider>
+                    </Slider>
+                </div>
             </div>
         </div>
         </>

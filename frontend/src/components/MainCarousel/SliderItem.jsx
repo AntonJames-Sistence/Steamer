@@ -62,7 +62,9 @@ const SliderItem = ({game}) => {
 
                         <div className='avaliability'>Now Avaliable</div>
 
-                        <div className='top-seller-icon'>Top Seller</div>
+                        <div className="top-seller-icon-wrap">
+                            <div className='top-seller-icon'>Top Seller</div>
+                        </div>
 
                         <div className='price'>{price === '0.0' ? 'Free to Play' :'$' + price }</div>
                     </div>
