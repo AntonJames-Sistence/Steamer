@@ -109,7 +109,7 @@ const GameShowPage = () => {
 
     const signInInvite = (
         <div className='invite-capsule'>
-            <p><a className='login-invite-link' onClick={() => setSignInModal(true)}>Sign in</a> to add this item to your wishlist, follow it, or mark it as ignored</p>
+            <div><a className='login-invite-link' onClick={() => setSignInModal(true)}>Sign in</a> to add this item to your wishlist, follow it, or mark it as ignored</div>
             {signInModal && (
                 <Modal onClose={() => setSignInModal(false)}>
                     <LoginForm />

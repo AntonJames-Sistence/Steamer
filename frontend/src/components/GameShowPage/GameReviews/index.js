@@ -63,6 +63,7 @@ const GameReviewForm = () => {
         setReviewBody('');
         setRecommended(null);
     }
+    console.log(recommended)
 
     const ReviewForm = showForm && (
         <div className="review-form-wrap">
@@ -91,37 +92,28 @@ const GameReviewForm = () => {
                         onChange={(e) => setReviewBody(e.target.value)}
                         />
 
+                        <div className="form-rec-question">Do you recommend this game?</div>
+
                         <div className="flex-box">
                             <div className="like-dislike-capsule">
-                                <input
-                                    type="radio"
-                                    value={true}
-                                    checked={recommended === true}
-                                    onChange={() => setRecommended(true)}
-                                />
-                                <a className="true-like">
-                                    <span>
-                                        <i className="true-thumb-up"></i> 
+                                
+                                <a className={recommended === true ? 'true-like-active' : 'true-like'} onClick={() => setRecommended(true)}>
+                                    <span className="true-like-span">
+                                        <i className={recommended === true ? 'true-thumb-up-active' : 'true-thumb-up'}></i> 
                                         Yes
                                     </span>
                                 </a>
-                                <a className="true-like">
-                                    <span>
-                                        <i className="true-thumb-down"></i> 
-                                        Yes
+                                <a className={recommended === false ? 'true-dislike-active' : 'true-like'} onClick={() => setRecommended(false)}>
+                                    <span className="true-like-span">
+                                        <i className={recommended === false ? 'true-thumb-down-active' : 'true-thumb-down'}></i> 
+                                        No
                                     </span>
                                 </a>
 
-                                <input
-                                    type="radio"
-                                    value={false}
-                                    checked={recommended === false}
-                                    onChange={() => setRecommended(false)}
-                                />
                             </div>
 
                             <div className="review-buttons-capsule">
-                                <button className="submit-post">Post Review</button>
+                                <button className="submit-post">{ownerReview ? 'Update Review' : 'Post Review'}</button>
                                 {ownerReview ? <button className="submit-post" onClick={() => setShowForm(false)}>Cancel</button> : <></>}
                                 {ownerReview ? <button className="submit-post" onClick={handleDeleteReview}>Delete Review</button> : <></>}
                             </div>

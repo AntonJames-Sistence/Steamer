@@ -5,16 +5,16 @@
     justify-content: center;
     
 }
-.invite-capsule > p {
-    width: 630px;
+.invite-capsule > div {
+    width: 940px;
     /* background-color: #212d42; */
     background-color: rgba( 103, 193, 245, 0.2 );
     border: #417a9b;
     border-radius: 3px;
     font-family: Arial, Helvetica, sans-serif;
     color: #969696;
-    font-size: 13px;
-    padding: 5px 0px;
+    font-size: 15px;
+    padding: 7px 0px;
     padding-left: 10px;
 }
 
