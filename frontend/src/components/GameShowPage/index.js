@@ -60,10 +60,13 @@ const GameShowPage = () => {
         {game.imageUrls.map((imageUrl, index) => (
           <div className="show-carousel-slide" key={index}>
             <div className="show-content-wrap">
+
               <img className="show-slider-img" 
               src={imageUrl} 
               alt="" />
+
               <InfoHolder game={game} />
+
             </div>
           </div>
         ))}

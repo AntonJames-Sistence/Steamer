@@ -17,6 +17,7 @@ ApplicationRecord.transaction do
     CartItem.destroy_all
     Review.destroy_all
     
+    # this line destroys all relationships and also remove files from AWS
     # ActiveStorage::Attachment.where(record_type: "Game", name: "images").find_each do |attachment|
     #   attachment.purge
     # end
@@ -86,6 +87,8 @@ ApplicationRecord.transaction do
       publisher: "CD PROJEKT RED",
       price: 39.99
     )
+
+    
 
     # ===============================================================================================================
     
@@ -298,18 +301,7 @@ ApplicationRecord.transaction do
       publisher: "Activision",
       price: 59.99
     )
-        
-
-    # =================================== images for games ===================================
-        # attach_images_to_dd2_game # generating images and uploading them to AWS
-
-    # images_to_attach = ['./app/assets/dd2/dd2_main.jpeg', './app/assets/dd2/dd2_mini_1.jpg', './app/assets/dd2/dd2_mini_2.jpg', './app/assets/dd2/dd2_mini_3.jpg', './app/assets/dd2/dd2_mini_4.jpg']
-
-    # images_to_attach.each do |image_path|
-    #   image_file = File.open(image_path)
-    #   dd2.images.attach(io: image_file, filename: File.basename(image_path))
-    # end
-    
+  
     # =================================== reviews for games ===================================
 
     user_ids = (1..10).to_a
@@ -329,5 +321,137 @@ ApplicationRecord.transaction do
       end
     end
   
-    puts "Done!"
+    # puts "Done!"
   end
+
+  # =================================== images for games ===================================
+  puts "Attaching images..."
+
+  game = Game.find_by(title: "The Witcher 3: Wild Hunt")
+  images_to_attach = [
+    'https://steamer-prod.s3.amazonaws.com/w3/w1.png', 
+    'https://steamer-prod.s3.amazonaws.com/w3/w2.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/w3/w3.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/w3/w4.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/w3/w5.jpeg'
+  ]
+
+  images_to_attach.each do |image_path|
+    image_file = URI.open(image_path)
+    game.images.attach(io: image_file, filename: File.basename(image_path))
+  end
+
+# ===============================================================================================================
+  
+  game = Game.find_by(title: "Darkest Dungeon II")
+  images_to_attach = [
+    'https://steamer-prod.s3.amazonaws.com/dd2/dd1.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/dd2/dd2.png', 
+    'https://steamer-prod.s3.amazonaws.com/dd2/dd3.png', 
+    'https://steamer-prod.s3.amazonaws.com/dd2/dd4.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/dd2/dd5.png'
+  ]
+
+  images_to_attach.each do |image_path|
+    image_file = URI.open(image_path)
+    game.images.attach(io: image_file, filename: File.basename(image_path))
+  end
+
+# ===============================================================================================================
+
+  game = Game.find_by(title: "Resident Evil 4")
+  images_to_attach = [
+    'https://steamer-prod.s3.amazonaws.com/re4/re1.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/re4/re2.jpg', 
+    'https://steamer-prod.s3.amazonaws.com/re4/re3.jpg', 
+    'https://steamer-prod.s3.amazonaws.com/re4/re4.jpg', 
+    'https://steamer-prod.s3.amazonaws.com/re4/re5.jpg'
+  ]
+
+  images_to_attach.each do |image_path|
+    image_file = URI.open(image_path)
+    game.images.attach(io: image_file, filename: File.basename(image_path))
+  end
+
+# ===============================================================================================================
+
+  game = Game.find_by(title: "Lost Ark")
+  images_to_attach = [
+    'https://steamer-prod.s3.amazonaws.com/la/la1.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/la/la2.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/la/la3.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/la/la4.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/la/la5.jpg'
+  ]
+
+  images_to_attach.each do |image_path|
+    image_file = URI.open(image_path)
+    game.images.attach(io: image_file, filename: File.basename(image_path))
+  end
+
+# ===============================================================================================================
+
+  game = Game.find_by(title: "Ori and the Will of the Wisps")
+  images_to_attach = [
+    'https://steamer-prod.s3.amazonaws.com/ori/ori1.jpg', 
+    'https://steamer-prod.s3.amazonaws.com/ori/ori2.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/ori/ori3.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/ori/ori4.png', 
+    'https://steamer-prod.s3.amazonaws.com/ori/ori5.jpeg'
+  ]
+
+  images_to_attach.each do |image_path|
+    image_file = URI.open(image_path)
+    game.images.attach(io: image_file, filename: File.basename(image_path))
+  end
+
+# ===============================================================================================================
+
+  game = Game.find_by(title: "Stardew Valley")
+  images_to_attach = [
+    'https://steamer-prod.s3.amazonaws.com/sv/sv1.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/sv/sv2.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/sv/sv3.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/sv/sv4.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/sv/sv5.jpeg'
+  ]
+
+  images_to_attach.each do |image_path|
+    image_file = URI.open(image_path)
+    game.images.attach(io: image_file, filename: File.basename(image_path))
+  end
+
+# ===============================================================================================================
+
+  game = Game.find_by(title: "Inscryption")
+  images_to_attach = [
+    'https://steamer-prod.s3.amazonaws.com/in/in1.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/in/in2.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/in/in3.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/in/in4.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/in/in5.jpeg'
+  ]
+
+  images_to_attach.each do |image_path|
+    image_file = URI.open(image_path)
+    game.images.attach(io: image_file, filename: File.basename(image_path))
+  end
+
+# ===============================================================================================================
+
+  game = Game.find_by(title: "Sekiro: Shadows Die Twice")
+  images_to_attach = [
+    'https://steamer-prod.s3.amazonaws.com/sk/sk1.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/sk/sk2.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/sk/sk3.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/sk/sk4.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/sk/sk5.jpeg'
+  ]
+
+  images_to_attach.each do |image_path|
+    image_file = URI.open(image_path)
+    game.images.attach(io: image_file, filename: File.basename(image_path))
+  end
+
+
+  puts "Done!"
