@@ -5,6 +5,17 @@ import { getReviews, receiveReviews } from "../../../store/reviews";
 import './AllReviews.css'
 import './GameReviews.css'
 
+// custom function for formating date string from backend
+export function formatDate(dateString) {
+    const date = new Date(dateString);
+    const formattedDate = date.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+    });
+    return formattedDate;
+};
+
 const AllReviews = () => {
     const { gameId } = useParams();
     const reviews = useSelector(getReviews);
@@ -13,17 +24,6 @@ const AllReviews = () => {
     useEffect(() => {
         dispatch(receiveReviews(gameId));
     }, [dispatch]);
-
-    // custom function for formating date string from backend
-    function formatDate(dateString) {
-        const date = new Date(dateString);
-        const formattedDate = date.toLocaleDateString("en-US", {
-          month: "long",
-          day: "numeric",
-          year: "numeric"
-        });
-        return formattedDate;
-    };
 
     const displayReviews = (
         reviews.map((review, index) => {
@@ -77,7 +77,7 @@ const AllReviews = () => {
 
     return ( reviews.length === 0 ? <></> :
         <>
-            <div className="all-reviews-wrap">
+            <div id="all-reviews" className="all-reviews-wrap">
                 <div className="all-reviews-capsule">
                     <div className="all-reviews-statistic">
                         <div className="all-reviews-header">

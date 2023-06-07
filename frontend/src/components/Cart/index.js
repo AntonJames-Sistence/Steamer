@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCartGames, getCartGames } from "../../store/cartItems";
+import { fetchCartGames, getCartGames, removeGameFromCart } from "../../store/cartItems";
 import CartGameItem from "./CartGameItem";
 
 import './Cart.css'
@@ -10,7 +10,6 @@ const Cart = () => {
     const dispatch = useDispatch();
 
     const cartGames = useSelector(getCartGames);
-    // console.log(cartGames)
 
     useEffect(() => {
         dispatch(fetchCartGames())
@@ -29,8 +28,20 @@ const Cart = () => {
         return total.toFixed(2);
     };
 
+    const handleCleanCart = () => {
+        cartGames.forEach((game) => {dispatch(removeGameFromCart(game.id))})
+    }
+    const removeAll = (
+        <div className="remove-all-wrap">
+            <div className="remove-all-capsule">
+                <a onClick={handleCleanCart} className="cart-remove">Remove all items</a>
+            </div>
+        </div>
+    )
+
     const cartCheckout = (
         <div className="cart-checkout-area-wrap">
+
             <div className="cart-checkout-area">
                 <div className="cart-estimated-holder">
                     <span>Estimated total</span>
@@ -66,6 +77,7 @@ const Cart = () => {
                 <div className="cart-games-list">{eachGame()}</div>
             </div>
 
+            {cartGames.length === 0 ? <></> : removeAll}
             {cartGames.length === 0 ? <></> : cartCheckout}
             <div className="continue-shopping-capsule">
                 <div className="continue-shopping-wrap">

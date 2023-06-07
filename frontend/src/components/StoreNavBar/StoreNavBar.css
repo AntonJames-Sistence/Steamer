@@ -3,7 +3,7 @@
     justify-content: center;
 }
 .nav-wrap {
-    width: 640px;
+    width: 940px;
     display: grid;
 }
 
@@ -13,7 +13,7 @@
     font-family: Arial, Helvetica, sans-serif;
     color: #c6d4df;
     font-size: 12px;
-    width: 640px;
+    width: 940px;
     box-shadow: 0px 0 10px 0px #000;
 }
 
@@ -23,9 +23,9 @@
 }
 
 .store-nav-tab-wrap {
-    height: 28px;
+    height: 35px;
     display: flex;
-    width: 640px;
+    width: 940px;
 }
 
 #fst-child {
@@ -36,22 +36,23 @@
     background-color: #316282;
     border-radius: 3px;
     border: 1px solid rgba( 0, 0, 0, 0.3);
-    box-shadow: 1px 1px 0px rgba( 255, 255, 255, 0.2);
     margin-bottom: 0px;
     outline: none;
-    height: 13px;
-    color: #0e1c25;
-    font-size: 12px;
-    margin-top: 5px;
-    margin-right: 5px;
+    height: 27px;
+    width: 200px;
+    color: black;
+    margin-top: 2px;
+    margin-right: 7px;
     text-shadow: 1px 1px 0px rgba( 255, 255, 255, 0.1);
     font-family: "Motiva Sans", Sans-serif;
     font-weight: 300;
+    font-size: 16px;
 }
 
 .store-search-input::placeholder {
     color: rgba(0, 0, 0, 0.446);
     font-style: italic;
+    
 }
 
 .store-search-input:hover {
@@ -63,14 +64,15 @@
     padding: 1px;
     display: inline-block;
     text-decoration: none;
+    font-weight: bold;
     cursor: pointer;
     color: #c6d4df;
-    font-size: 11px;
-    line-height: 26px;
+    font-size: 14px;
+    line-height: 34px;
     text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
     margin-left: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .store-nav-tab:hover {
@@ -86,9 +88,9 @@
 
 
 .cart-button {
-    padding: 3px 20px;
+    padding: 5px 20px;
     text-align: center;
-    font-size: 8px;
+    font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
     color: #a4d007;
     box-shadow: 0 0 3px #000;
@@ -96,7 +98,7 @@
     background-color: rgba( 164, 208, 7, 0.4 );
     text-transform: uppercase;
     justify-self: flex-end;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 .cart-button:hover {
     color: #111111;
