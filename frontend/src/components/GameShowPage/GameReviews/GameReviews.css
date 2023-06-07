@@ -3,28 +3,32 @@
     justify-content: center;
 }
 .review-form-capsule {
+    margin-top: 20px;
     width: 940px;
     background: -webkit-linear-gradient(-60deg, rgba(97,100,101,0.3) 0%,rgba(226,244,255,0.3) 100%);
     background: -o-linear-gradient(-60deg, rgba(97,100,101,0.3) 0%,rgba(226,244,255,0.3) 100%);
     background: -ms-linear-gradient(-60deg, rgba(97,100,101,0.3) 0%,rgba(226,244,255,0.3) 100%);
     background: linear-gradient(135deg, rgba(97,100,101,0.3) 0%,rgba(226,244,255,0.3) 100%);
 }
+.form-avatar-capsule {
+    display: flex;
+    margin-top: 15px;
+}
 
 .actions-holder {
     margin-top: 15px;
-    
 }
 .install-play-button {
     background: linear-gradient( to bottom, rgba(193,228,249,1) 5%, rgba(148,183,202,1) 95%);
     display: inline-block;
     cursor: pointer;
     color: #2B5066;
-    border: 1.5px solid #17202f;
+    border: 2px solid #17202f;
     border-radius: 4px;
     margin-left: 15px;
-    padding: 0 10px;
-    font-size: 12px;
-    line-height: 25px;
+    padding: 0 15px;
+    font-size: 15px;
+    line-height: 30px;
     font-family: Arial, Helvetica, sans-serif;
 }
 .install-play-button:hover {
@@ -33,18 +37,64 @@
 }
 
 .review-offer {
-    font-size: 16px;
-    margin: 10px 10px 10px 10px;
+    font-size: 18px;
+    margin: 15px 15px 15px 15px;
     color: #66c0f4;
     font-family: "Motiva Sans", Sans-serif;
     font-weight: 300;
-    border-top: 1px solid #212c3d;
-    padding-top: 10px;
+    border-top: 2px solid #212c3d;
+    padding-top: 15px;
 }
 .review-rules {
     font-size: 13px;
     line-height: 17px;
     color: #8f98a0;
-    margin: 10px 10px 10px 10px;
+    margin: 15px 15px 5px 15px;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.avatar-img {
+    background: url(../../../resources/userIcon.jpeg);
+    background-position: center;
+    background-size: cover;
+    height: 94px;
+    width: 94px;
+    margin: 0px 15px 15px 15px;
+}
+
+.body-data {
+    border: 1px solid #233c51;
+    border-radius: 3px;
+    height: 132px;
+    width: 764px;
+    max-width: 800px;
+    background-color: #222b35;
+    color: #d6d7d8;
+    padding: 10px 11px;
+    font-size: 13px;
+    font-family: "Motiva Sans", Sans-serif;
+    box-shadow: inset 0px 0px 7px rgba( 0, 0, 0, 0.5 );
+}
+
+.submit-post {
+    padding: 0 15px;
+    font-size: 15px;
+    line-height: 30px;
+    cursor: pointer;
+    color: #2B5066;
+    border: 2px solid #17202f;
+    border-radius: 3px;
+    background: linear-gradient( to bottom, rgba(193,228,249,1) 5%, rgba(148,183,202,1) 95%);
+    text-shadow: 1px 1px 0px rgba( 255, 255, 255, 0.1 );
+}
+
+.flex-box {
+    display: flex;
+    justify-content: space-between;
+}
+.like-dislike-capsule {
+
+}
+.review-buttons-capsule {
+
 }

@@ -78,37 +78,45 @@ const GameReviewForm = () => {
                         Please remember to be polite and follow the
                     </p>
                 </div>
-                <div className="review-form-body-capsule">
+                <div className="form-avatar-capsule">
+                    <div className="review-avatar-capsule">
+                        <img className="avatar-img"></img>
+                    </div>
+                    
                     <form onSubmit={handleReviewSubmit}>
+
                         <textarea
+                        className="body-data"
                         value={reviewBody}
                         onChange={(e) => setReviewBody(e.target.value)}
                         />
-            
-                        <label>
-                        <input
-                            type="radio"
-                            value={true}
-                            checked={recommended === true}
-                            onChange={() => setRecommended(true)}
-                        />
-                        Recommended
 
-                        </label>
-                        <label>
-                        <input
-                            type="radio"
-                            value={false}
-                            checked={recommended === false}
-                            onChange={() => setRecommended(false)}
-                        />
-                        Not Recommended
+                        <div className="flex-box">
+                            <div className="like-dislike-capsule">
+                                <input
+                                    type="radio"
+                                    value={true}
+                                    checked={recommended === true}
+                                    onChange={() => setRecommended(true)}
+                                />
 
-                        </label>
-                        <button>Submit</button>
-                        {ownerReview ? <button onClick={() => setShowForm(false)}>Cancel</button> : <></>}
-                        {ownerReview ? <button onClick={handleDeleteReview}>Delete</button> : <></>}
+                                <input
+                                    type="radio"
+                                    value={false}
+                                    checked={recommended === false}
+                                    onChange={() => setRecommended(false)}
+                                />
+                            </div>
+
+                            <div className="review-buttons-capsule">
+                                <button className="submit-post">Post Review</button>
+                                {ownerReview ? <button className="submit-post" onClick={() => setShowForm(false)}>Cancel</button> : <></>}
+                                {ownerReview ? <button className="submit-post" onClick={handleDeleteReview}>Delete Review</button> : <></>}
+                            </div>
+                        </div>
+                        
                     </form>
+                    
               </div>
             </div>
         </div> 
