@@ -1,4 +1,4 @@
-.search-dropdown {
+.search-dropdown, .search-dropdown-show {
     position: absolute;
     background: #3D4450;
     left: 830px;
@@ -9,6 +9,19 @@
     width: 400px;
     display: flex;
     flex-direction: column;
+
+    opacity: 0;
+    transition: opacity 0.5s linear;
+    -webkit-transition: opacity 0.5s linear;
+    -moz-transition: opacity 0.5s linear;
+    -o-transition: opacity 0.5s linear;
+}
+.search-dropdown-show {
+    opacity: 1;
+    transition: opacity 0.5s linear;
+    -webkit-transition: opacity 0.5s linear;
+    -moz-transition: opacity 0.5s linear;
+    -o-transition: opacity 0.5s linear;
 }
 
 .search-result {

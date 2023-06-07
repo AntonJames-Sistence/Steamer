@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCartGames, getCartGames } from '../../store/cartItems';
 import './StoreNavBar.css'
@@ -11,22 +11,40 @@ const StoreNavBar = () => {
     
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+    const [showDropdown, setShowDropdown] = useState(false);
+
+    const searchRef = useRef();
 
     useEffect(() => {
         dispatch(fetchCartGames());
         handleSearch(search);
     }, [dispatch, search]);
 
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     const handleSearch = async (query) => {
         try {
           const res = await fetch(`/api/search?query=${encodeURIComponent(query)}`);
           const data = await res.json();
-          console.log(data)
           setSearchResults(data);
         } catch (error) {
           console.error('Error searching:', error);
         }
-      };
+        setShowDropdown(true)
+    };
+    const handleMouseLeave = () => {
+        setShowDropdown(false);
+    };
+    const handleClickOutside = (event) => {
+        if (searchRef.current && !searchRef.current.contains(event.target)) {
+          setShowDropdown(false);
+        }
+    };
 
     return (
         <div className='nav-wrap-container'>
@@ -60,13 +78,17 @@ const StoreNavBar = () => {
 
                 </div>
 
-                {searchResults.length > 0 && (
-                    <div className="search-dropdown">
+                {/* {showDropdown && ( */}
+                    <div 
+                    className={!showDropdown ? 'search-dropdown' : 'search-dropdown-show'} 
+                    onMouseLeave={handleMouseLeave} 
+                    ref={searchRef}
+                    >
                         {searchResults.map((result) => (
-                            <SearchItem game={result} />
+                            <SearchItem game={result} key={result.id} />
                         ))}
                     </div>
-                )}
+                {/* )} */}
 
             </div>
             

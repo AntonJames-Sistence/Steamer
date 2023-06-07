@@ -2,7 +2,6 @@ import './Search.css'
 
 const SearchItem = ({ game }) => {
     const {title, id, imageUrls, price } = game;
-    console.log(game)
 
     return (
         <>
