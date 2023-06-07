@@ -11,7 +11,7 @@
 
 .cart-nav-links {
     color: #56707f;
-    font-size: 8px;
+    font-size: 12px;
     font-family: "Motiva Sans", Sans-serif;
     font-weight: normal;
     padding-top: 10px;
@@ -32,7 +32,7 @@
     background-image: url('../../resources/cart-bg.png');
     background-position: bottom center;
     background-repeat: no-repeat;
-    width: 640px;
+    width: 940px;
     height: 70px;
 }
 
@@ -44,7 +44,7 @@
     min-height: 300px;
 }
 .cart-games-list {
-    width: 640px;
+    width: 940px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
     justify-items: center;
@@ -80,14 +80,14 @@
 }
 .cart-price {
     color: #c7d5e0;
-    font-size: 10px;
+    font-size: 13px;
     margin-top: 3px;
     margin-left: 3px;
 }
 .cart-remove {
     color: #56707f;
     text-decoration: underline;
-    font-size: 11px;
+    font-size: 13px;
     cursor: pointer;
     margin-right: 5px;
     margin-bottom: 10px;

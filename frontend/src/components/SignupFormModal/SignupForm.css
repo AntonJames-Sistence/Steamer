@@ -39,7 +39,7 @@
     border-radius: 2px;
     border: none;
     color: #fff;
-    font-size: 10px;
+    font-size: 13px;
     text-align: center;
     cursor: pointer;
     width: 170px;
@@ -83,7 +83,7 @@
 .page-text {
     color: #1999ff;
     /* color: #afafaf; */
-    font-size: 8px;
+    font-size: 12px;
     text-transform: uppercase;
     letter-spacing: .02em;
 }
@@ -95,7 +95,7 @@
 
 .errors {
     color: #c15755;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 500;
     text-align: center;
 }
