@@ -37,13 +37,20 @@ ApplicationRecord.transaction do
     )
   
     # More users
-    # 10.times do 
-    #   User.create!({
-    #     username: Faker::Internet.unique.username(specifier: 3),
-    #     email: Faker::Internet.unique.email,
-    #     password: 'password'
-    #   }) 
-    # end
+    10.times do 
+      User.create!({
+        username: Faker::Internet.unique.username(specifier: 3),
+        email: Faker::Internet.unique.email,
+        password: 'password'
+      }) 
+    end
+
+    # demo user
+    User.create!(
+      username: 'DemoUser', 
+      email: 'demo@user.com', 
+      password: 'password'
+    )
 
     # =================================== games ===================================
 
@@ -305,22 +312,22 @@ ApplicationRecord.transaction do
     
     # =================================== reviews for games ===================================
 
-    # user_ids = (1..10).to_a
-    # game_ids = (1..8).to_a
+    user_ids = (1..10).to_a
+    game_ids = (1..8).to_a
 
-    # 50.times do
-    #   author_id = user_ids.sample
-    #   game_id = game_ids.sample
+    50.times do
+      author_id = user_ids.sample
+      game_id = game_ids.sample
 
-    #   unless Review.exists?(author_id: author_id, game_id: game_id)
-    #     Review.create!(
-    #       author_id: author_id,
-    #       game_id: game_id,
-    #       body: Faker::Lorem.sentence,
-    #       recommended: [true, false].sample
-    #     )
-    #   end
-    # end
+      unless Review.exists?(author_id: author_id, game_id: game_id)
+        Review.create!(
+          author_id: author_id,
+          game_id: game_id,
+          body: Faker::Lorem.sentence,
+          recommended: [true, false].sample
+        )
+      end
+    end
   
     puts "Done!"
   end

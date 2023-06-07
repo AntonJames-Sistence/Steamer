@@ -111,8 +111,8 @@ a {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 4px 10px;
-    font-size: 12px;
+    padding: 7px 20px;
+    font-size: 13px;
 }
 
 .popup-menu-item:hover {

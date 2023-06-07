@@ -8,7 +8,7 @@
 
 .signup-login-form-container {
     font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
-    padding: 24px 32px;
+    padding: 24px 100px;
     display: flex;
     background-color: #181a21;
     border-radius: 10px;
@@ -34,7 +34,7 @@
 .signup-login-button {
     font-family: inherit;
     position: relative;
-    left: 68px;
+    left: 60px;
     background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
     border-radius: 2px;
     border: none;
@@ -42,8 +42,8 @@
     font-size: 13px;
     text-align: center;
     cursor: pointer;
-    width: 170px;
-    height: 30px;
+    width: 180px;
+    height: 40px;
 }
 
 .signup-login-button:hover {

@@ -31,7 +31,7 @@
     line-height: 30px;
     font-family: Arial, Helvetica, sans-serif;
 }
-.install-play-button:hover {
+.install-play-button:hover, .submit-post:hover {
     color: #ffffff;
     background: linear-gradient( to bottom, rgba(102,192,244,1) 5%, rgba(47,137,188,1) 95%);
 }
@@ -88,13 +88,50 @@
     text-shadow: 1px 1px 0px rgba( 255, 255, 255, 0.1 );
 }
 
+
 .flex-box {
     display: flex;
     justify-content: space-between;
 }
-.like-dislike-capsule {
+/* .like-dislike-capsule {
 
+} */
+.true-like {
+    border-radius: 2px;
+    border: none;
+    padding: 1px;
+    display: inline-block;
+    font-family: "Motiva Sans", Sans-serif;
+    cursor: pointer;
+    color: #67c1f5;
+    background: rgba( 103, 193, 245, 0.2 );
 }
-.review-buttons-capsule {
+.true-like:hover {
+    color: #fff;
+    background: linear-gradient( -60deg, #417a9b 5%,#67c1f5 95%);
+}
+.true-like:hover .true-thumb-up {
+    background-position: -72px 0px;
+}
+.true-like:hover .true-thumb-down {
+    background-position: 18px 0px;
+}
 
+.true-like > span {
+    padding: 0 18px;
+    font-size: 15px;
+    line-height: 30px;
 }
+.true-thumb-up, .true-thumb-down {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 1px 0px;
+    background: url(../../../resources/likes.png);
+    background-position: 0px 0px;
+    vertical-align: text-top;
+}
+.true-thumb-down {
+    background-position: -18px 0px;
+}
+

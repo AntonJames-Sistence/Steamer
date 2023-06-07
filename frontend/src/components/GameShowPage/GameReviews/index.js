@@ -99,6 +99,18 @@ const GameReviewForm = () => {
                                     checked={recommended === true}
                                     onChange={() => setRecommended(true)}
                                 />
+                                <a className="true-like">
+                                    <span>
+                                        <i className="true-thumb-up"></i> 
+                                        Yes
+                                    </span>
+                                </a>
+                                <a className="true-like">
+                                    <span>
+                                        <i className="true-thumb-down"></i> 
+                                        Yes
+                                    </span>
+                                </a>
 
                                 <input
                                     type="radio"

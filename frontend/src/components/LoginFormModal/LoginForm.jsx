@@ -39,7 +39,7 @@ const LoginForm = () => {
         e.preventDefault();
 
         const demoUser = {
-            credential: 'admin',
+            credential: 'DemoUser',
             password: 'password'
         }
 
