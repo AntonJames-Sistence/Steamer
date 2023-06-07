@@ -1,0 +1,34 @@
+.flex-end {
+    display: flex;
+    justify-content: end;
+    margin: 15px;
+}
+
+.view-owner-review {
+    border-radius: 2px;
+    padding: 1px;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: #67c1f5;
+    background: rgba( 103, 193, 245, 0.2 );
+    padding: 0 15px;
+    font-size: 12px;
+    line-height: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 15px;
+}
+.view-owner-review:hover {
+    color: #fff;
+    background: linear-gradient( -60deg, #417a9b 5%,#67c1f5 95%);
+}
+
+.icon-body-holder {
+    margin: 35px 15px 20px 40px;
+}
+.owner-review-body {
+    padding-left: 50px;
+    font-size: 14px;
+    color: #898A8C;
+    font-family: Arial, Helvetica, sans-serif;
+}

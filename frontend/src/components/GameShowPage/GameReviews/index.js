@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createReview, deleteReview, getReviews, receiveReviews, updateReview } from "../../../store/reviews";
 import { getCurrentUser } from "../../../store/session";
-import OwnerReviewRep from "./OwnerReviewRep";
 import { getCurrentGame } from "../../../store/games";
+import './OwnerReview.css'
+import { formatDate } from "./AllReviews";
 
 const GameReviewForm = () => {
     const [ reviewBody, setReviewBody ] = useState('');
@@ -63,7 +64,32 @@ const GameReviewForm = () => {
         setReviewBody('');
         setRecommended(null);
     }
-    console.log(recommended)
+
+    const renderOwnerReview = ownerReview && (
+        <div className='review-form-wrap'>
+            <div className='review-form-capsule'>
+                <div className='owner-review-header-capsule'>
+                    <div className='actions-holder'>
+                        <div className='install-play-button'>Install Steamer</div>
+                        <div className='install-play-button'>Play Now</div>
+                    </div>
+                    <div className='review-offer'>You reviewed this game on {formatDate(ownerReview.createdAt)}</div>
+                    <p className='review-rules'></p>
+                </div>
+
+                <a href="#all-reviews" className="view-owner-review">View your review</a>
+
+                <div className="icon-body-holder">
+                    <div className={ownerReview.recommended ? "all-thumb-up" : "all-thumb-down"}></div>
+                    <div className="owner-review-body">{ownerReview.body}</div>
+                </div>
+
+                <div className="flex-end">
+                    <button className="submit-post" onClick={handleEditReview}>Edit your review</button>
+                </div>
+            </div>
+        </div>
+    )
 
     const ReviewForm = showForm && (
         <div className="review-form-wrap">
@@ -126,17 +152,10 @@ const GameReviewForm = () => {
         </div> 
     )
 
-    
-    // need to modify later after implementing game library
-    const displayownerReview = ownerReview && <OwnerReviewRep review={ownerReview} />;
-    
-
     return (
         <>
-            {/* {!showForm ? <OwnerReviewRep review={ownerReview} /> : <></>} */}
-            {!showForm ? displayownerReview : <></>}
+            {!showForm ? renderOwnerReview : <></>}
             {ReviewForm}
-            {ownerReview && !showForm ? <button onClick={handleEditReview}>Edit review</button> : <></>}
         </>
     )
 }
