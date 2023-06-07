@@ -1,18 +1,32 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import './StoreNavBar.css'
 import { fetchCartGames, getCartGames } from '../../store/cartItems';
+import './StoreNavBar.css'
+import SearchItem from './SearchItem';
 
 const StoreNavBar = () => {
     const currentUser = useSelector(state => state.session.user);
     const cartItems = useSelector(getCartGames);
     const dispatch = useDispatch();
+    
+    const [search, setSearch] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
-        dispatch(fetchCartGames())
-    }, [dispatch])
+        dispatch(fetchCartGames());
+        handleSearch(search);
+    }, [dispatch, search]);
 
-    const [search, setSearch] = useState('');
+    const handleSearch = async (query) => {
+        try {
+          const res = await fetch(`/api/search?query=${encodeURIComponent(query)}`);
+          const data = await res.json();
+          console.log(data)
+          setSearchResults(data);
+        } catch (error) {
+          console.error('Error searching:', error);
+        }
+      };
 
     return (
         <div className='nav-wrap-container'>
@@ -43,9 +57,19 @@ const StoreNavBar = () => {
                             />
                         </div>
                     </div>
-                
+
                 </div>
+
+                {searchResults.length > 0 && (
+                    <div className="search-dropdown">
+                        {searchResults.map((result) => (
+                            <SearchItem game={result} />
+                        ))}
+                    </div>
+                )}
+
             </div>
+            
         </div>
     )
 }

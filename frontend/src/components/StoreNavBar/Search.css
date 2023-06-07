@@ -1,0 +1,38 @@
+.search-dropdown {
+    position: absolute;
+    background: #3D4450;
+    left: 830px;
+    top: 176px;
+    z-index: 20;
+    box-shadow: 0 0 12px #000000;
+    text-align: left;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-result {
+    display: flex;
+    /* margin: 5px; */
+}
+.search-result:hover {
+    background-color: #DCDEDF;
+    color: #151515;
+}
+.name-price-wrap {
+    margin: 5px 5px 10px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #f5f5f5;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.search-img > img {
+    width: 120px;
+    height: 55px;
+    margin: 3px;
+}
