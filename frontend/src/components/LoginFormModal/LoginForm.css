@@ -13,6 +13,7 @@
     border-radius: 10px;
     color: #E9E9E9;
     width: 600px;
+    box-shadow: 0 0 10px #66c0f4;
 }
 
 .signup-login-form {

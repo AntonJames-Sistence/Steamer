@@ -95,11 +95,11 @@ const GameShowPage = () => {
     const sliderHeader = (
         <div className='slider-header-wrap'>
             <div className='slide-header-links'>
-                <a href='/games'>All Games</a>
+                <a href='/category/All'>All Games</a>
                 {' > '}
-                <a href='#'>{game.genre} Games</a>
+                <a href={`/category/${game.genre}`}>{game.genre} Games</a>
                 {' > '}
-                <a href='#'>{game.title}</a>
+                <a href={`/games/${game.id}`}>{game.title}</a>
             </div>
             <div className='title-wrap'>
                 <div className='show-game-title'>{game.title}</div>

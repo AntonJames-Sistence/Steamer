@@ -49,9 +49,9 @@ const Navigation = () => {
 
                     <div className='nav-links-container'>
                         <a href='/' className='nav-link'>Store</a>
-                        <a href='#' className='nav-link'>Community</a>
-                        <a href='#' className='nav-link'>About</a>
-                        <a href='#' className='nav-link'>Support</a>
+                        <a href='https://github.com/AntonJames-Sistence/Steamer' className='nav-link'>GitHub</a>
+                        <a href='https://www.linkedin.com/in/anton-james-9b5b18275/' className='nav-link'>LinkedIn</a>
+                        <a href='#' className='nav-link'>AngelList</a>
                     </div>
                 
             </div>
