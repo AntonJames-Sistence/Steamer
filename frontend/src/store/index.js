@@ -4,6 +4,7 @@ import sessionReducer from './session';
 import gamesReducer from './games';
 import cartItemsReducer from './cartItems';
 import reviewsReducer from './reviews';
+import categoryReducer from './category';
 
 // root reducer combine all reducers together for store
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   showGames: gamesReducer,
   cart: cartItemsReducer,
   reviews: reviewsReducer,
+  category: categoryReducer,
 });
 
 // enhancer for using redux-logger

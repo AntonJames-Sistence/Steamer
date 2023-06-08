@@ -7,6 +7,7 @@ import GameShowPage from "./components/GameShowPage";
 import { useSelector } from "react-redux";
 import HomePage from "./components/HomePage";
 import Cart from "./components/Cart";
+import CategoryPage from "./components/CategoryPage";
 
 function App() {
   const currentUser = useSelector(state => state.session.user);
@@ -20,6 +21,10 @@ function App() {
 
           <Route exact path="/games/:gameId">
             <GameShowPage />
+          </Route>
+
+          <Route exact path="/category/:category">
+            <CategoryPage />
           </Route>
 
           <Route exact path="/cart">
