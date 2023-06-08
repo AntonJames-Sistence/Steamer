@@ -18,47 +18,21 @@ const SliderItem = ({game}) => {
                     <div className='info-capsule'>
                         <div className='game-title'>{title}</div>
 
+                        <a href={`/games/${id}`}>
                         <div className='screenshots'>
-                            <div className='screenshot-holder'>
-                                <img
-                                    className={`mini-screenshot ${hoveredIndex === 1 ? 'hovered' : ''}`}
-                                    src={imageUrls[1]}
-                                    alt=''
-                                    onMouseEnter={() => setHoveredIndex(1)}
-                                    onMouseLeave={() => setHoveredIndex(null)}
-                                />
-                            </div>
-
-                            <div className='screenshot-holder'>
-                                <img
-                                    className={`mini-screenshot ${hoveredIndex === 2 ? 'hovered' : ''}`}
-                                    src={imageUrls[2]}
-                                    alt=''
-                                    onMouseEnter={() => setHoveredIndex(2)}
-                                    onMouseLeave={() => setHoveredIndex(null)}
-                                />
-                            </div>
-
-                            <div className='screenshot-holder'>
-                                <img
-                                    className={`mini-screenshot ${hoveredIndex === 3 ? 'hovered' : ''}`}
-                                    src={imageUrls[3]}
-                                    alt=''
-                                    onMouseEnter={() => setHoveredIndex(3)}
-                                    onMouseLeave={() => setHoveredIndex(null)}
-                                />
-                            </div>
-
-                            <div className='screenshot-holder'>
-                                <img
-                                    className={`mini-screenshot ${hoveredIndex === 4 ? 'hovered' : ''}`}
-                                    src={imageUrls[4]}
-                                    alt=''
-                                    onMouseEnter={() => setHoveredIndex(4)}
-                                    onMouseLeave={() => setHoveredIndex(null)}
-                                />
-                            </div>
+                            {imageUrls.slice(1, 5).map((imageUrl, index) => (
+                                <div className='screenshot-holder' key={index}>
+                                    <img
+                                        className={`mini-screenshot ${hoveredIndex === index + 1 ? 'hovered' : ''}`}
+                                        src={imageUrl}
+                                        alt=''
+                                        onMouseEnter={() => setHoveredIndex(index + 1)}
+                                        onMouseLeave={() => setHoveredIndex(null)}
+                                    />
+                                </div>
+                            ))}
                         </div>
+                        </a>
 
                         <div className='avaliability'>Now Avaliable</div>
 
