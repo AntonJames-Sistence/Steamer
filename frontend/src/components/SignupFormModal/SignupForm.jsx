@@ -46,11 +46,11 @@ const SignupForm = () => {
 
       <div className="header-text">Sign Up</div>
 
-      <div className="signup-login-form-container">
+      <div className="signup-form-container">
 
-        <form onSubmit={handleSubmit} className="signup-login-form">
+        <form onSubmit={handleSubmit} className="signup-form-capsule">
 
-          <div className="text-field">
+          <div className="signup-text-field">
               <div className="page-text">Username</div>
               
               <input
@@ -63,7 +63,7 @@ const SignupForm = () => {
               />
           </div>
 
-          <div className="text-field">
+          <div className="signup-text-field">
               <div className="page-text">Email</div>
 
               <input
@@ -76,7 +76,7 @@ const SignupForm = () => {
               />
           </div>
 
-          <div className="text-field">
+          <div className="signup-text-field">
               <div className="page-text">Password</div>
 
               <input
@@ -89,7 +89,7 @@ const SignupForm = () => {
               />
           </div>
 
-          <div className="text-field">
+          <div className="signup-text-field">
               <div className="page-text">Confirm Password</div>
 
               <input

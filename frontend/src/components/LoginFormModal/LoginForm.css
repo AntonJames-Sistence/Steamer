@@ -1,0 +1,128 @@
+/* ------------------- login-signup-containers related styles ------------------- */
+
+.header-text-form-container {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-login-form-container {
+    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
+    padding: 20px;
+    background-color: #181a21;
+    border-radius: 10px;
+    color: #E9E9E9;
+    width: 600px;
+}
+
+.signup-login-form {
+    display: flex;
+    justify-content: space-between;
+    color: #E9E9E9;
+}
+
+.header-text {
+    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
+    color: #fff;
+    font-size: 25px;
+    text-transform: uppercase;
+    letter-spacing: .055em;
+}
+
+/* ------------------- login-signup-button styles ------------------- */
+
+.signup-login-button {
+    font-family: inherit;
+    background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+}
+#sign-in {
+    width: 200px;
+}
+
+.signup-login-button:hover {
+    background: linear-gradient(90deg, #06BFFF 50%, #2D73FF 100%);
+}
+
+/* ------------------- text-field related divs styles ------------------- */
+
+.text-field {
+    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
+    grid-template-columns: 1fr min-content;
+    width: 300px;
+    margin: 0px 0px 20px 0px;
+}
+
+.signup-login-input {
+    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
+    border-radius: 2px;
+    color: #fff;
+    padding: 10px;
+    background-color: #32353c;
+    outline: none;
+    grid-area: input;
+    border: 2px solid #32353c;
+    width: auto;
+    height: 10px;
+    min-width: 270px;
+    margin-top: 5px;
+}
+
+.signup-login-input:hover {
+    background-color: #393c44;
+}
+
+.page-text {
+    /* color: #1999ff; */
+    color: #afafaf;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+#page-text-blue-spotlight {
+    color: #1999ff;
+    font-weight: 600;
+}
+
+.errors {
+    color: #c15755;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#has-errors {
+    border-color: #c15755;
+
+}
+
+.qr-code {
+    background: url(../../resources/qr.png);
+    background-position: center;
+    background-size: cover;
+    height: 200px;
+    width: 200px;
+    border-radius: 15px;
+}
+
+.demo-offer {
+    color: #afafaf;
+    font-size: 16px;
+    margin: 30px 0px 20px 0px;
+    max-width: 330px;
+}
+
+.torque-qr {
+    color: #1999ff;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+}
