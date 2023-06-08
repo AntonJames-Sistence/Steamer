@@ -61,12 +61,11 @@ const LoginForm = () => {
                             <div className="page-text" id="page-text-blue-spotlight">Sign in with username or email</div>
 
                                 <input
-                                className="signup-login-input"
-                                id={`${errors.length > 0 ? 'has-errors' : ''}`}
-                                type="text"
-                                value={credential}
-                                onChange={ (event) => setCredential(event.target.value) }
-                                required
+                                    className={ errors.length > 0 ? "signup-login-input-error" : "signup-login-input"}
+                                    type="text"
+                                    value={credential}
+                                    onChange={ (event) => setCredential(event.target.value) }
+                                    required
                                 />
                         </div>
 
@@ -74,12 +73,11 @@ const LoginForm = () => {
                             <div className="page-text">Password</div>
 
                                 <input
-                                className="signup-login-input"
-                                id={`${errors.length > 0 ? 'has-errors' : ''}`}
-                                type="password"
-                                value={password}
-                                onChange={ (event) => setPassword(event.target.value) }
-                                required
+                                    className={ errors.length > 0 ? "signup-login-input-error" : "signup-login-input"}
+                                    type="password"
+                                    value={password}
+                                    onChange={ (event) => setPassword(event.target.value) }
+                                    required
                                 />
                         </div>
 
