@@ -75,7 +75,7 @@ a {
     position: absolute;
     right: 0px;
     height: 21px;
-    color: #b8b6b4;
+    color: #637c28;
     font-size: 14px;
     line-height: 24px;
     vertical-align: top;
@@ -83,7 +83,9 @@ a {
     padding: 0 4px;
     cursor: pointer;
 }
-
+.global-actions > a {
+    color: #637c28;
+}
 .global-actions > a:hover {
     /* color: #ffffff; */
     color: #1999ff;

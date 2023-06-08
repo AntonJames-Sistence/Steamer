@@ -7,7 +7,7 @@ import './CategoryCarousel.css'
 import story_rich from '../../resources/carousel/story_rich.png'
 import rpg from '../../resources/carousel/rpg.png'
 import action from '../../resources/carousel/action.png'
-import horror from '../../resources/carousel/horror.png'
+import indie from '../../resources/carousel/horror.png'
 
 
 const CategoryCarousel = () => {
@@ -27,6 +27,26 @@ const CategoryCarousel = () => {
         prevArrow: null,
     };
 
+    const categories = [
+        { name: 'All', image: story_rich, color: 'red', text: 'All Games' },
+        { name: 'RPG', image: rpg, color: 'blue', text: 'Role-playing' },
+        { name: 'Action', image: action, color: 'yellow', text: 'Action' },
+        { name: 'Indie', image: indie, color: 'green', text: 'Indie' }
+      ];
+      
+    const CategoryItems = () => {
+        return categories.map((category, index) => (
+            <a href={`/category/${category.name}`} className="transform" key={index}>
+            <img id="category-image" src={category.image} alt={category.name} />
+            <div className={`${category.color}-category-item`}>
+                <div className="category-text-capsule">
+                    <span className="category-text">{category.text}</span>
+                </div>
+            </div>
+            </a>
+        ));
+    };
+
     return (
         <>
         
@@ -38,41 +58,7 @@ const CategoryCarousel = () => {
                 <div className="category-carousel-capsule">
                     <Slider {...settings} ref={sliderRef}>
 
-                        <a href="#" className="transform">
-                            <img id="category-image" src={story_rich} alt="story_rich"/>
-                            <div className="red-category-item">
-                                <div className="category-text-capsule">
-                                    <span className="category-text">Story-Rich</span>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="#" className="transform">
-                            <img id="category-image" src={rpg} alt="rpg"/>
-                            <div className="blue-category-item">
-                                <div className="category-text-capsule">
-                                    <span className="category-text">Role-playing</span>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="#" className="transform">
-                            <img id="category-image" src={action} alt="action"/>
-                            <div className="yellow-category-item">
-                                <div className="category-text-capsule">
-                                    <span className="category-text">Action</span>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="#" className="transform">
-                            <img id="category-image" src={horror} alt="horror"/>
-                            <div className="green-category-item">
-                                <div className="category-text-capsule">
-                                    <span className="category-text">Horror</span>
-                                </div>
-                            </div>
-                        </a>
+                        {CategoryItems()}
 
                     </Slider>
                 </div>

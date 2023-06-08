@@ -37,7 +37,7 @@ const InfoHolder = ({ game }) => {
             <div className='show-genre'>
                 <div className='show-tags'>Popular user-defined tags for this product:</div>
                 <div className='show-tags-data'>
-                    <a className='show-tags-links' href='#'>{genre}</a>
+                    <a className='show-tags-links' href={`/category/${genre}`}>{genre}</a>
                 </div>
             </div>
 

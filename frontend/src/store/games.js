@@ -48,7 +48,7 @@ export const fetchGames = () => async dispatch => {
 const gamesReducer = (state = {}, action) => {
     Object.freeze(state);
 
-    const nextState = {...state}
+    const nextState = {...state};
     switch (action.type) {
         case RECEIVE_GAME:
             nextState['currentGame'] = action.game

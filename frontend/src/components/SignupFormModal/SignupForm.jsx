@@ -105,7 +105,9 @@ const SignupForm = () => {
               {getErrorByField('Password') ? <span className="errors">{getErrorByField('Password')}</span> : <></>}
           </div>
 
-          <button className="signup-login-button">Sign Up</button>
+          <div className="signup-login-button-capsule">
+            <button className="signup-login-button">Sign Up</button>
+          </div>
 
         </form>
 

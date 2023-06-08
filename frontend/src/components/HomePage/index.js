@@ -21,7 +21,9 @@ const torque = (
 
 const summerSpotlight = (
     <div className="wrap">
-        <div className="summer-spotlight-img"></div>
+        <a href="/category/All">
+            <div className="summer-spotlight-img"></div>
+        </a>
     </div>
 )
 

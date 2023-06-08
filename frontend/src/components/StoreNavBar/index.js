@@ -62,7 +62,9 @@ const StoreNavBar = () => {
                             <a href='/games/2'>
                                 <div className="store-nav-tab">New & Noteworthy</div>
                             </a>
-                            <div className="store-nav-tab">Categories</div>
+                            <a href='/category/All'>
+                                <div className="store-nav-tab">Categories</div>
+                            </a>
                             <div className="store-nav-tab">News</div>
                         </div>
 
@@ -78,7 +80,6 @@ const StoreNavBar = () => {
 
                 </div>
 
-                {/* {showDropdown && ( */}
                     <div 
                     className={!showDropdown ? 'search-dropdown' : 'search-dropdown-show'} 
                     onMouseLeave={handleMouseLeave} 
@@ -88,7 +89,6 @@ const StoreNavBar = () => {
                             <SearchItem game={result} key={result.id} />
                         ))}
                     </div>
-                {/* )} */}
 
             </div>
             

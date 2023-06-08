@@ -30,11 +30,11 @@ const Footer = () => {
                 <div className="footer-links">
                     <a href='#'>About Steamer</a>
                     &nbsp;|&nbsp;
-                    <a href='#'>LinkedIn</a>
+                    <a href='https://www.linkedin.com/in/anton-james-9b5b18275/'>LinkedIn</a>
                     &nbsp;|&nbsp;
-                    <a href='#'>GitHub</a>
+                    <a href='https://github.com/AntonJames-Sistence/Steamer'>GitHub</a>
                     &nbsp;|&nbsp;
-                    <a href='#'>AngeList</a>
+                    <a href='#'>AngelList</a>
                     &nbsp;|&nbsp;
                     <a href='#'>Support</a>
                     &nbsp;|&nbsp;
