@@ -17,15 +17,15 @@
 .invite-text {
     font-family: "Motiva Sans", Sans-serif;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 24px;
     color: #67c1f5;
     text-align: center;
 }
 
 .button-text-holder {
-    padding: 16px;
+    padding: 33px;
     text-align: center;
-    font-size: 13px;
+    font-size: 15px;
     color: #8f98a0;
     font-family: "Motiva Sans", Sans-serif;
     font-weight: normal;
@@ -51,9 +51,9 @@
     background: linear-gradient( to bottom, #b6d908 5%, #80a006 95%);
 }
 .green-signin-button > span {
-    padding: 0 10px;
-    font-size: 13px;
-    line-height: 16px;
+    padding: 0 15px;
+    font-size: 15px;
+    line-height: 30px;
 }
 
 #signup-text {

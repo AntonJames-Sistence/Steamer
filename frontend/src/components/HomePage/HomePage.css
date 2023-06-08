@@ -1,0 +1,34 @@
+.wrap {
+    display: flex;
+    justify-content: center;
+}
+.torque-capsule {
+    margin-top: 70px;
+    width: 940px;
+    height: 560px;
+    overflow: hidden;
+}
+
+#scaled-frame {
+    width: 962px;
+    height: 570px;
+    border: 0px;
+    zoom: 1.3;
+    -moz-transform: scale(0.75);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.75);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.75);
+    -webkit-transform-origin: 0 0;
+}
+
+.summer-spotlight-img {
+    background: url(../../resources/sumspot.jpeg);
+    width: 940px;
+    height: 150px;
+    margin-top: 70px;
+    cursor: pointer;
+}
+.summer-spotlight-img:hover {
+    box-shadow: 0 0 10px #66c0f4;
+}
