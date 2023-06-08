@@ -12,9 +12,11 @@ const LoginFormModal = () => {
       <>
         <a onClick={() => setShowModal(true)}>login</a>
         {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            <LoginForm />
-          </Modal>
+          
+            <Modal onClose={() => setShowModal(false)}>
+              <LoginForm />
+            </Modal>
+          
         )}
       </>
     );

@@ -55,41 +55,53 @@ const LoginForm = () => {
 
                 <form onSubmit={handleSubmit} className="signup-login-form">
 
-                    <div className="text-field">
-                        <div className="page-text" id="page-text-blue-spotlight">Sign in with username or email</div>
+                    <div className="login-left-col">
+                        <div className="text-field">
+                            <div className="page-text" id="page-text-blue-spotlight">Sign in with username or email</div>
 
-                            <input
-                            className="signup-login-input"
-                            id={`${errors.length > 0 ? 'has-errors' : ''}`}
-                            type="text"
-                            value={credential}
-                            onChange={ (event) => setCredential(event.target.value) }
-                            required
-                            />
+                                <input
+                                className="signup-login-input"
+                                id={`${errors.length > 0 ? 'has-errors' : ''}`}
+                                type="text"
+                                value={credential}
+                                onChange={ (event) => setCredential(event.target.value) }
+                                required
+                                />
+                        </div>
+
+                        <div className="text-field">
+                            <div className="page-text">Password</div>
+
+                                <input
+                                className="signup-login-input"
+                                id={`${errors.length > 0 ? 'has-errors' : ''}`}
+                                type="password"
+                                value={password}
+                                onChange={ (event) => setPassword(event.target.value) }
+                                required
+                                />
+                        </div>
+
+                        <button className="signup-login-button" id="sign-in">Sign In</button>
+
+                        <div className="demo-offer">Please log in using your credentials or feel free to explore our platform by using demo user account.</div>
+
+                        <button className="signup-login-button" onClick={handleDemo}>Demo User</button>
                     </div>
 
-                    <div className="text-field">
-                        <div className="page-text">Password</div>
-
-                            <input
-                            className="signup-login-input"
-                            id={`${errors.length > 0 ? 'has-errors' : ''}`}
-                            type="password"
-                            value={password}
-                            onChange={ (event) => setPassword(event.target.value) }
-                            required
-                            />
+                    
+                    <div className="login-right-col">
+                        <div className="torque-qr">Check more projects</div>
+                        <div className="qr-code"></div>
                     </div>
 
-                    <button className="signup-login-button">Sign In</button>
+                    
 
-                    <button className="signup-login-button" onClick={handleDemo}>Demo User</button>
+                </form>
 
                     <ul className="errors">
                         {errors.map(error => <div key={error}>{error}</div>)}
                     </ul>
-
-                </form>
             </div>
 
         </div>
