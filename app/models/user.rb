@@ -23,7 +23,7 @@ class User < ApplicationRecord
     validates :username, 
         uniqueness: true, 
         presence: true,
-        length: { in: 3..30 }, 
+        length: { in: 4..30 }, 
         format: { without: URI::MailTo::EMAIL_REGEXP, message:  "Can't be an email" }
 
     validates :email, 

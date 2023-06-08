@@ -10,11 +10,12 @@ export const ModalProvider = ({ children }) => {
     // useRef is a react hook to create mutable reference to a value across re-render of component
     const modalRef = useRef();
     const [value, setValue] = useState();
+    const [showModal, setShowModal] = useState(false);
   
     // useEffect is there to assign current useRef value to variable
     useEffect(() => {
       setValue(modalRef.current);
-    }, [])
+    }, []);
   
     // wrapper provides access to value for its children
     return (

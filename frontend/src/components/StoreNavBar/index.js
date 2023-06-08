@@ -1,18 +1,50 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import './StoreNavBar.css'
 import { fetchCartGames, getCartGames } from '../../store/cartItems';
+import './StoreNavBar.css'
+import SearchItem from './SearchItem';
 
 const StoreNavBar = () => {
     const currentUser = useSelector(state => state.session.user);
     const cartItems = useSelector(getCartGames);
     const dispatch = useDispatch();
+    
+    const [search, setSearch] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+    const [showDropdown, setShowDropdown] = useState(false);
+
+    const searchRef = useRef();
 
     useEffect(() => {
-        dispatch(fetchCartGames())
-    }, [dispatch])
+        dispatch(fetchCartGames());
+        handleSearch(search);
+    }, [dispatch, search]);
 
-    const [search, setSearch] = useState('');
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
+    const handleSearch = async (query) => {
+        try {
+          const res = await fetch(`/api/search?query=${encodeURIComponent(query)}`);
+          const data = await res.json();
+          setSearchResults(data);
+        } catch (error) {
+          console.error('Error searching:', error);
+        }
+        setShowDropdown(true)
+    };
+    const handleMouseLeave = () => {
+        setShowDropdown(false);
+    };
+    const handleClickOutside = (event) => {
+        if (searchRef.current && !searchRef.current.contains(event.target)) {
+          setShowDropdown(false);
+        }
+    };
 
     return (
         <div className='nav-wrap-container'>
@@ -43,9 +75,23 @@ const StoreNavBar = () => {
                             />
                         </div>
                     </div>
-                
+
                 </div>
+
+                {/* {showDropdown && ( */}
+                    <div 
+                    className={!showDropdown ? 'search-dropdown' : 'search-dropdown-show'} 
+                    onMouseLeave={handleMouseLeave} 
+                    ref={searchRef}
+                    >
+                        {searchResults.map((result) => (
+                            <SearchItem game={result} key={result.id} />
+                        ))}
+                    </div>
+                {/* )} */}
+
             </div>
+            
         </div>
     )
 }

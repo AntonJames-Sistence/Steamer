@@ -99,6 +99,7 @@
     text-transform: uppercase;
     justify-self: flex-end;
     margin-top: 10px;
+    margin-right: 8px;
 }
 .cart-button:hover {
     color: #111111;

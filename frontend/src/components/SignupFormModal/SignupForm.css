@@ -1,106 +1,25 @@
-/* ------------------- login-signup-containers related styles ------------------- */
-
-.header-text-form-container {
-    gap: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.signup-login-form-container {
+.signup-form-container {
     font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
-    padding: 24px 100px;
-    display: flex;
+    padding: 20px;
     background-color: #181a21;
     border-radius: 10px;
     color: #E9E9E9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* width: 500px; */
 }
-
-.signup-login-form {
-    display: grid;
-    gap: 12px;
-    color: #E9E9E9;
-}
-
-.header-text {
+.signup-text-field {
     font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
-    color: #fff;
-    font-size: 25px;
-    text-transform: uppercase;
-    letter-spacing: .055em;
-}
-
-/* ------------------- login-signup-button styles ------------------- */
-
-.signup-login-button {
-    font-family: inherit;
-    position: relative;
-    left: 60px;
-    background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
-    border-radius: 2px;
-    border: none;
-    color: #fff;
-    font-size: 13px;
-    text-align: center;
-    cursor: pointer;
-    width: 180px;
-    height: 40px;
-}
-
-.signup-login-button:hover {
-    background: linear-gradient(90deg, #06BFFF 50%, #2D73FF 100%);
-}
-
-/* ------------------- text-field related divs styles ------------------- */
-
-.text-field {
-    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
-    display: grid;
-    grid-template-areas:
-        "label hint"
-        "input input";
     grid-template-columns: 1fr min-content;
-    gap: 4px;
-    width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 20px 0px;
 }
-
-.signup-login-input {
-    font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
-    border-radius: 2px;
-    color: #fff;
-    padding: 8px;
-    background-color: #32353c;
-    outline: none;
-    grid-area: input;
-    border: 1px solid #32353c;
-    width: auto;
-    height: 5px;
-}
-
-.signup-login-input:hover {
-    background-color: #393c44;
-}
-
-.page-text {
-    color: #1999ff;
-    /* color: #afafaf; */
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .02em;
-}
-
-#page-text-blue-spotlight {
-    color: #1999ff;
-    font-weight: 500;
-}
-
-.errors {
-    color: #c15755;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: center;
-}
-
-#has-errors {
-    border-color: #c15755;
-
+.signup-form-capsule {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 420px;
+    width: 400px;
 }

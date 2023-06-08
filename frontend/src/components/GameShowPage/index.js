@@ -95,7 +95,7 @@ const GameShowPage = () => {
     const sliderHeader = (
         <div className='slider-header-wrap'>
             <div className='slide-header-links'>
-                <a href='#'>All Games</a>
+                <a href='/games'>All Games</a>
                 {' > '}
                 <a href='#'>{game.genre} Games</a>
                 {' > '}
