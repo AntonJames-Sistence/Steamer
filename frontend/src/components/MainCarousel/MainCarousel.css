@@ -64,7 +64,7 @@
 /* ========================== carousel outside capsule ========================== */
 
 .carousel-content {
-    /* position: relative; */
+    background: url(../../resources/carouselbg.png) bottom center no-repeat;
     width: 940px;
     margin: 0 auto;
     margin-top: 40px;
