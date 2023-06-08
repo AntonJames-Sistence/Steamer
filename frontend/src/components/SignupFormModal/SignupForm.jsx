@@ -41,6 +41,10 @@ const SignupForm = () => {
     return setErrors(['Passwords must be the same']);
   };
 
+  const getErrorByField = (field) => {
+    return errors.find((error) => error.includes(field));
+  };
+
   return (
     <div className="header-text-form-container">
 
@@ -50,38 +54,37 @@ const SignupForm = () => {
 
         <form onSubmit={handleSubmit} className="signup-form-capsule">
 
-          <div className="signup-text-field">
+        <div className='signup-text-field'>
               <div className="page-text">Username</div>
               
               <input
-              className="signup-login-input"
-              id={`${errors.length > 0 ? 'has-errors' : ''}`}
+              className={ getErrorByField('Username') ? 'signup-login-input-error' : 'signup-login-input'}
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
               />
+              {getErrorByField('Username') ? <span className="errors">{getErrorByField('Username')}</span> : <></>}
           </div>
 
           <div className="signup-text-field">
               <div className="page-text">Email</div>
 
               <input
-              className="signup-login-input"
-              id={`${errors.length > 0 ? 'has-errors' : ''}`}
+              className={ getErrorByField('Email') ? 'signup-login-input-error' : 'signup-login-input'}
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               />
+              {getErrorByField('Email') ? <span className="errors">{getErrorByField('Email')}</span> : <></>}
           </div>
 
           <div className="signup-text-field">
               <div className="page-text">Password</div>
 
               <input
-              className="signup-login-input"
-              id={`${errors.length > 0 ? 'has-errors' : ''}`}
+              className={ getErrorByField('Password') ? 'signup-login-input-error' : 'signup-login-input'}
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -93,20 +96,16 @@ const SignupForm = () => {
               <div className="page-text">Confirm Password</div>
 
               <input
-              className="signup-login-input"
-              id={`${errors.length > 0 ? 'has-errors' : ''}`}
+              className={ getErrorByField('Password') ? 'signup-login-input-error' : 'signup-login-input'}
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
               />
+              {getErrorByField('Password') ? <span className="errors">{getErrorByField('Password')}</span> : <></>}
           </div>
 
           <button className="signup-login-button">Sign Up</button>
-
-          <ul className="errors">
-              {errors.map(error => <li key={error}>{error}</li>)}
-          </ul>
 
         </form>
 
