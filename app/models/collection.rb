@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: cart_items
+# Table name: collections
 #
 #  id         :bigint           not null, primary key
 #  user_id    :bigint           not null
@@ -8,7 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class CartItem < ApplicationRecord
+class Collection < ApplicationRecord
     validates :user_id, :game_id, presence: true
     validates :user_id, uniqueness: { scope: :game_id }
 
