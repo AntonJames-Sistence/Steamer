@@ -1,5 +1,4 @@
 unless @cart_items.empty?
-  
     # name of object
     json.games do
         # looping over users cart associated with games
@@ -16,4 +15,3 @@ else
     # json.cart_items({})
     json.games({})
 end
-

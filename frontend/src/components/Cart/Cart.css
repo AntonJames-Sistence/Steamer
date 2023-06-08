@@ -59,6 +59,7 @@
     max-width: 271px;
     box-shadow: 0px 0 10px 0px #000;
     margin-bottom: 35px;
+    cursor: pointer;
 }
 .game-box:hover {
     box-shadow: 0 0 10px #66c0f4;

@@ -1,24 +1,45 @@
-# README
+# Steamer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Introducing [Steamer](https://steamer-9bo7.onrender.com/) - an exciting online game store clone project that brings the thrill of gaming right to your fingertips! Steamer is a user-friendly platform designed to replicate the immersive experience of browsing and purchasing games.
 
-Things you may want to cover:
+ With its sleek and modern interface, Steamer offers a vast collection of games from various genres. Whether you're a fan of action-packed adventures, mind-bending puzzles, or immersive role-playing epics, Steamer has got you covered.
 
-* Ruby version
+# Technical implementation details
 
-* System dependencies
+## React and Redux
 
-* Configuration
+* In this project, I utilize React with Redux for efficient data handling on the front end and rendering interactive components.
 
-* Database creation
+![React and Redux](./resources/react.png)
 
-* Database initialization
+![React and Redux](./resources/redux.png)
 
-* How to run the test suite
+## Ruby on Rails
 
-* Services (job queues, cache servers, search engines, etc.)
+* I rely on Ruby on Rails as my API backend to serve data from the database, which is powered by PostgreSQL. 
 
-* Deployment instructions
+![React and Redux](./resources/ruby.png)
 
-* ...
+## Amazon Web Services
+
+* For storing game and user images, I utilize the reliable cloud storage solution provided by AWS S3.
+
+![React and Redux](./resources/aws.png)
+
+## CSS
+
+* To ensure a visually appealing and polished user interface, I implement CSS for pixel-perfect site styling.
+
+### Steam webpage
+
+![React and Redux](./resources/steam.png)
+
+### Steamer webpage
+
+![React and Redux](./resources/steamer.png)
+
+## Render
+
+* Finally, I deploy the application using Render.
+
+![React and Redux](./resources/render.png)
