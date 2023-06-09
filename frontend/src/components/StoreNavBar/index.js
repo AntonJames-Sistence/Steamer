@@ -80,8 +80,9 @@ const StoreNavBar = () => {
 
                 </div>
 
+                {showDropdown && (
                     <div 
-                    className={!showDropdown ? 'search-dropdown' : 'search-dropdown-show'} 
+                    className='search-dropdown-show'
                     onMouseLeave={handleMouseLeave} 
                     ref={searchRef}
                     >
@@ -89,7 +90,8 @@ const StoreNavBar = () => {
                             <SearchItem game={result} key={result.id} />
                         ))}
                     </div>
-
+                )}
+                
             </div>
             
         </div>

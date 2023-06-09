@@ -51,8 +51,8 @@ const Cart = () => {
                 <div className="checkout-span">Is this a purchase for yourself or is it a gift? Select one to continue to checkout.</div>
 
                 <div className="cart-checkout-buttons-capsule">
-                    <a href="#" className="cart-checkout-buttons">Purchase for myself</a>
-                    <a href="#" className="cart-checkout-buttons">Purchase as a gift</a>
+                    <a onClick={handleCleanCart} className="cart-checkout-buttons">Purchase for myself</a>
+                    <a onClick={handleCleanCart} className="cart-checkout-buttons">Purchase as a gift</a>
                 </div>
             </div>
             

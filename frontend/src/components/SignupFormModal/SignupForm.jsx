@@ -63,6 +63,7 @@ const SignupForm = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
+                placeholder='username'
               />
               {getErrorByField('Username') ? <span className="errors">{getErrorByField('Username')}</span> : <></>}
           </div>
@@ -76,6 +77,7 @@ const SignupForm = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                placeholder='email'
               />
               {getErrorByField('Email') ? <span className="errors">{getErrorByField('Email')}</span> : <></>}
           </div>
@@ -89,6 +91,7 @@ const SignupForm = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                placeholder='password'
               />
           </div>
 
@@ -101,6 +104,7 @@ const SignupForm = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
+                placeholder='confirm password'
               />
               {getErrorByField('Password') ? <span className="errors">{getErrorByField('Password')}</span> : <></>}
           </div>

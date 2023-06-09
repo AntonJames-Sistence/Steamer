@@ -66,6 +66,7 @@ const LoginForm = () => {
                                     value={credential}
                                     onChange={ (event) => setCredential(event.target.value) }
                                     required
+                                    placeholder='username'
                                 />
                         </div>
 
@@ -78,6 +79,7 @@ const LoginForm = () => {
                                     value={password}
                                     onChange={ (event) => setPassword(event.target.value) }
                                     required
+                                    placeholder='password'
                                 />
                         </div>
 
