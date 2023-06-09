@@ -54,14 +54,16 @@ const CategoryCarousel = () => {
         <div className="otside-slider-wrap">
 
             <div className="title-slider-wrap">
-                <div className="carousel-header-text" id="category-browse-text">Browse By Category</div>
-                <div className="category-carousel-capsule">
-                    <Slider {...settings} ref={sliderRef}>
 
-                        {CategoryItems()}
+                    <div className="category-carousel-capsule">
+                        <div className="carousel-header-text" id="category-browse-text">Browse By Category</div>
+                        <Slider {...settings} ref={sliderRef}>
 
-                    </Slider>
-                </div>
+                            {CategoryItems()}
+
+                        </Slider>
+                    </div>
+                    
             </div>
         </div>
         </>

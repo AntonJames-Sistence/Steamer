@@ -1,8 +1,7 @@
 .title-slider-wrap {
     margin-top: 100px;
     color: aliceblue;
-    width: 940px;
-    margin-left: 6px;
+    width: 840px;
 }
 
 .otside-slider-wrap {
@@ -12,9 +11,8 @@
 
 .red-category-item, .green-category-item, .yellow-category-item, .blue-category-item {
     background: linear-gradient(rgba(0,0,0,0), rgb(139,0,0) 100%);
-    height: 225px;
-    width: 225px;
-    border-radius: 7px;
+    height: 200px;
+    width: 200px;
 }
 .blue-category-item {
     background: linear-gradient(rgba(0,0,0,0), rgb(0,0,139) 100%);
@@ -27,15 +25,14 @@
 }
 
 #category-image {
-    height: 218px;
+    height: 193px;
     width: auto;
     position: absolute;
     z-index: -1;
-    border-radius: 7px;
 }
 
 .transform:hover {
-    transform: scale(1.10);
+    transform: scale(1.1);
 }
 
 .category-text-capsule {
@@ -45,7 +42,6 @@
     justify-content: flex-end;
     align-items: center;
     height: 80%;
-    
 }
 
 .category-text {

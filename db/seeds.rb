@@ -301,11 +301,81 @@ ApplicationRecord.transaction do
       publisher: "Activision",
       price: 59.99
     )
+
+     # ===============================================================================================================
+
+     Game.create!(
+      title: "Counter-Strike: Global Offensive",
+      genre: "Action",
+      details: "Counter-Strike: Global Offensive (CS: GO) expands upon the team-based action gameplay 
+      that it pioneered when it was launched 19 years ago. CS: GO features new maps, characters, weapons, 
+      and game modes, and delivers updated versions of the classic CS content (de_dust2, etc.).",
+
+      description: "Counter-Strike: Global Offensive (CS: GO) expands upon the team-based action gameplay that it pioneered when it was launched 19 years ago.
+
+      CS: GO features new maps, characters, weapons, and game modes, and delivers updated versions of the classic CS content (de_dust2, etc.).
+      
+      Counter-Strike took the gaming industry by surprise when the unlikely MOD became the most played online PC 
+      action game in the world almost immediately after its release in August 1999, said Doug Lombardi at Valve. 
+      For the past 12 years, it has continued to be one of the most-played games in the world, headline competitive 
+      gaming tournaments and selling over 25 million units worldwide across the franchise. CS: GO promises to expand on CS 
+      award-winning gameplay and deliver it to gamers on the PC as well as the next gen consoles and the Mac.",
+
+      release_date: Date.parse('Aug 21, 2012'),
+      developer: "Valve, Hidden Path Entertainment",
+      publisher: "Valve",
+      price: 0
+    )
+
+     # ===============================================================================================================
+
+     Game.create!(
+      title: "PUBG: BATTLEGROUNDS",
+      genre: "Action",
+      details: "Play PUBG: BATTLEGROUNDS for free. Land on strategic locations, 
+      loot weapons and supplies, and survive to become the last team standing across 
+      various, diverse Battlegrounds. Squad up and join the Battlegrounds for the original 
+      Battle Royale experience that only PUBG: BATTLEGROUNDS",
+
+      description: "LAND, LOOT, SURVIVE!
+      Play PUBG: BATTLEGROUNDS for free.
+      Land on strategic locations, loot weapons and supplies, and survive to become the last team standing across various, diverse Battlegrounds.
+      Squad up and join the Battlegrounds for the original Battle Royale experience that only PUBG: BATTLEGROUNDS can offer.
+      
+      This content download will also provide access to the BATTLEGROUNDS Test Server, which requires a separate download to play. 
+      Optional in-game purchases available.",
+
+      release_date: Date.parse('Dec 21, 2017'),
+      developer: "KRAFTON, Inc.",
+      publisher: "KRAFTON, Inc.",
+      price: 0
+    )
+
+     # ===============================================================================================================
+
+     Game.create!(
+      title: "The Elder Scrolls V: Skyrim",
+      genre: "RPG",
+      details: "Winner of more than 200 Game of the Year Awards, Skyrim Special Edition brings the epic fantasy to 
+      life in stunning detail. The Special Edition includes the critically acclaimed game and add-ons with all-new 
+      features like remastered art and effects.",
+
+      description: "Winner of more than 200 Game of the Year Awards, Skyrim Special Edition brings the epic 
+      fantasy to life in stunning detail. The Special Edition includes the critically acclaimed game and add-ons 
+      with all-new features like remastered art and effects, volumetric god rays, dynamic depth of field, screen-space 
+      reflections, and more. Skyrim Special Edition also brings the full power of mods to the PC and consoles. New quests, 
+      environments, characters, dialogue, armor, weapons and more - with Mods, there are no limits to what you can experience.",
+
+      release_date: Date.parse('Oct 27, 2016'),
+      developer: "Bethesda Game Studios",
+      publisher: "Bethesda Softworks",
+      price: 39.99
+    )
   
     # =================================== reviews for games ===================================
 
     user_ids = (1..10).to_a
-    game_ids = (1..8).to_a
+    game_ids = (1..10).to_a
 
     50.times do
       author_id = user_ids.sample
@@ -446,6 +516,54 @@ ApplicationRecord.transaction do
     'https://steamer-prod.s3.amazonaws.com/sk/sk3.jpeg', 
     'https://steamer-prod.s3.amazonaws.com/sk/sk4.jpeg', 
     'https://steamer-prod.s3.amazonaws.com/sk/sk5.jpeg'
+  ]
+
+  images_to_attach.each do |image_path|
+    image_file = URI.open(image_path)
+    game.images.attach(io: image_file, filename: File.basename(image_path))
+  end
+
+# ===============================================================================================================
+
+  game = Game.find_by(title: "Counter-Strike: Global Offensive")
+  images_to_attach = [
+    'https://steamer-prod.s3.amazonaws.com/cs/cs1.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/cs/cs2.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/cs/cs3.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/cs/cs4.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/cs/cs5.jpeg'
+  ]
+
+  images_to_attach.each do |image_path|
+    image_file = URI.open(image_path)
+    game.images.attach(io: image_file, filename: File.basename(image_path))
+  end
+
+# ===============================================================================================================
+
+  game = Game.find_by(title: "PUBG: BATTLEGROUNDS")
+  images_to_attach = [
+    'https://steamer-prod.s3.amazonaws.com/pg/pg1.jpg', 
+    'https://steamer-prod.s3.amazonaws.com/pg/pg2.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/pg/pg3.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/pg/pg4.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/pg/pg5.jpeg'
+  ]
+
+  images_to_attach.each do |image_path|
+    image_file = URI.open(image_path)
+    game.images.attach(io: image_file, filename: File.basename(image_path))
+  end
+
+# ===============================================================================================================
+
+  game = Game.find_by(title: "The Elder Scrolls V: Skyrim")
+  images_to_attach = [
+    'https://steamer-prod.s3.amazonaws.com/sr/sr1.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/sr/sr2.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/sr/sr3.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/sr/sr4.jpeg', 
+    'https://steamer-prod.s3.amazonaws.com/sr/sr5.jpeg'
   ]
 
   images_to_attach.each do |image_path|
