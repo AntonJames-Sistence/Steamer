@@ -11,6 +11,14 @@ import SliderItem from './SliderItem';
 
 
 // ---------------------------------------------------------
+// game slider randomizer
+export const shuffle = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+};
 
 const MainCarousel = () => {
     const sliderRef = useRef(null);
@@ -36,17 +44,8 @@ const MainCarousel = () => {
 
     if(games.length === 0) return (<></>)
 
-    // game slider randomizer
-    const shuffle = (array) => {
-        for (let i = array.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    };
-
     const shuffledGames = shuffle(games);
-    const selectedGames = shuffledGames.slice(0, 5);
+    const selectedGames = shuffledGames.slice(0, 7);
 
     const sliderCapsule = (
         <Slider {...settings} ref={sliderRef}>

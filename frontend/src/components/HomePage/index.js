@@ -1,6 +1,10 @@
+import { useDispatch, useSelector } from "react-redux";
 import CategoryCarousel from "../CategoryCarousel";
-import MainCarousel from "../MainCarousel";
+import MainCarousel, { shuffle } from "../MainCarousel";
 import './HomePage.css'
+import GridItem from "./GridItem";
+import { fetchGames, getGames } from "../../store/games";
+import { useEffect } from "react";
 
 
 const torque = (
@@ -28,10 +32,35 @@ const summerSpotlight = (
 )
 
 const HomePage = () => {
+    const dispatch = useDispatch();
+    const games = useSelector(getGames);
+
+    useEffect(() => {
+        dispatch(fetchGames())
+    }, [dispatch]);
+
+    const shuffledGames = shuffle(games);
+    const selectedGames = shuffledGames.slice(0, 7);
+
+    const gamesGrid = (
+        <div className="wrap">
+            <div className="grid-header">
+                <div className="carousel-header-text">Best sellers</div>
+                <div className="grid-holder">
+                    {selectedGames.map((game) => {
+                        return <GridItem game={game} key={game.id} />
+                    })}
+                </div>
+            </div>
+        </div>
+    )
+
+
     return (
         <>
             <MainCarousel />
             {summerSpotlight}
+            {gamesGrid}
             {torque}
             <CategoryCarousel />
         </>
