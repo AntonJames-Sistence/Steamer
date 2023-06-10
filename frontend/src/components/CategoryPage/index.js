@@ -24,7 +24,7 @@ const CategoryPage = () => {
                 <div className="category-header">{category} games</div>
                 <div className="category-main-capsule">
                     {categoryGames.map((game) => {
-                        return <CategoryItem game={game} />
+                        return <CategoryItem game={game} key={game.id} />
                     })}
                 </div> 
             </div>

@@ -108,6 +108,7 @@
     overflow-x: auto;
     white-space: nowrap;
     overscroll-behavior: contain;
+    cursor: pointer;
 }
 .thumbnail-carousel img {
     width: 115px;
