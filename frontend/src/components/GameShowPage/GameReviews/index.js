@@ -11,6 +11,7 @@ const GameReviewForm = () => {
     const [ reviewBody, setReviewBody ] = useState('');
     const [ recommended, setRecommended ] = useState(null);
     const [showForm, setShowForm] = useState(true);
+    const [errors, setErrors] = useState([]);
 
     const { gameId } = useParams();
     const reviews = useSelector(getReviews);
@@ -37,6 +38,15 @@ const GameReviewForm = () => {
 
     const handleReviewSubmit = (e) => {
         e.preventDefault();
+        setErrors([]);
+
+        if (reviewBody.trim() === '') {
+            setErrors(prevMessages => [...prevMessages, 'Please leave your comment.']);
+        };
+
+        if (recommended === null) {
+            setErrors(prevMessages => [...prevMessages, 'Do you recommend this game?']);
+        };
 
         const review = {
             ...ownerReview,
@@ -45,9 +55,31 @@ const GameReviewForm = () => {
             gameId: gameId
         };
 
-        ownerReview ? dispatch(updateReview(review)) : dispatch(createReview(review));
-        setShowForm(false);
-        setReviewBody('');
+        if (ownerReview) {
+            dispatch(updateReview(review))
+              .then(() => {
+                // Success handler
+                setShowForm(false);
+                setReviewBody('');
+              })
+              .catch((error) => {
+                // Error handler
+              });
+          } else {
+            dispatch(createReview(review))
+              .then(() => {
+                // Success handler
+                setShowForm(false);
+                setReviewBody('');
+              })
+              .catch((error) => {
+                // Error handler
+              });
+          }      
+    };
+
+    const getErrorByField = (field) => {
+        return errors.find((error) => error.includes(field));
     };
 
     const handleEditReview = (e) => {
@@ -113,15 +145,17 @@ const GameReviewForm = () => {
                     <form onSubmit={handleReviewSubmit}>
 
                         <textarea
-                        className="body-data"
+                        className={ getErrorByField('comment') ? 'body-data-error' : 'body-data'}
                         value={reviewBody}
                         onChange={(e) => setReviewBody(e.target.value)}
                         />
+                        {getErrorByField('comment') ? <div className="review-errors">{getErrorByField('comment')}</div> : <></>}
 
-                        <div className="form-rec-question">Do you recommend this game?</div>
+                        <div className={getErrorByField('recommend') ? 'review-errors' : 'form-rec-question'}>Do you recommend this game?</div>
 
                         <div className="flex-box">
                             <div className="like-dislike-capsule">
+                                
                                 
                                 <a className={recommended === true ? 'true-like-active' : 'true-like'} onClick={() => setRecommended(true)}>
                                     <span className="true-like-span">
@@ -129,6 +163,7 @@ const GameReviewForm = () => {
                                         Yes
                                     </span>
                                 </a>
+
                                 <a className={recommended === false ? 'true-dislike-active' : 'true-like'} onClick={() => setRecommended(false)}>
                                     <span className="true-like-span">
                                         <i className={recommended === false ? 'true-thumb-down-active' : 'true-thumb-down'}></i> 
@@ -144,7 +179,7 @@ const GameReviewForm = () => {
                                 {ownerReview ? <button className="submit-post" onClick={handleDeleteReview}>Delete Review</button> : <></>}
                             </div>
                         </div>
-                        
+
                     </form>
                     
               </div>
