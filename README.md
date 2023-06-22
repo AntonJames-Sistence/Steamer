@@ -1,10 +1,18 @@
-# Steamer
+<h1 align="center">Steamer</h1>
 
-Introducing [Steamer](https://steamer-9bo7.onrender.com/) - an exciting online game store clone project that brings the thrill of gaming right to your fingertips! Steamer is a user-friendly platform designed to replicate the immersive experience of browsing and purchasing games.
+&nbsp;&nbsp;&nbsp;&nbsp;[Steamer](https://steamer-9bo7.onrender.com/) - an exciting online game store clone project that brings the thrill of gaming right to your fingertips! Steamer is a user-friendly platform designed to replicate the immersive experience of browsing and purchasing games.
 
  With its sleek and modern interface, Steamer offers a vast collection of games from various genres. Whether you're a fan of action-packed adventures, mind-bending puzzles, or immersive role-playing epics, Steamer has got you covered.
 
-# Technical implementation details
+<div align="center">
+    <img src="./resources/steamer_gif.gif"  width="100%">
+</div>
+
+<h1 align="center">Features</h1>
+
+
+
+<h1 align="center">Technologies</h1>
 
 ## React and Redux
 
