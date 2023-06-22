@@ -5,11 +5,16 @@
  With its sleek and modern interface, Steamer offers a vast collection of games from various genres. Whether you're a fan of action-packed adventures, mind-bending puzzles, or immersive role-playing epics, Steamer has got you covered.
 
 <div align="center">
-    <img src="./resources/steamer_gif.gif"  width="100%">
+    <img src="./resources/steamer.gif"  width="100%">
 </div>
 
 <h1 align="center">Features</h1>
 
+## Home page and Games
+
+<div align="center">
+    <img src="./resources/splash_page.gif"  width="100%">
+</div>
 
 
 <h1 align="center">Technologies</h1>
