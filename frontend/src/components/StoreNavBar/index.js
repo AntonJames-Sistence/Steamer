@@ -65,7 +65,7 @@ const StoreNavBar = () => {
                             <a href='/category/All'>
                                 <div className="store-nav-tab">Categories</div>
                             </a>
-                            <div className="store-nav-tab">News</div>
+                            {/* <div className="store-nav-tab">News</div> */}
                         </div>
 
                         <div className="searchbox">

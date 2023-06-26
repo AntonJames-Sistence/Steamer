@@ -28,17 +28,13 @@ const Footer = () => {
                 <div className="border-helper"></div>
 
                 <div className="footer-links">
-                    <a href='#'>About Steamer</a>
+                    <a href='https://github.com/AntonJames-Sistence/Steamer' target='_blanc'>About Steamer</a>
                     &nbsp;|&nbsp;
-                    <a href='https://www.linkedin.com/in/anton-james-9b5b18275/'>LinkedIn</a>
+                    <a href='https://www.linkedin.com/in/anton-james-ja/' target='_blanc'>LinkedIn</a>
                     &nbsp;|&nbsp;
-                    <a href='https://github.com/AntonJames-Sistence/Steamer'>GitHub</a>
+                    <a href='https://wellfound.com/anton-james' target='_blanc'>Wellfound</a>
                     &nbsp;|&nbsp;
-                    <a href='#'>AngelList</a>
-                    &nbsp;|&nbsp;
-                    <a href='#'>Support</a>
-                    &nbsp;|&nbsp;
-                    <a href='#'>Gift Cards</a>
+                    <a href='https://github.com/AntonJames-Sistence' target='_blanc'>GitHub</a>
                 </div>
             </div>
         </div>

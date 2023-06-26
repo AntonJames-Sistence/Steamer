@@ -48,10 +48,10 @@ const Navigation = () => {
                     </div>
 
                     <div className='nav-links-container'>
-                        <a href='/' className='nav-link'>Store</a>
-                        <a href='https://github.com/AntonJames-Sistence/Steamer' className='nav-link'>GitHub</a>
-                        <a href='https://www.linkedin.com/in/anton-james-9b5b18275/' className='nav-link'>LinkedIn</a>
-                        <a href='#' className='nav-link'>AngelList</a>
+                        <a href='https://github.com/AntonJames-Sistence/Steamer' className='nav-link' target='_blanc'>About Steamer</a>
+                        <a href='https://github.com/AntonJames-Sistence' className='nav-link' target='_blanc'>GitHub</a>
+                        <a href='https://www.linkedin.com/in/anton-james-ja/' className='nav-link' target='_blanc'>LinkedIn</a>
+                        <a href='https://wellfound.com/anton-james' className='nav-link' target='_blanc'>Wellfound</a>
                     </div>
                 
             </div>
