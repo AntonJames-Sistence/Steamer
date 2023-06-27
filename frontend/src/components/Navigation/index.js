@@ -5,7 +5,6 @@ import ProfileButton from './ProfileDropdownMenu';
 import './Navigation.css';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-import logoPath from '../../resources/logo.png';
 
 const Navigation = () => {
     // taking sessionUser from store
@@ -35,9 +34,9 @@ const Navigation = () => {
         <div className='global-navbar-container'>
             <div className='global-navbar'>
 
-                    <Link to='/'>
+                    <Link to='/' className='logo-link'>
                         <div className='logo'>
-                            <img id='logo' src={logoPath} alt="Steamer logo" />
+                            <div id='logo' alt="Steamer logo" />
                             <div id='logo-name-holder'>STEAMER</div>
                         </div>
                     </Link>

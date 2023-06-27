@@ -7,6 +7,8 @@
     box-shadow: 0 0 12px #000000;
     text-align: left;
     width: 400px;
+    max-height: 355px;
+    overflow: auto;
     display: flex;
     flex-direction: column;
 }
@@ -14,11 +16,11 @@
 
 .search-result {
     display: flex;
-    transition: box-shadow .3s,color .3s,transform .5s,-webkit-transform .5s;
+    transition: box-shadow 0.3s, color 0.3s, transform 0.5s;
 }
 .search-result:hover {
     background-color: #DCDEDF;
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
 }
 .name-price-wrap {
     margin: 5px 5px 5px 5px;

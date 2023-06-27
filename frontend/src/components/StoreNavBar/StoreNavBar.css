@@ -15,6 +15,7 @@
     font-size: 12px;
     width: 940px;
     box-shadow: 0px 0 10px 0px #000;
+    border-radius: 5px;
 }
 
 .store-nav {
@@ -34,19 +35,17 @@
 
 .store-search-input {
     background-color: #316282;
-    border-radius: 3px;
+    border-radius: 5px;
     border: 1px solid rgba( 0, 0, 0, 0.3);
-    margin-bottom: 0px;
-    outline: none;
     height: 27px;
     width: 200px;
     color: black;
-    margin-top: 2px;
-    margin-right: 7px;
-    text-shadow: 1px 1px 0px rgba( 255, 255, 255, 0.1);
+    margin: 2px 5px 0px 0px;
     font-family: "Motiva Sans", Sans-serif;
     font-weight: 300;
     font-size: 16px;
+    padding-left: 10px;
+    transition: box-shadow 0.3s, color 0.3s, transform 0.5s, border-color 0.5s;
 }
 
 .store-search-input::placeholder {
@@ -68,17 +67,20 @@
     cursor: pointer;
     color: #c6d4df;
     font-size: 14px;
-    line-height: 34px;
+    line-height: 33px;
     text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
     margin-left: 5px;
     padding-left: 15px;
     padding-right: 15px;
+    transition: box-shadow 0.3s, color 0.3s, transform 0.5s;
 }
 
 .store-nav-tab:hover {
     color: white;
+    border-radius: 5px;
     background: linear-gradient(90deg, rgba(246, 247, 248, 0.25) 0%, rgba(148, 196, 230, 0.15) 50%, rgba(50, 50, 51, 0) 100%);
     text-shadow: 0px 5px 3px rgba(0, 0, 0, 0.3);
+    /* transform: scale(1.1); */
 }
 
 /* ======================== cart button ======================== */
@@ -94,12 +96,12 @@
     font-family: Arial, Helvetica, sans-serif;
     color: #a4d007;
     box-shadow: 0 0 3px #000;
-    border-radius: 2px;
+    border-radius: 5px;
     background-color: rgba( 164, 208, 7, 0.4 );
     text-transform: uppercase;
     justify-self: flex-end;
     margin-top: 10px;
-    margin-right: 8px;
+    transition: box-shadow 0.3s, color 0.3s, transform 0.5s;
 }
 .cart-button:hover {
     color: #111111;

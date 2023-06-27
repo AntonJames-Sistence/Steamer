@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { fetchCartGames, getCartGames } from '../../store/cartItems';
 import './StoreNavBar.css';
 import SearchItem from './SearchItem';
@@ -9,16 +9,18 @@ const StoreNavBar = () => {
     const currentUser = useSelector(state => state.session.user);
     const cartItems = useSelector(getCartGames);
     const dispatch = useDispatch();
+    const location = useLocation();
     
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [showDropdown, setShowDropdown] = useState(false);
+    console.log(showDropdown)
 
     const searchRef = useRef();
 
     useEffect(() => {
         dispatch(fetchCartGames());
-        handleSearch(search);
+        if (search !== '') handleSearch(search);
     }, [dispatch, search]);
 
     useEffect(() => {
@@ -28,6 +30,10 @@ const StoreNavBar = () => {
         };
     }, []);
 
+    useEffect(() => {
+        setShowDropdown(false);
+    }, [location]);
+
     const handleSearch = async (query) => {
         try {
           const res = await fetch(`/api/search?query=${encodeURIComponent(query)}`);
@@ -36,12 +42,16 @@ const StoreNavBar = () => {
         } catch (error) {
           console.error('Error searching:', error);
         }
-        setShowDropdown(true)
+        setShowDropdown(true);
     };
     const handleClickOutside = (event) => {
         if (searchRef.current && !searchRef.current.contains(event.target)) {
           setShowDropdown(false);
         }
+    };
+
+    const handleLinkClick = () => {
+        setShowDropdown(false);
     };
 
     return (
@@ -54,16 +64,15 @@ const StoreNavBar = () => {
 
                     <div className="store-nav">
                         <div className='store-nav-tab-wrap'>
-                            <Link to='/'>
+                            <Link to='/' onClick={handleLinkClick}>
                                 <div className="store-nav-tab" id='fst-child'>Your Store</div>
                             </Link>
-                            <Link to='/games/2'>
+                            <Link to='/games/2' onClick={handleLinkClick}>
                                 <div className="store-nav-tab">New & Noteworthy</div>
                             </Link>
-                            <Link to='/category/All'>
+                            <Link to='/category/All' onClick={handleLinkClick}>
                                 <div className="store-nav-tab">Categories</div>
                             </Link>
-                            {/* <div className="store-nav-tab">News</div> */}
                         </div>
 
                         <div className="searchbox">
