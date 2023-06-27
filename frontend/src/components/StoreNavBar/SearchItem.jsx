@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Search.css'
 
 const SearchItem = ({ game }) => {
@@ -5,7 +6,7 @@ const SearchItem = ({ game }) => {
 
     return (
         <>
-            <a href={`/games/${id}`} className='search-result'>
+            <Link to={`/games/${id}`} className='search-result'>
                 <div className='search-img'>
                     <img src={imageUrls[0]}></img>
                 </div>
@@ -13,7 +14,7 @@ const SearchItem = ({ game }) => {
                     <div className='search-name'> {title} </div>
                     <div className='search-price'> {price === '0.0' ? 'Free To Play' : '$'+price} </div>
                 </div>
-            </a>
+            </Link>
         </>
     )
 }

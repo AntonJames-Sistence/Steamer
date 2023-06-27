@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
 import { fetchCartGames, getCartGames } from '../../store/cartItems';
-import './StoreNavBar.css'
+import './StoreNavBar.css';
 import SearchItem from './SearchItem';
 
 const StoreNavBar = () => {
@@ -37,9 +38,6 @@ const StoreNavBar = () => {
         }
         setShowDropdown(true)
     };
-    const handleMouseLeave = () => {
-        setShowDropdown(false);
-    };
     const handleClickOutside = (event) => {
         if (searchRef.current && !searchRef.current.contains(event.target)) {
           setShowDropdown(false);
@@ -56,15 +54,15 @@ const StoreNavBar = () => {
 
                     <div className="store-nav">
                         <div className='store-nav-tab-wrap'>
-                            <a href='/'>
+                            <Link to='/'>
                                 <div className="store-nav-tab" id='fst-child'>Your Store</div>
-                            </a>
-                            <a href='/games/2'>
+                            </Link>
+                            <Link to='/games/2'>
                                 <div className="store-nav-tab">New & Noteworthy</div>
-                            </a>
-                            <a href='/category/All'>
+                            </Link>
+                            <Link to='/category/All'>
                                 <div className="store-nav-tab">Categories</div>
-                            </a>
+                            </Link>
                             {/* <div className="store-nav-tab">News</div> */}
                         </div>
 
@@ -81,11 +79,7 @@ const StoreNavBar = () => {
                 </div>
 
                 {showDropdown && (
-                    <div 
-                    className='search-dropdown-show'
-                    onMouseLeave={handleMouseLeave} 
-                    ref={searchRef}
-                    >
+                    <div className='search-dropdown-show' ref={searchRef}>
                         {searchResults.map((result) => (
                             <SearchItem game={result} key={result.id} />
                         ))}
