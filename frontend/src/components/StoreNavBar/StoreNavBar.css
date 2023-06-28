@@ -106,4 +106,20 @@
 .cart-button:hover {
     color: #111111;
     background-color: rgba( 164, 208, 7, 0.8 );
+    animation-name: pulse;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
 }

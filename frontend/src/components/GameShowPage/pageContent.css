@@ -239,4 +239,5 @@
 .buttons-block > a:hover {
     color: #ffffff;
     background: linear-gradient(135deg, #67c1f5 0%,#417a9b 100%);
+    cursor: pointer;
 }

@@ -10,7 +10,7 @@ import { useEffect } from "react";
 const torque = (
     <div className="wrap">
         
-        <div className="torque-capsule">
+        <div className="torque-capsule" id="special-offer">
             <div className="carousel-header-text">Special Offer</div>
 
             <iframe 
@@ -35,6 +35,10 @@ const HomePage = () => {
     const dispatch = useDispatch();
     const games = useSelector(getGames);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    
     useEffect(() => {
         dispatch(fetchGames())
     }, [dispatch]);

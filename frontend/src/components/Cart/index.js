@@ -12,6 +12,10 @@ const Cart = () => {
     const cartGames = useSelector(getCartGames);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
         dispatch(fetchCartGames())
     }, [dispatch]);
 

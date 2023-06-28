@@ -27,7 +27,7 @@ const MainCarousel = () => {
 
     useEffect(() => {
         dispatch(fetchGames())
-    }, [dispatch])
+    }, [dispatch]);
     
     const settings = {
         dots: true,
@@ -39,7 +39,7 @@ const MainCarousel = () => {
         fade: true,
         autoplaySpeed: 5000,
         pauseOnHover: true,
-        arrows: true
+        arrows: true,
     };
 
     if(games.length === 0) return (<></>)

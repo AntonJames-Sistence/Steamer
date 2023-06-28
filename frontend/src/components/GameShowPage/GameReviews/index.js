@@ -125,7 +125,7 @@ const GameReviewForm = () => {
     )
 
     const ReviewForm = showForm && (
-        <div className="review-form-wrap">
+        <div className="review-form-wrap" id="review-form-wrap">
             <div className="review-form-capsule">
                 <div className="review-form-header-capsule">
                     <div className="actions-holder">

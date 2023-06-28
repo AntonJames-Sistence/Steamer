@@ -59,16 +59,13 @@
     font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
     display: block;
     position: relative;
-    padding-top: 55px;
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-bottom: 7px;
+    padding: 55px 7px 7px 7px;
     line-height: 16px;
     float: left;
     font-size: 14px;
     color: #b8b6b4;
     text-transform: uppercase;
-    transition: box-shadow 0.3s, color 0.3s, transform 0.5s;
+    transition: all 0.3s;
 }
 
 a {

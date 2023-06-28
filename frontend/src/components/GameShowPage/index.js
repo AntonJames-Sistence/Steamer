@@ -20,6 +20,16 @@ import AllReviews from './GameReviews/AllReviews';
 import { getCurrentUser } from '../../store/session';
 import { Link } from 'react-router-dom';
 
+export const scrollTo = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
+export const getRandomNumber = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+};
 
 const GameShowPage = () => {
     const dispatch = useDispatch();
@@ -36,9 +46,8 @@ const GameShowPage = () => {
     useEffect(() => {
         dispatch(fetchGame(gameId));
         dispatch(fetchCartGames());
+        window.scrollTo(0, 0);
     }, [dispatch, gameId]);
-
-
 
     if (!game) return (<></>) // prevents bug when not provided params
 
@@ -53,7 +62,7 @@ const GameShowPage = () => {
         autoplay: true,
         autoplaySpeed: 3000,
         fade: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
     };
 
     const slider = (
@@ -145,7 +154,7 @@ const GameShowPage = () => {
         } else {
             return setSignInModal(true)
         }
-    }
+    };
 
     const isGameInCart = Object.values(cartGames).some(value => {
         return value.id === game.id;
@@ -213,9 +222,9 @@ const GameShowPage = () => {
                         <div className='buttons-block'>
                             <Link to={`/category/All`}>More games</Link>
                             <Link to={`/category/${game.genre}`}>View similar games</Link>
-                            <a href='#all-reviews'>View reviews</a>
-                            <a href='/'>Read related news</a>
-                            <a href='/'>Find Community Groups</a>
+                            <a onClick={() => scrollTo('all-reviews')}>View reviews</a>
+                            <Link to='/'>Home page</Link>
+                            <Link to={`/games/${getRandomNumber(1, 8)}`}>Best seller game</Link>
                         </div>
                     </div>
                 </div>

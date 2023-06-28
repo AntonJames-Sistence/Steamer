@@ -5,6 +5,7 @@ import { getReviews, receiveReviews } from "../../../store/reviews";
 import './AllReviews.css'
 import './GameReviews.css'
 import { Link } from "react-router-dom";
+import { scrollTo } from "../index";
 
 // custom function for formating date string from backend
 export function formatDate(dateString) {
@@ -32,7 +33,7 @@ const AllReviews = () => {
             return <div className="all-reviews-review-container" key={index}>
                         <div className="all-review-rec">
                             <div className={review.recommended ? 'all-thumb-up' : 'all-thumb-down'}></div>
-                            <a href='#review-form-wrap'>
+                            <a onClick={()=>{scrollTo('review-form-wrap')}}>
                                 <div className="all-recommended">{review.recommended ? 'Recommended' : 'Not Recommended'}</div>
                             </a>
                             <img className="all-mini-logo"></img>
