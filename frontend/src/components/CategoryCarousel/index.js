@@ -8,6 +8,7 @@ import story_rich from '../../resources/carousel/story_rich.png'
 import rpg from '../../resources/carousel/rpg.png'
 import action from '../../resources/carousel/action.png'
 import indie from '../../resources/carousel/horror.png'
+import { Link } from "react-router-dom";
 
 
 const CategoryCarousel = () => {
@@ -16,12 +17,12 @@ const CategoryCarousel = () => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 1000,
+        speed: 2000,
         slidesToShow: 4,
         slidesToScroll: 1,
         // autoplay: true,
         fade: false,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 5000,
         pauseOnHover: true,
         nextArrow: null,
         prevArrow: null,
@@ -36,14 +37,14 @@ const CategoryCarousel = () => {
       
     const CategoryItems = () => {
         return categories.map((category, index) => (
-            <a href={`/category/${category.name}`} className="transform" key={index}>
+            <Link to={`/category/${category.name}`} className="transform" key={index}>
             <img id="category-image" src={category.image} alt={category.name} />
             <div className={`${category.color}-category-item`}>
                 <div className="category-text-capsule">
                     <span className="category-text">{category.text}</span>
                 </div>
             </div>
-            </a>
+            </Link>
         ));
     };
 

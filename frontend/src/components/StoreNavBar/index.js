@@ -58,7 +58,7 @@ const StoreNavBar = () => {
         <div className='nav-wrap-container'>
             <div className='nav-wrap'>
 
-                { currentUser ? <a href='/cart' className='cart-button'>cart({cartItems.length})</a> : <div id='space-holder'></div>}
+                { currentUser ? <Link to='/cart' className='cart-button'>cart({cartItems.length})</Link> : <div id='space-holder'></div>}
                 
                 <div className="store-nav-bg">
 

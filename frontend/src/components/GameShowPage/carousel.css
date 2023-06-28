@@ -57,22 +57,19 @@
 
 .show-date {
     color: #8f98a0;
-    margin-left: 20px;
+    margin-left: 21px;
     text-transform: none;
 }
 
 .show-developer, .show-publisher {
     color: #67c1f5;
-    margin-left: 31px;
+    margin-left: 37px;
     text-decoration: none;
-    cursor: pointer;
-}
-.show-developer:hover, .show-publisher:hover {
-    color: #ffffff;
+    transition: box-shadow 0.3s, color 0.5s, transform 0.5s;
 }
 
 .show-publisher {
-    margin-left: 34.5px;
+    margin-left: 42.5px;
 }
 
 .show-tags {
@@ -90,12 +87,13 @@
     line-height: 19px;
     padding: 1px 6px;
     margin-right: 2px;
-    border-radius: 2px;
+    border-radius: 3px;
     cursor: pointer;
     margin-top: 6px;
     font-size: 11px;
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgba( 103, 193, 245, 0.2 );
+    transition: color 0.5s, transform 0.5s;
 }
 .show-tags-links:hover {
     color: #ffffff;
@@ -116,6 +114,7 @@
     object-fit: cover;
     margin: 3px 3px 3px 3px;
     opacity: 0.5;
+    transition: color 0.5s, transform 0.5s;
 }
 
 .thumbnail-carousel-container {
@@ -127,5 +126,4 @@
 .thumbnail-carousel img:hover {
     transform: scale(1.1);
     opacity: 1;
-    border: 1px solid #8f98a0;
 }

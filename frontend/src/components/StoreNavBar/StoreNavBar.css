@@ -78,14 +78,14 @@
 .store-nav-tab:hover {
     color: white;
     border-radius: 5px;
-    background: linear-gradient(90deg, rgba(246, 247, 248, 0.25) 0%, rgba(148, 196, 230, 0.15) 50%, rgba(50, 50, 51, 0) 100%);
-    text-shadow: 0px 5px 3px rgba(0, 0, 0, 0.3);
-    /* transform: scale(1.1); */
+    /* background: linear-gradient(90deg, rgba(246, 247, 248, 0.25) 0%, rgba(148, 196, 230, 0.15) 50%, rgba(50, 50, 51, 0) 100%); */
+    text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
 }
 
 /* ======================== cart button ======================== */
 #space-holder {
-    margin: 9.5px;
+    margin-top: 34px;
 }
 
 

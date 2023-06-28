@@ -18,6 +18,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import GameReviewForm from './GameReviews';
 import AllReviews from './GameReviews/AllReviews';
 import { getCurrentUser } from '../../store/session';
+import { Link } from 'react-router-dom';
 
 
 const GameShowPage = () => {
@@ -46,11 +47,11 @@ const GameShowPage = () => {
         dots: false,
         arrows: false,
         infinite: true,
-        speed: 400,
+        speed: 800,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 3000,
         fade: true,
         pauseOnHover: true,
     };
@@ -95,16 +96,16 @@ const GameShowPage = () => {
     const sliderHeader = (
         <div className='slider-header-wrap'>
             <div className='slide-header-links'>
-                <a href='/category/All'>All Games</a>
+                <Link to='/category/All'>All Games</Link>
                 {' > '}
-                <a href={`/category/${game.genre}`}>{game.genre} Games</a>
+                <Link to={`/category/${game.genre}`}>{game.genre} Games</Link>
                 {' > '}
-                <a href={`/games/${game.id}`}>{game.title}</a>
+                <span>{game.title}</span>
             </div>
             <div className='title-wrap'>
                 <div className='show-game-title'>{game.title}</div>
                 <div>
-                    <a href='#' className='community-hub'><span>Community Hub</span></a>
+                    <a href='https://github.com/AntonJames-Sistence' target='_blanc' className='community-hub'><span>Community Hub</span></a>
                 </div>
             </div>
         </div>
@@ -156,7 +157,7 @@ const GameShowPage = () => {
 
                 <div className='left-col-content'>
                     <div className='franchise'>
-                        <span>Check out the {game.title} franchise on Steamer</span>
+                        <Link to={`/category/${game.genre}`}>Check out more games like {game.title} on Steamer</Link>
                     </div>
                     <div className='purchase-area'>
                         <span>Buy {game.title}</span>

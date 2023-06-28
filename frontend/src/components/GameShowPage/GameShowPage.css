@@ -6,8 +6,7 @@
     
 }
 .invite-capsule > div {
-    width: 940px;
-    /* background-color: #212d42; */
+    width: 930px;
     background-color: rgba( 103, 193, 245, 0.2 );
     border: #417a9b;
     border-radius: 3px;
@@ -21,6 +20,7 @@
 .login-invite-link {
     color: #ffffff;
     cursor: pointer;
+    transition: color 0.5s, transform 0.5s;
 }
 .login-invite-link:hover {
     color: #66c0f4;
@@ -51,9 +51,10 @@
     color: #67c1f5;
     cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
-    border-radius: 2px;
+    border-radius: 5px;
     border: none;
     background: rgba( 103, 193, 245, 0.2 );
+    transition: color 0.5s, transform 0.5s;
 }
 .community-hub:hover {
     background: linear-gradient( -60deg, #417a9b 5%,#67c1f5 95%);
@@ -63,11 +64,18 @@
 
 .slide-header-links {
     font-size: 12px;
-    color: #56707f;
+    color: #B8B6B4;
     font-family: "Motiva Sans", Sans-serif;
     margin-bottom: 5px;
     cursor: pointer;
 }
+.slide-header-links > a {
+    transition: box-shadow 0.3s, color 0.5s, transform 0.5s;
+}
 .slide-header-links > a:hover {
     color: #ffffff;
+}
+.slide-header-links > span {
+    color: #B8B6B4;
+    cursor: default;
 }

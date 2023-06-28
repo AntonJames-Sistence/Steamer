@@ -2,7 +2,7 @@
     position: absolute;
     background: #3D4450;
     left: 830px;
-    top: 165px;
+    top: 175px;
     z-index: 20;
     box-shadow: 0 0 12px #000000;
     text-align: left;
@@ -11,6 +11,7 @@
     overflow: auto;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
 }
 
 
