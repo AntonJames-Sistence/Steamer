@@ -178,7 +178,7 @@ const GameShowPage = () => {
                                 </div>
                                 <div className='add-to-cart'>
 
-                                    { isGameInCart ? <span onClick={() => {window.location.href = '/cart';}}>In Cart</span> :
+                                    { isGameInCart ? <Link to='/cart'>In Cart</Link> :
                                     <span onClick={handleAddToCart}>Add to Cart</span> }
 
                                 </div>

@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCartGames, getCartGames, removeGameFromCart } from "../../store/cartItems";
+import { fetchCartGames, getCartGames, removeGameFromCart, removeGamesFromCart } from "../../store/cartItems";
 import CartGameItem from "./CartGameItem";
 
 import './Cart.css'
 import './cartCheckout.css'
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -33,7 +34,8 @@ const Cart = () => {
     };
 
     const handleCleanCart = () => {
-        cartGames.forEach((game) => {dispatch(removeGameFromCart(game.id))})
+        // cartGames.forEach((game) => {dispatch(removeGameFromCart(game.id))})
+        dispatch(removeGamesFromCart())
     }
     const removeAll = (
         <div className="remove-all-wrap">
@@ -85,7 +87,7 @@ const Cart = () => {
             {cartGames.length === 0 ? <></> : cartCheckout}
             <div className="continue-shopping-capsule">
                 <div className="continue-shopping-wrap">
-                    <a href="/" className="continue-shopping">Continue Shopping</a>
+                    <Link to="/" className="continue-shopping">Continue Shopping</Link>
                 </div>
             </div>
         </>

@@ -5,6 +5,7 @@ import './HomePage.css'
 import GridItem from "./GridItem";
 import { fetchGames, getGames } from "../../store/games";
 import { useEffect } from "react";
+import { scrollTo } from "../GameShowPage/index";
 
 
 const torque = (
@@ -25,7 +26,7 @@ const torque = (
 
 const summerSpotlight = (
     <div className="wrap">
-        <a href="/category/All">
+        <a onClick={()=>{scrollTo('special-offer')}}>
             <div className="summer-spotlight-img"></div>
         </a>
     </div>
@@ -38,7 +39,7 @@ const HomePage = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    
+
     useEffect(() => {
         dispatch(fetchGames())
     }, [dispatch]);

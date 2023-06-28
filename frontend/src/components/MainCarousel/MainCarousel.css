@@ -104,7 +104,7 @@
 /* ==================== prev / next buttons ===================== */
 
 .slick-prev:before, .slick-next:before {
-    font-size: 35px;
+    font-size: 36px;
     color: black;
     opacity: .50;
     line-height: 0;
@@ -113,18 +113,21 @@
     left: -30px;
 }
 .slick-next {
-    right: -15px;
+    right: -13px;
 }
 .slick-next:before {
     background: url(../../resources/carousel_arrows.png);
     background-repeat: no-repeat;
-    background-position: 12px 0px;
+    background-position: 13px 0px;
 
 }
 .slick-prev:before {
     background: url(../../resources/carousel_arrows.png);
     background-repeat: no-repeat;
     background-position: -23px 0px;
+}
+.slick-dots li.slick-active button:before {
+    color: #9097a2;
 }
 
 /* ===================== screenshots ==================== */
