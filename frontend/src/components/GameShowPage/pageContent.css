@@ -63,7 +63,8 @@
     white-space: nowrap;
 }
 .price-button-wrap {
-    
+    position: relative;
+    top: 20px;
     display: inline-block;
     background-color: #000000;
     padding: 2px 2px 2px 0px;
@@ -88,6 +89,7 @@
     font-size: 15px;
     line-height: 25px;
     background: linear-gradient( to right, #75b022 5%, #588a1b 95%);
+    transition: all 0.5s ease;
 }
 
 .add-to-cart:hover {
@@ -206,10 +208,11 @@
     color: #67c1f5;
     font-size: 12px;
     white-space: nowrap;
+    cursor: default;
 }
-.game-details-block > a:hover {
+/* .game-details-block > a:hover {
     color: #ffffff;
-}
+} */
 
 
 .buttons-block {
@@ -230,6 +233,7 @@
     font-family: "Motiva Sans", Sans-serif;
     font-weight: 400;
     font-size: 12px;
+    transition: all 0.3s;
 }
 
 .buttons-block > a:hover {

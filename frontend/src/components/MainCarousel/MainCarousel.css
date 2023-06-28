@@ -6,6 +6,8 @@
 .carousel-img {
     width: 616px;
     height: 353px;
+
+    object-fit: cover;
 }
   
 .slide-content {
@@ -125,6 +127,7 @@
     height: auto;
     width: 157px;
     opacity: 0.5;
+    object-fit: cover;
 }
 .mini-screenshot:hover {
     /* transform: scale(1.2); */

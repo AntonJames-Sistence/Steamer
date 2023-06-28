@@ -1,6 +1,7 @@
 .show-slider-img {
     width: 600px;
     height: 350px;
+    /* object-fit: cover; */
 }
 
 .show-carousel-content {
@@ -16,6 +17,7 @@
 .show-header-img {
     width: 325px;
     height: 150px;
+    object-fit: cover;
 }
 
 .show-content-wrap {
@@ -115,6 +117,7 @@
     margin: 3px 3px 3px 3px;
     opacity: 0.5;
     transition: color 0.5s, transform 0.5s;
+    object-fit: cover;
 }
 
 .thumbnail-carousel-container {

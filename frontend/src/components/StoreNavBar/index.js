@@ -14,13 +14,13 @@ const StoreNavBar = () => {
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [showDropdown, setShowDropdown] = useState(false);
-    console.log(showDropdown)
 
     const searchRef = useRef();
 
     useEffect(() => {
         dispatch(fetchCartGames());
-        if (search !== '') handleSearch(search);
+        // if (search !== '') handleSearch(search);
+        handleSearch(search)
     }, [dispatch, search]);
 
     useEffect(() => {

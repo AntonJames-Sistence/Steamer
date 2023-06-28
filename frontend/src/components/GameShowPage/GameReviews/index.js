@@ -6,6 +6,7 @@ import { getCurrentUser } from "../../../store/session";
 import { getCurrentGame } from "../../../store/games";
 import './OwnerReview.css'
 import { formatDate } from "./AllReviews";
+import { Link } from "react-router-dom";
 
 const GameReviewForm = () => {
     const [ reviewBody, setReviewBody ] = useState('');
@@ -98,12 +99,12 @@ const GameReviewForm = () => {
     }
 
     const renderOwnerReview = ownerReview && (
-        <div className='review-form-wrap'>
+        <div className='review-form-wrap' id="review-form-wrap">
             <div className='review-form-capsule'>
                 <div className='owner-review-header-capsule'>
                     <div className='actions-holder'>
-                        <div className='install-play-button'>Install Steamer</div>
-                        <div className='install-play-button'>Play Now</div>
+                        <Link to={`/category/All`} className="install-play-button">Browse More</Link>
+                        <Link to='/' className="install-play-button">To Main</Link>
                     </div>
                     <div className='review-offer'>You reviewed this game on {formatDate(ownerReview.createdAt)}</div>
                     <p className='review-rules'></p>
@@ -128,8 +129,8 @@ const GameReviewForm = () => {
             <div className="review-form-capsule">
                 <div className="review-form-header-capsule">
                     <div className="actions-holder">
-                        <div className="install-play-button">Install Steamer</div>
-                        <div className="install-play-button">Play Now</div>
+                        <Link to={`/category/All`} className="install-play-button">Browse More</Link>
+                        <Link to='/' className="install-play-button">To Main</Link>
                     </div>
                     <div className="review-offer">Write a review for {currentGame.title}</div>
                     <p className="review-rules">
@@ -145,9 +146,9 @@ const GameReviewForm = () => {
                     <form onSubmit={handleReviewSubmit}>
 
                         <textarea
-                        className={ getErrorByField('comment') ? 'body-data-error' : 'body-data'}
-                        value={reviewBody}
-                        onChange={(e) => setReviewBody(e.target.value)}
+                            className={ getErrorByField('comment') ? 'body-data-error' : 'body-data'}
+                            value={reviewBody}
+                            onChange={(e) => setReviewBody(e.target.value)}
                         />
                         {getErrorByField('comment') ? <div className="review-errors">{getErrorByField('comment')}</div> : <></>}
 

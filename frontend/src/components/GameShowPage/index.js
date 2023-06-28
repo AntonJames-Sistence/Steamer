@@ -193,16 +193,16 @@ const GameShowPage = () => {
                                 {game.title}
                                 <br />
                                 <b>Genre:</b>
-                                <a href='#'>{game.genre}</a>
+                                <a>{game.genre}</a>
                                 <br />
                                 <b>Developer:</b>
-                                <a href='#'>{game.developer}</a>
+                                <a>{game.developer}</a>
                                 <br />
                                 <b>Publisher:</b>
-                                <a href='#'>{game.publisher}</a>
+                                <a>{game.publisher}</a>
                                 <br />
                                 <b>Franchise:</b>
-                                <a href='#'>{game.title}</a>
+                                <a>{game.title}</a>
                                 <br />
                                 <b>Release date:</b>
                                 {formatDate(game.releaseDate)}
@@ -211,10 +211,10 @@ const GameShowPage = () => {
                         </div>
 
                         <div className='buttons-block'>
-                            <a href={`/games/${game.id}`}>Visit the website</a>
-                            <a href='/'>View update history</a>
+                            <Link to={`/category/All`}>More games</Link>
+                            <Link to={`/category/${game.genre}`}>View similar games</Link>
+                            <a href='#all-reviews'>View reviews</a>
                             <a href='/'>Read related news</a>
-                            <a href='/'>View discussions</a>
                             <a href='/'>Find Community Groups</a>
                         </div>
                     </div>
