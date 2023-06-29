@@ -23,9 +23,6 @@ const GameReviewForm = () => {
     
     const ownerReview = reviews.find(review => currentUser.id === review.author.id);
 
-    console.log(showForm)
-
-
     useEffect(() => {
         dispatch(receiveReviews(gameId));
     }, [dispatch, gameId]);
