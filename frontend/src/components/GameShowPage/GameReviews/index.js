@@ -7,6 +7,7 @@ import { getCurrentGame } from "../../../store/games";
 import './OwnerReview.css'
 import { formatDate } from "./AllReviews";
 import { Link } from "react-router-dom";
+import { scrollTo } from "..";
 
 const GameReviewForm = () => {
     const [ reviewBody, setReviewBody ] = useState('');
@@ -59,22 +60,18 @@ const GameReviewForm = () => {
         if (ownerReview) {
             dispatch(updateReview(review))
               .then(() => {
-                // Success handler
                 setShowForm(false);
                 setReviewBody('');
               })
               .catch((error) => {
-                // Error handler
               });
           } else {
             dispatch(createReview(review))
               .then(() => {
-                // Success handler
                 setShowForm(false);
                 setReviewBody('');
               })
               .catch((error) => {
-                // Error handler
               });
           }      
     };
@@ -110,7 +107,7 @@ const GameReviewForm = () => {
                     <p className='review-rules'></p>
                 </div>
 
-                <a href="#all-reviews" className="view-owner-review">View your review</a>
+                <a onClick={()=>{scrollTo('all-reviews')}} className="view-owner-review">View your review</a>
 
                 <div className="icon-body-holder">
                     <div className={ownerReview.recommended ? "all-thumb-up" : "all-thumb-down"}></div>

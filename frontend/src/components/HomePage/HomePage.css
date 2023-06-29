@@ -99,11 +99,12 @@
 }
 .grid-item-info {
     font-size: 10px;
-    max-width: 300px;
+    max-width: 410px;
     margin: 15px 0px 0px 10px;
 }
 .grid-item-price {
     display: flex;
     align-items: center;
     margin-right: 15px;
+    font-size: 14px;
 }

@@ -44,6 +44,7 @@
     cursor: pointer;
     text-decoration: none;
     color: #D2E885;
+    transition: all 0.3s;
     background: linear-gradient( to bottom, #a4d007 5%, #536904 95%);
 }
 .green-signin-button:hover {
@@ -63,6 +64,7 @@
     text-decoration: none;
     color: #ffffff;
     cursor: pointer;
+    transition: all 0.3s;
 }
 #signup-text > a:hover {
     color: #66c0f4;

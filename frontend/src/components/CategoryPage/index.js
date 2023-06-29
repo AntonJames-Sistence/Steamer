@@ -11,8 +11,9 @@ const CategoryPage = () => {
     const { category } = useParams();
 
     useEffect(() => {
-        dispatch(fetchCategoryGame(category))
-    }, [dispatch])
+        dispatch(fetchCategoryGame(category));
+        window.scrollTo(0, 0);
+    }, [dispatch, category])
 
     const categoryGames = useSelector(getCategoryGames);
 

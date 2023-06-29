@@ -13,11 +13,8 @@ const Cart = () => {
     const cartGames = useSelector(getCartGames);
 
     useEffect(() => {
+        dispatch(fetchCartGames());
         window.scrollTo(0, 0);
-    }, []);
-
-    useEffect(() => {
-        dispatch(fetchCartGames())
     }, [dispatch]);
 
     if(!cartGames) return (<></>)
@@ -69,7 +66,7 @@ const Cart = () => {
             <div className="cart-header-capsule-wrap">
                 <div className="cart-header-capsule">
                     <div className="cart-nav-links">
-                        <a href="/">All Products</a>
+                        <Link to="/">All Products</Link>
                         <span> {' > '} Your Shopping Cart</span>
                     </div>
                     

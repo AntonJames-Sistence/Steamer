@@ -35,21 +35,20 @@ const GameShowPage = () => {
     const dispatch = useDispatch();
     const { gameId } = useParams();
 
-    const game = useSelector(getCurrentGame);
+    useEffect(() => {
+        dispatch(fetchCartGames());
+        window.scrollTo(0, 0);
+    }, [dispatch, gameId]);
+
     const cartGames = useSelector(getCartGames);
+    const game = useSelector(getCurrentGame(gameId));
     
     const sliderRef = useRef(null);
     const [ signInModal, setSignInModal ] = useState(false);
 
     const currentUser = useSelector(getCurrentUser);
 
-    useEffect(() => {
-        dispatch(fetchGame(gameId));
-        dispatch(fetchCartGames());
-        window.scrollTo(0, 0);
-    }, [dispatch, gameId]);
-
-    if (!game) return (<></>) // prevents bug when not provided params
+    if (!game) return (<></>) // prevents bug when code executing too fast
 
     const settings = {
         // Main carousel settings
