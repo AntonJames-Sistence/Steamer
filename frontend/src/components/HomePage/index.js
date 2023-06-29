@@ -38,10 +38,7 @@ const HomePage = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
-
-    useEffect(() => {
-        dispatch(fetchGames())
+        dispatch(fetchGames());
     }, [dispatch]);
 
     const shuffledGames = shuffle(games);

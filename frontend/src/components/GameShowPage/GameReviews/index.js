@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createReview, deleteReview, getReviews, receiveReviews, updateReview } from "../../../store/reviews";
 import { getCurrentUser } from "../../../store/session";
-import { getCurrentGame } from "../../../store/games";
+import { getCurrentGame, getGames } from "../../../store/games";
 import './OwnerReview.css'
 import { formatDate } from "./AllReviews";
 import { Link } from "react-router-dom";
@@ -18,12 +18,17 @@ const GameReviewForm = () => {
     const { gameId } = useParams();
     const reviews = useSelector(getReviews);
     const currentUser = useSelector(getCurrentUser);
-    const currentGame = useSelector(getCurrentGame);
+    const currentGame = useSelector(getCurrentGame(gameId));
     const dispatch = useDispatch();
     
     const ownerReview = reviews.find(
-        (review) => currentUser.id === review.author.id
+        (review) => {if(currentUser.id === review.author.id) {
+            return true
+        } else {
+            return false
+        }}
     );
+    console.log(ownerReview)
 
 
     useEffect(() => {

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchGame, getCurrentGame } from '../../store/games';
+import { fetchGames, getCurrentGame } from '../../store/games';
 import { Modal } from '../../context/Modal';
 import LoginForm from '../LoginFormModal/LoginForm';
 import { fetchCartGame, fetchCartGames, getCartGames } from '../../store/cartItems';
@@ -38,6 +38,7 @@ const GameShowPage = () => {
     useEffect(() => {
         dispatch(fetchCartGames());
         window.scrollTo(0, 0);
+        dispatch(fetchGames());
     }, [dispatch, gameId]);
 
     const cartGames = useSelector(getCartGames);
