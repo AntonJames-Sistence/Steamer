@@ -21,14 +21,9 @@ const GameReviewForm = () => {
     const currentGame = useSelector(getCurrentGame(gameId));
     const dispatch = useDispatch();
     
-    const ownerReview = reviews.find(
-        (review) => {if(currentUser.id === review.author.id) {
-            return true
-        } else {
-            return false
-        }}
-    );
-    console.log(ownerReview)
+    const ownerReview = reviews.find(review => currentUser.id === review.author.id);
+
+    console.log(showForm)
 
 
     useEffect(() => {
@@ -37,11 +32,10 @@ const GameReviewForm = () => {
 
     // switch to false in case we have owner review on landing of the page
     useEffect(() => {
-        if (reviews) {
-          const ownerReview = reviews.find((review) => currentUser.id === review.author.id);
-          if (ownerReview) setShowForm(false);
-        }
-    }, [reviews, currentUser.id]);
+        
+        ownerReview ? setShowForm(false) : setShowForm(true);
+        
+    }, [reviews, currentUser.id, gameId]);
 
     const handleReviewSubmit = (e) => {
         e.preventDefault();
@@ -192,7 +186,7 @@ const GameReviewForm = () => {
 
     return (
         <>
-            {!showForm ? renderOwnerReview : <></>}
+            {!showForm && renderOwnerReview}
             {ReviewForm}
         </>
     )
