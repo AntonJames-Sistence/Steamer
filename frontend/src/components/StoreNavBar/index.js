@@ -21,7 +21,7 @@ const StoreNavBar = () => {
         dispatch(fetchCartGames());
         // if (search !== '') handleSearch(search);
         handleSearch(search)
-    }, [dispatch, search]);
+    }, [dispatch, search, currentUser]);
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);

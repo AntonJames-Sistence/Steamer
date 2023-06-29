@@ -25,23 +25,20 @@
     transition: color 0.5s;
 }
 
-#logo {
+#logo, .footer-logo-img {
     height: 50px;
     width: 55px;
     background-image: url('../../resources/logo.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    transition: background 0.5s;
+    transition: all 0.5s;
 }
 
 .logo {
     font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
     padding-top: 20px;
     display: flex;
-}
-.logo-link {
-
 }
 
 .logo-link:hover > div > #logo{
@@ -140,6 +137,9 @@ a {
 #username {
     display: flex;
     justify-content: flex-end;
+}
+#username > a {
+    color: #637c28;
 }
 
 #username > a:hover {

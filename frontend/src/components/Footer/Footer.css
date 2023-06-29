@@ -34,14 +34,17 @@
 }
 
 .footer-logo {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
 }
-
-.footer-logo {
-    margin-left: 80px;
+.footer-logo:hover > .footer-logo-img {
+    background: url(../../resources/logo-color.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     cursor: pointer;
+    /* transition: all 0.5s; */
 }
-
 
 .footer-links {
     margin-top: 8px;
@@ -55,8 +58,8 @@
 .footer-links > a {
     padding-left: 5px;
     padding-right: 5px;
+    transition: all 0.3s;
 }
 .footer-links > a:hover {
     color: #ffffff;
-    
 }

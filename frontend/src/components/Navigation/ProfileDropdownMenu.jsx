@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { Link } from "react-router-dom";
 
 const ProfileButton = ( {currentUser} ) => {
     const dispatch = useDispatch();
@@ -35,10 +36,6 @@ const ProfileButton = ( {currentUser} ) => {
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());
-        setTimeout(() => {
-          window.location.href = '/';
-        }, 500);
-        
     };
 
     return (
@@ -49,8 +46,8 @@ const ProfileButton = ( {currentUser} ) => {
           {/* if showMenu === true then render all code in () else dousn't render  */}
           { showMenu && (
             <div className="profile-popup-menu">
-              <a className="popup-menu-item">View profile</a>
-              <a className="popup-menu-item">Account details</a>
+              <Link to='/cart' className="popup-menu-item">View cart</Link>
+              <Link to='/category/All' className="popup-menu-item">Browse new games</Link>
               <a className="popup-menu-item" onClick={logout}>Logout: <span className="current-user">{currentUser.username}</span></a>
             </div>
           )}

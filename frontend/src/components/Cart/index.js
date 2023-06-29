@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCartGames, getCartGames, removeGameFromCart, removeGamesFromCart } from "../../store/cartItems";
+import { fetchCartGames, getCartGames, removeGamesFromCart } from "../../store/cartItems";
 import CartGameItem from "./CartGameItem";
 
 import './Cart.css'
@@ -34,7 +34,6 @@ const Cart = () => {
     };
 
     const handleCleanCart = () => {
-        // cartGames.forEach((game) => {dispatch(removeGameFromCart(game.id))})
         dispatch(removeGamesFromCart())
     }
     const removeAll = (
