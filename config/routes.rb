@@ -17,7 +17,12 @@ Rails.application.routes.draw do
 
     resources :reviews, only: [:update, :destroy]
 
-    resources :cart_items, only: [:create, :index, :destroy]
+    # resources :cart_items, only: [:create, :index, :destroy]
+    resources :cart_items, only: [:create, :index, :destroy] do
+      collection do
+        delete 'destroy_all', action: :destroy_all
+      end
+    end
   end
 
   get '*path', to: "static_pages#frontend_index"

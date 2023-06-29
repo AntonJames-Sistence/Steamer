@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 
 
 const GridItem = ({ game }) => {
     const {id, title, imageUrls, price, details} = game;
 
     return (
-        <a href={`/games/${id}`}>
+        <Link to={`/games/${id}`}>
             <div className="grid-item-capsule">
                 <div className="grid-item-img">
                     <img src={imageUrls[0]}></img>
@@ -25,7 +26,7 @@ const GridItem = ({ game }) => {
                 </div>
 
             </div>
-        </a>
+        </Link>
     )
 }
 

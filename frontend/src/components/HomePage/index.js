@@ -5,12 +5,13 @@ import './HomePage.css'
 import GridItem from "./GridItem";
 import { fetchGames, getGames } from "../../store/games";
 import { useEffect } from "react";
+import { scrollTo } from "../GameShowPage/index";
 
 
 const torque = (
     <div className="wrap">
         
-        <div className="torque-capsule">
+        <div className="torque-capsule" id="special-offer">
             <div className="carousel-header-text">Special Offer</div>
 
             <iframe 
@@ -25,7 +26,7 @@ const torque = (
 
 const summerSpotlight = (
     <div className="wrap">
-        <a href="/category/All">
+        <a onClick={()=>{scrollTo('special-offer')}}>
             <div className="summer-spotlight-img"></div>
         </a>
     </div>
@@ -36,7 +37,8 @@ const HomePage = () => {
     const games = useSelector(getGames);
 
     useEffect(() => {
-        dispatch(fetchGames())
+        window.scrollTo(0, 0);
+        dispatch(fetchGames());
     }, [dispatch]);
 
     const shuffledGames = shuffle(games);

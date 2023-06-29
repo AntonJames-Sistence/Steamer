@@ -572,4 +572,4 @@ ApplicationRecord.transaction do
   end
 
 
-  puts "Done!"
+  puts "All Done!"

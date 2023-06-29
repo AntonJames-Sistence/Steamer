@@ -27,11 +27,18 @@
     padding: 20px 10px;
     border-radius: 5px;
     background-color: #141d27;
+    transition: box-shadow 0.4s, color 0.4s, transform 0.5s;
+}
+.franchise > a {
+    color: #ffffff;
+    transition: box-shadow 0.4s, color 0.4s, transform 0.5s;
 }
 .franchise:hover {
     box-shadow: inset 0 0 10px rgba(255,255,255,1);
-    color: #66c0f4;
     cursor: pointer;
+}
+.franchise:hover > a {
+    color: #66c0f4;
 }
 
 /* ============================== purchase area ============================== */
@@ -56,7 +63,8 @@
     white-space: nowrap;
 }
 .price-button-wrap {
-    
+    position: relative;
+    top: 20px;
     display: inline-block;
     background-color: #000000;
     padding: 2px 2px 2px 0px;
@@ -81,6 +89,10 @@
     font-size: 15px;
     line-height: 25px;
     background: linear-gradient( to right, #75b022 5%, #588a1b 95%);
+    transition: all 0.5s ease;
+}
+.add-to-cart > a {
+    color: #ffffff;
 }
 
 .add-to-cart:hover {
@@ -150,6 +162,7 @@
     color: #67c1f5;
     background: rgba( 103, 193, 245, 0.2 );
     margin-left: 5px;
+    transition: all 0.3s;
 }
 .signin-offer-button:hover {
     color: #fff;
@@ -199,10 +212,11 @@
     color: #67c1f5;
     font-size: 12px;
     white-space: nowrap;
+    cursor: default;
 }
-.game-details-block > a:hover {
+/* .game-details-block > a:hover {
     color: #ffffff;
-}
+} */
 
 
 .buttons-block {
@@ -223,9 +237,11 @@
     font-family: "Motiva Sans", Sans-serif;
     font-weight: 400;
     font-size: 12px;
+    transition: all 0.3s;
 }
 
 .buttons-block > a:hover {
     color: #ffffff;
     background: linear-gradient(135deg, #67c1f5 0%,#417a9b 100%);
+    cursor: pointer;
 }

@@ -5,7 +5,7 @@
 .cart-checkout-area {
     background: rgba( 0, 0, 0, 0.2 );
     width: 940px;
-    border-radius: 3px;
+    border-radius: 5px;
     box-shadow: 0px 0 10px 0px #000;
     margin-top: 30px;
 }
@@ -32,7 +32,7 @@
 }
 
 .cart-checkout-buttons {
-    border-radius: 2px;
+    border-radius: 5px;
     border: none;
     padding: 5px 15px;
     font-size: 15px;
@@ -45,6 +45,7 @@
     font-family: "Motiva Sans", Sans-serif;
     margin-right: 16px;
     margin-bottom: 8px;
+    transition: all 0.3s;
 }
 .cart-checkout-buttons:hover {
     color: #ffffff;
@@ -60,7 +61,7 @@
     margin: 15px 0 10px 0px;
 }
 .continue-shopping {
-    border-radius: 2px;
+    border-radius: 5px;
     border: none;
     padding: 1px;
     cursor: pointer;
@@ -72,6 +73,7 @@
     padding: 8px 15px;
     font-size: 15px;
     line-height: 30px;
+    transition: all 0.3s;
 }
 .continue-shopping:hover {
     color: #fff !important;

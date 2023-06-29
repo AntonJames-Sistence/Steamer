@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
 import ProfileButton from './ProfileDropdownMenu';
 import './Navigation.css';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-import logoPath from '../../resources/logo.png'
 
 const Navigation = () => {
     // taking sessionUser from store
@@ -34,14 +34,12 @@ const Navigation = () => {
         <div className='global-navbar-container'>
             <div className='global-navbar'>
 
-                    <div className='logo'>
-                        <a href='/'>
-                        <img id='logo' src={logoPath} alt="Steamer logo" />
-                        </a>
-                        <a href='/'>
-                        <div id='logo-name-holder'>STEAMER</div>
-                        </a>
-                    </div>
+                    <Link to='/' className='logo-link'>
+                        <div className='logo'>
+                            <div id='logo' alt="Steamer logo" />
+                            <div id='logo-name-holder'>STEAMER</div>
+                        </div>
+                    </Link>
 
                     <div className='global-actions'>
                         {sessionLinks}

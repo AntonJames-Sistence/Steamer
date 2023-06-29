@@ -39,8 +39,10 @@
     font-size: 15px;
     line-height: 30px;
     font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease;
 }
-.install-play-button:hover, .submit-post:hover {
+.install-play-button:hover, 
+.submit-post:hover {
     color: #ffffff;
     background: linear-gradient( to bottom, rgba(102,192,244,1) 5%, rgba(47,137,188,1) 95%);
 }
@@ -110,6 +112,7 @@
     border-radius: 3px;
     background: linear-gradient( to bottom, rgba(193,228,249,1) 5%, rgba(148,183,202,1) 95%);
     text-shadow: 1px 1px 0px rgba( 255, 255, 255, 0.1 );
+    transition: all 0.3s ease;
 }
 
 
@@ -129,6 +132,7 @@
     color: #67c1f5;
     background: rgba( 103, 193, 245, 0.2 );
     margin-right: 10px;
+    /* transition: all 0.3s ease; */
 }
 .true-like:hover {
     color: #fff;

@@ -18,23 +18,37 @@
 /* ----------------- logo related styles ----------------- */
 
 #logo-name-holder {
-    padding-top: 31px;
     font-size: 20px;
     font-weight: 600;
+    padding-top: 21.5%;
+    color: #b8b6b4;
+    transition: color 0.5s;
 }
 
-#logo {
+#logo, .footer-logo-img {
     height: 50px;
     width: 55px;
+    background-image: url('../../resources/logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all 0.5s;
 }
 
 .logo {
     font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
     padding-top: 20px;
-    /* margin-right: 40px; */
     display: flex;
-    color: #b8b6b4;
 }
+
+.logo-link:hover > div > #logo{
+    background-image: url('../../resources/logo-color.png');
+}
+.logo-link:hover > div > #logo-name-holder {
+    color: #ecb294;
+}
+
+
 
 /* ----------------- links related styles ----------------- */
 
@@ -42,15 +56,13 @@
     font-family: Motiva Sans, Arial, Helvectica, Verdana, sans-serif;
     display: block;
     position: relative;
-    padding-top: 55px;
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-bottom: 7px;
+    padding: 55px 7px 7px 7px;
     line-height: 16px;
     float: left;
     font-size: 14px;
     color: #b8b6b4;
     text-transform: uppercase;
+    transition: all 0.3s;
 }
 
 a {
@@ -63,8 +75,7 @@ a {
 }
 
 .nav-link:hover {
-    /* color: #ffffff; */
-    /* color: #5c7e10; */
+    transform: scale(1.1);
     color: #1999ff;
 }
 
@@ -85,9 +96,10 @@ a {
 }
 .global-actions > a {
     color: #637c28;
+    transition: box-shadow 0.3s, color 0.3s, transform 0.5s;
 }
 .global-actions > a:hover {
-    /* color: #ffffff; */
+    
     color: #1999ff;
 }
 
@@ -125,6 +137,9 @@ a {
 #username {
     display: flex;
     justify-content: flex-end;
+}
+#username > a {
+    color: #637c28;
 }
 
 #username > a:hover {

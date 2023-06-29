@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createReview, deleteReview, getReviews, receiveReviews, updateReview } from "../../../store/reviews";
 import { getCurrentUser } from "../../../store/session";
-import { getCurrentGame } from "../../../store/games";
+import { getCurrentGame, getGames } from "../../../store/games";
 import './OwnerReview.css'
 import { formatDate } from "./AllReviews";
+import { Link } from "react-router-dom";
+import { scrollTo } from "..";
 
 const GameReviewForm = () => {
     const [ reviewBody, setReviewBody ] = useState('');
@@ -16,13 +18,10 @@ const GameReviewForm = () => {
     const { gameId } = useParams();
     const reviews = useSelector(getReviews);
     const currentUser = useSelector(getCurrentUser);
-    const currentGame = useSelector(getCurrentGame);
+    const currentGame = useSelector(getCurrentGame(gameId));
     const dispatch = useDispatch();
     
-    const ownerReview = reviews.find(
-        (review) => currentUser.id === review.author.id
-    );
-
+    const ownerReview = reviews.find(review => currentUser.id === review.author.id);
 
     useEffect(() => {
         dispatch(receiveReviews(gameId));
@@ -30,11 +29,10 @@ const GameReviewForm = () => {
 
     // switch to false in case we have owner review on landing of the page
     useEffect(() => {
-        if (reviews) {
-          const ownerReview = reviews.find((review) => currentUser.id === review.author.id);
-          if (ownerReview) setShowForm(false);
-        }
-    }, [reviews, currentUser.id]);
+        
+        ownerReview ? setShowForm(false) : setShowForm(true);
+        
+    }, [reviews, currentUser.id, gameId]);
 
     const handleReviewSubmit = (e) => {
         e.preventDefault();
@@ -58,22 +56,18 @@ const GameReviewForm = () => {
         if (ownerReview) {
             dispatch(updateReview(review))
               .then(() => {
-                // Success handler
                 setShowForm(false);
                 setReviewBody('');
               })
               .catch((error) => {
-                // Error handler
               });
           } else {
             dispatch(createReview(review))
               .then(() => {
-                // Success handler
                 setShowForm(false);
                 setReviewBody('');
               })
               .catch((error) => {
-                // Error handler
               });
           }      
     };
@@ -98,18 +92,18 @@ const GameReviewForm = () => {
     }
 
     const renderOwnerReview = ownerReview && (
-        <div className='review-form-wrap'>
+        <div className='review-form-wrap' id="review-form-wrap">
             <div className='review-form-capsule'>
                 <div className='owner-review-header-capsule'>
                     <div className='actions-holder'>
-                        <div className='install-play-button'>Install Steamer</div>
-                        <div className='install-play-button'>Play Now</div>
+                        <Link to={`/category/All`} className="install-play-button">Browse More</Link>
+                        <Link to='/' className="install-play-button">To Main</Link>
                     </div>
                     <div className='review-offer'>You reviewed this game on {formatDate(ownerReview.createdAt)}</div>
                     <p className='review-rules'></p>
                 </div>
 
-                <a href="#all-reviews" className="view-owner-review">View your review</a>
+                <a onClick={()=>{scrollTo('all-reviews')}} className="view-owner-review">View your review</a>
 
                 <div className="icon-body-holder">
                     <div className={ownerReview.recommended ? "all-thumb-up" : "all-thumb-down"}></div>
@@ -124,12 +118,12 @@ const GameReviewForm = () => {
     )
 
     const ReviewForm = showForm && (
-        <div className="review-form-wrap">
+        <div className="review-form-wrap" id="review-form-wrap">
             <div className="review-form-capsule">
                 <div className="review-form-header-capsule">
                     <div className="actions-holder">
-                        <div className="install-play-button">Install Steamer</div>
-                        <div className="install-play-button">Play Now</div>
+                        <Link to={`/category/All`} className="install-play-button">Browse More</Link>
+                        <Link to='/' className="install-play-button">To Main</Link>
                     </div>
                     <div className="review-offer">Write a review for {currentGame.title}</div>
                     <p className="review-rules">
@@ -145,9 +139,9 @@ const GameReviewForm = () => {
                     <form onSubmit={handleReviewSubmit}>
 
                         <textarea
-                        className={ getErrorByField('comment') ? 'body-data-error' : 'body-data'}
-                        value={reviewBody}
-                        onChange={(e) => setReviewBody(e.target.value)}
+                            className={ getErrorByField('comment') ? 'body-data-error' : 'body-data'}
+                            value={reviewBody}
+                            onChange={(e) => setReviewBody(e.target.value)}
                         />
                         {getErrorByField('comment') ? <div className="review-errors">{getErrorByField('comment')}</div> : <></>}
 
@@ -189,7 +183,7 @@ const GameReviewForm = () => {
 
     return (
         <>
-            {!showForm ? renderOwnerReview : <></>}
+            {!showForm && renderOwnerReview}
             {ReviewForm}
         </>
     )

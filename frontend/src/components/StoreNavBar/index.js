@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLocation } from "react-router-dom";
 import { fetchCartGames, getCartGames } from '../../store/cartItems';
-import './StoreNavBar.css'
+import './StoreNavBar.css';
 import SearchItem from './SearchItem';
 
 const StoreNavBar = () => {
     const currentUser = useSelector(state => state.session.user);
     const cartItems = useSelector(getCartGames);
     const dispatch = useDispatch();
+    const location = useLocation();
     
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -17,8 +19,9 @@ const StoreNavBar = () => {
 
     useEffect(() => {
         dispatch(fetchCartGames());
-        handleSearch(search);
-    }, [dispatch, search]);
+        // if (search !== '') handleSearch(search);
+        handleSearch(search)
+    }, [dispatch, search, currentUser]);
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
@@ -26,6 +29,10 @@ const StoreNavBar = () => {
           document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+
+    useEffect(() => {
+        setShowDropdown(false);
+    }, [location]);
 
     const handleSearch = async (query) => {
         try {
@@ -35,10 +42,7 @@ const StoreNavBar = () => {
         } catch (error) {
           console.error('Error searching:', error);
         }
-        setShowDropdown(true)
-    };
-    const handleMouseLeave = () => {
-        setShowDropdown(false);
+        setShowDropdown(true);
     };
     const handleClickOutside = (event) => {
         if (searchRef.current && !searchRef.current.contains(event.target)) {
@@ -46,26 +50,29 @@ const StoreNavBar = () => {
         }
     };
 
+    const handleLinkClick = () => {
+        setShowDropdown(false);
+    };
+
     return (
         <div className='nav-wrap-container'>
             <div className='nav-wrap'>
 
-                { currentUser ? <a href='/cart' className='cart-button'>cart({cartItems.length})</a> : <div id='space-holder'></div>}
+                { currentUser ? <Link to='/cart' className='cart-button'>cart({cartItems.length})</Link> : <div id='space-holder'></div>}
                 
                 <div className="store-nav-bg">
 
                     <div className="store-nav">
                         <div className='store-nav-tab-wrap'>
-                            <a href='/'>
+                            <Link to='/' onClick={handleLinkClick}>
                                 <div className="store-nav-tab" id='fst-child'>Your Store</div>
-                            </a>
-                            <a href='/games/2'>
+                            </Link>
+                            <Link to='/games/2' onClick={handleLinkClick}>
                                 <div className="store-nav-tab">New & Noteworthy</div>
-                            </a>
-                            <a href='/category/All'>
+                            </Link>
+                            <Link to='/category/All' onClick={handleLinkClick}>
                                 <div className="store-nav-tab">Categories</div>
-                            </a>
-                            {/* <div className="store-nav-tab">News</div> */}
+                            </Link>
                         </div>
 
                         <div className="searchbox">
@@ -81,11 +88,7 @@ const StoreNavBar = () => {
                 </div>
 
                 {showDropdown && (
-                    <div 
-                    className='search-dropdown-show'
-                    onMouseLeave={handleMouseLeave} 
-                    ref={searchRef}
-                    >
+                    <div className='search-dropdown-show' ref={searchRef}>
                         {searchResults.map((result) => (
                             <SearchItem game={result} key={result.id} />
                         ))}

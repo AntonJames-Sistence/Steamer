@@ -6,6 +6,8 @@
 .carousel-img {
     width: 616px;
     height: 353px;
+
+    object-fit: cover;
 }
   
 .slide-content {
@@ -45,7 +47,7 @@
     box-shadow: none;
     margin-left: 5px;
     border-radius: 2px;
-    cursor: pointer;
+    /* cursor: pointer; */
     margin-bottom: 3px;
     white-space: nowrap;
     overflow: hidden;
@@ -102,15 +104,31 @@
 /* ==================== prev / next buttons ===================== */
 
 .slick-prev:before, .slick-next:before {
-    font-size: 50px;
+    font-size: 36px;
     color: black;
     opacity: .50;
     line-height: 0;
 }
 .slick-prev {
-    left: -55px;
+    left: -30px;
 }
+.slick-next {
+    right: -13px;
+}
+.slick-next:before {
+    background: url(../../resources/carousel_arrows.png);
+    background-repeat: no-repeat;
+    background-position: 13px 0px;
 
+}
+.slick-prev:before {
+    background: url(../../resources/carousel_arrows.png);
+    background-repeat: no-repeat;
+    background-position: -23px 0px;
+}
+.slick-dots li.slick-active button:before {
+    color: #9097a2;
+}
 
 /* ===================== screenshots ==================== */
 
@@ -125,10 +143,18 @@
     height: auto;
     width: 157px;
     opacity: 0.5;
+    object-fit: cover;
 }
 .mini-screenshot:hover {
-    transform: scale(1.2);
+    /* transform: scale(1.2); */
     z-index: 1;
     opacity: 1;
 }
 
+.slick-dots li {
+    width: 50px;
+    height: 25px;
+}
+.slick-dots li button:before {
+    font-size: 12px;
+}

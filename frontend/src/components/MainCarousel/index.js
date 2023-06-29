@@ -27,19 +27,19 @@ const MainCarousel = () => {
 
     useEffect(() => {
         dispatch(fetchGames())
-    }, [dispatch])
+    }, [dispatch]);
     
     const settings = {
         dots: true,
         infinite: true,
-        speed: 700,
+        speed: 1000,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         fade: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 5000,
         pauseOnHover: true,
-        arrows: true
+        arrows: true,
     };
 
     if(games.length === 0) return (<></>)

@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCartGames, getCartGames, removeGameFromCart } from "../../store/cartItems";
+import { fetchCartGames, getCartGames, removeGamesFromCart } from "../../store/cartItems";
 import CartGameItem from "./CartGameItem";
 
 import './Cart.css'
 import './cartCheckout.css'
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -12,7 +13,8 @@ const Cart = () => {
     const cartGames = useSelector(getCartGames);
 
     useEffect(() => {
-        dispatch(fetchCartGames())
+        dispatch(fetchCartGames());
+        window.scrollTo(0, 0);
     }, [dispatch]);
 
     if(!cartGames) return (<></>)
@@ -29,7 +31,7 @@ const Cart = () => {
     };
 
     const handleCleanCart = () => {
-        cartGames.forEach((game) => {dispatch(removeGameFromCart(game.id))})
+        dispatch(removeGamesFromCart())
     }
     const removeAll = (
         <div className="remove-all-wrap">
@@ -64,7 +66,7 @@ const Cart = () => {
             <div className="cart-header-capsule-wrap">
                 <div className="cart-header-capsule">
                     <div className="cart-nav-links">
-                        <a href="/">All Products</a>
+                        <Link to="/">All Products</Link>
                         <span> {' > '} Your Shopping Cart</span>
                     </div>
                     
@@ -81,7 +83,7 @@ const Cart = () => {
             {cartGames.length === 0 ? <></> : cartCheckout}
             <div className="continue-shopping-capsule">
                 <div className="continue-shopping-wrap">
-                    <a href="/" className="continue-shopping">Continue Shopping</a>
+                    <Link to="/" className="continue-shopping">Continue Shopping</Link>
                 </div>
             </div>
         </>

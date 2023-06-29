@@ -3,6 +3,7 @@ import csrfFetch from "./csrf";
 const ADD_GAME_TO_CART = 'cart/ADD_GAME_TO_CART';
 const RECEIVE_CART_GAMES = 'cart/RECEIVE_CART_GAMES';
 const REMOVE_CART_GAME = 'cart/REMOVE_CART_GAME';
+const REMOVE_ALL_CART_GAMES = 'cart/REMOVE_ALL_CART_GAMES'
 
 const addGameToCart = (game) => {
     return {
@@ -22,6 +23,12 @@ const removeCartGame = (cartItemId) => {
     return {
         type: REMOVE_CART_GAME,
         cartItemId
+    }
+};
+
+const removeAllCartGames = () => {
+    return {
+        type: REMOVE_ALL_CART_GAMES
     }
 }
 
@@ -64,7 +71,7 @@ export const fetchCartGame = (gameId) => async dispatch => {
     });
     const data = await res.json();
 
-    dispatch(addGameToCart(data.game));
+    dispatch(addGameToCart(data));
 }
 
 export const removeGameFromCart = (cartItemId) => async dispatch => {
@@ -73,6 +80,13 @@ export const removeGameFromCart = (cartItemId) => async dispatch => {
     });
     
     dispatch(removeCartGame(cartItemId));
+}
+
+export const removeGamesFromCart = () => async dispatch => {
+    await csrfFetch('/api/cart_items/destroy_all', {
+        method: 'DELETE',
+    });
+    dispatch(removeAllCartGames())
 }
 
 // =====================================================================
@@ -92,6 +106,9 @@ const cartItemsReducer = (state = {}, action) => {
         case REMOVE_CART_GAME:
             delete nextState[action.cartItemId];
             return nextState;
+
+        case REMOVE_ALL_CART_GAMES:
+            return {};
 
         default:
             return state;

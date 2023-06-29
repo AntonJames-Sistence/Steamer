@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SliderItem = ({game}) => {
     const { imageUrls, title, id, price } = game;
@@ -9,16 +10,16 @@ const SliderItem = ({game}) => {
     return (
         <div className='carousel-slide'>
                 <div className='slide-content'>
-                    <a href={ `/games/${id}`}>
+                    <Link to={ `/games/${id}`}>
                         <img className='carousel-img' 
                         src={hoveredIndex !== null ? imageUrls[hoveredIndex] : imageUrls[0]}
                         alt='' />
-                    </a>
+                    </Link>
 
                     <div className='info-capsule'>
                         <div className='game-title'>{title}</div>
 
-                        <a href={`/games/${id}`}>
+                        <Link to={`/games/${id}`}>
                         <div className='screenshots'>
                             {imageUrls.slice(1, 5).map((imageUrl, index) => (
                                 <div className='screenshot-holder' key={index}>
@@ -32,7 +33,7 @@ const SliderItem = ({game}) => {
                                 </div>
                             ))}
                         </div>
-                        </a>
+                        </Link>
 
                         <div className='avaliability'>Now Avaliable</div>
 

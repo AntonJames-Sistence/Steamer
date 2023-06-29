@@ -1,13 +1,6 @@
 const RECEIVE_GAME = 'games/RECEIVE_GAME';
 const RECEIVE_GAMES = 'games/RECEIVE_GAMES';
 
-const receiveGame = (game) => {
-    return {
-        type: RECEIVE_GAME,
-        game
-    }
-};
-
 const receiveGames = (games) => {
     return {
         type: RECEIVE_GAMES,
@@ -17,9 +10,9 @@ const receiveGames = (games) => {
  
 // ======================================================
 
-export const getCurrentGame = (store) => {
-    if (store.showGames && store.showGames['currentGame']) {
-        return store.showGames['currentGame'];
+export const getCurrentGame = ( gameId ) => (store) => {
+    if (store.showGames && store.showGames[gameId]) {
+        return store.showGames[gameId];
     } else {
         return null;
     }
@@ -29,12 +22,12 @@ export const getGames = (store) => store.showGames ? Object.values(store.showGam
 
 // ======================================================
 
-export const fetchGame = (gameId) => async dispatch => {
-    const res = await fetch(`/api/games/${gameId}`);
-    const gameInfo = await res.json();
+// export const fetchGame = (gameId) => async dispatch => {
+//     const res = await fetch(`/api/games/${gameId}`);
+//     const gameInfo = await res.json();
 
-    dispatch(receiveGame(gameInfo));
-};
+//     dispatch(receiveGame(gameInfo));
+// };
 
 export const fetchGames = () => async dispatch => {
     const res = await fetch('/api/games/');
@@ -50,9 +43,6 @@ const gamesReducer = (state = {}, action) => {
 
     const nextState = {...state};
     switch (action.type) {
-        case RECEIVE_GAME:
-            nextState['currentGame'] = action.game
-            return nextState
         case RECEIVE_GAMES:
             return {...state, ...action.games};
         default:

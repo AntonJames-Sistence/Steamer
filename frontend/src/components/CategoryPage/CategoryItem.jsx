@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 const CategoryItem = ({ game }) => {
 
 const { id, title, price, imageUrls } = game
 
     return (
-        <a href={`/games/${id}`}>
+        <Link to={`/games/${id}`}>
             <div className="category-item-holder">
                 <div className="category-item-img">
                     <img src={imageUrls[0]}></img>
@@ -16,7 +18,7 @@ const { id, title, price, imageUrls } = game
                     </div>
                 </div>
             </div>
-        </a>
+        </Link>
     )
 }
 

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 // helper method to parse date
 export const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
@@ -37,7 +39,7 @@ const InfoHolder = ({ game }) => {
             <div className='show-genre'>
                 <div className='show-tags'>Popular user-defined tags for this product:</div>
                 <div className='show-tags-data'>
-                    <a className='show-tags-links' href={`/category/${genre}`}>{genre}</a>
+                    <Link className='show-tags-links' to={`/category/${genre}`}>{genre}</Link>
                 </div>
             </div>
 

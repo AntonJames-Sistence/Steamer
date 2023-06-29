@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { removeGameFromCart } from '../../store/cartItems';
+import { Link } from 'react-router-dom';
 
 const CartGameItem = ( { game } ) => {
     const { id, title, price, imageUrls } = game;
@@ -11,9 +12,9 @@ const CartGameItem = ( { game } ) => {
 
     return (
         <div className='game-box'>
-            <a href={`/games/${id}`}>
+            <Link to={`/games/${id}`}>
                 <div className='cart-game-img' style={{ backgroundImage: `url(${imageUrls[0]})` }}></div>
-            </a>
+            </Link>
 
             <div className='cart-game-details'>
                 <div className='cart-title'>{title}</div>

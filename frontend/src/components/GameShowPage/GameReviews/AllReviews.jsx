@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { getReviews, receiveReviews } from "../../../store/reviews";
 import './AllReviews.css'
 import './GameReviews.css'
+import { Link } from "react-router-dom";
+import { scrollTo } from "../index";
 
 // custom function for formating date string from backend
 export function formatDate(dateString) {
@@ -18,19 +20,22 @@ export function formatDate(dateString) {
 
 const AllReviews = () => {
     const { gameId } = useParams();
-    const reviews = useSelector(getReviews);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(receiveReviews(gameId));
-    }, [dispatch]);
+    }, [dispatch, gameId]);
+
+    const reviews = useSelector(getReviews);
 
     const displayReviews = (
-        reviews.map((review, index) => {
+        reviews.slice().reverse().map((review, index) => {
             return <div className="all-reviews-review-container" key={index}>
                         <div className="all-review-rec">
                             <div className={review.recommended ? 'all-thumb-up' : 'all-thumb-down'}></div>
-                            <div className="all-recommended">{review.recommended ? 'Recommended' : 'Not Recommended'}</div>
+                            <a onClick={()=>{scrollTo('review-form-wrap')}}>
+                                <div className="all-recommended">{review.recommended ? 'Recommended' : 'Not Recommended'}</div>
+                            </a>
                             <img className="all-mini-logo"></img>
                         </div>
                         <div className="review-column-holder">
@@ -81,7 +86,7 @@ const AllReviews = () => {
                 <div className="all-reviews-capsule">
                     <div className="all-reviews-statistic">
                         <div className="all-reviews-header">
-                            Showing {reviews.length} {reviews.length > 1 ? 'reviews' : 'review'} that match the filters
+                            Showing {reviews.length} {reviews.length > 1 ? 'reviews' : 'review'} that match this game
                         </div>
                     </div>
                     <div className="all-reviews-under-header">

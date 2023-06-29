@@ -31,11 +31,30 @@
     margin-top: 70px;
     cursor: pointer;
     box-shadow: 0px 0 20px 0px #000;
+    transition: all 0.5s;
+    border-radius: 5px;
 }
 .summer-spotlight-img:hover {
-    box-shadow: 0 0 20px #66c0f4;
+    
+    animation-name: glow-pulse;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
 }
-
+@keyframes glow-pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0px 0 20px 0px #000;
+    }
+    50% {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px#66c0f4;
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0px 0 20px 0px #000;
+    }
+}
 
 .grid-item-capsule {
     margin-bottom: 10px;
@@ -44,6 +63,8 @@
     color: #c6d4df;
     display: flex;
     justify-content: space-between;
+    transition: all 0.5s;
+    border-radius: 10px;
     
 }
 .grid-item-capsule:hover {
@@ -59,7 +80,10 @@
 }
 .grid-item-img > img {
     width: 200px;
-    height: 100px;
+    height: 110px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 .grid-item-img {
     display: flex;
@@ -75,11 +99,12 @@
 }
 .grid-item-info {
     font-size: 10px;
-    max-width: 300px;
+    max-width: 410px;
     margin: 15px 0px 0px 10px;
 }
 .grid-item-price {
     display: flex;
     align-items: center;
     margin-right: 15px;
+    font-size: 14px;
 }

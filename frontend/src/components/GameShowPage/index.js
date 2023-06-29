@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchGame, getCurrentGame } from '../../store/games';
+import { fetchGames, getCurrentGame } from '../../store/games';
 import { Modal } from '../../context/Modal';
 import LoginForm from '../LoginFormModal/LoginForm';
 import { fetchCartGame, fetchCartGames, getCartGames } from '../../store/cartItems';
@@ -18,41 +18,51 @@ import 'slick-carousel/slick/slick-theme.css';
 import GameReviewForm from './GameReviews';
 import AllReviews from './GameReviews/AllReviews';
 import { getCurrentUser } from '../../store/session';
+import { Link } from 'react-router-dom';
 
+export const scrollTo = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
+export const getRandomNumber = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+};
 
 const GameShowPage = () => {
     const dispatch = useDispatch();
     const { gameId } = useParams();
 
-    const game = useSelector(getCurrentGame);
+    useEffect(() => {
+        dispatch(fetchCartGames());
+        window.scrollTo(0, 0);
+        dispatch(fetchGames());
+    }, [dispatch, gameId]);
+
     const cartGames = useSelector(getCartGames);
+    const game = useSelector(getCurrentGame(gameId));
     
     const sliderRef = useRef(null);
     const [ signInModal, setSignInModal ] = useState(false);
 
     const currentUser = useSelector(getCurrentUser);
 
-    useEffect(() => {
-        dispatch(fetchGame(gameId));
-        dispatch(fetchCartGames());
-    }, [dispatch, gameId]);
-
-
-
-    if (!game) return (<></>) // prevents bug when not provided params
+    if (!game) return (<></>) // prevents bug when code executing too fast
 
     const settings = {
         // Main carousel settings
         dots: false,
         arrows: false,
         infinite: true,
-        speed: 400,
+        speed: 800,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 3000,
         fade: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
     };
 
     const slider = (
@@ -95,16 +105,16 @@ const GameShowPage = () => {
     const sliderHeader = (
         <div className='slider-header-wrap'>
             <div className='slide-header-links'>
-                <a href='/category/All'>All Games</a>
+                <Link to='/category/All'>All Games</Link>
                 {' > '}
-                <a href={`/category/${game.genre}`}>{game.genre} Games</a>
+                <Link to={`/category/${game.genre}`}>{game.genre} Games</Link>
                 {' > '}
-                <a href={`/games/${game.id}`}>{game.title}</a>
+                <span>{game.title}</span>
             </div>
             <div className='title-wrap'>
                 <div className='show-game-title'>{game.title}</div>
                 <div>
-                    <a href='#' className='community-hub'><span>Community Hub</span></a>
+                    <a href='https://github.com/AntonJames-Sistence' target='_blanc' className='community-hub'><span>Community Hub</span></a>
                 </div>
             </div>
         </div>
@@ -144,7 +154,7 @@ const GameShowPage = () => {
         } else {
             return setSignInModal(true)
         }
-    }
+    };
 
     const isGameInCart = Object.values(cartGames).some(value => {
         return value.id === game.id;
@@ -156,7 +166,7 @@ const GameShowPage = () => {
 
                 <div className='left-col-content'>
                     <div className='franchise'>
-                        <span>Check out the {game.title} franchise on Steamer</span>
+                        <Link to={`/category/${game.genre}`}>Check out more games like {game.title} on Steamer</Link>
                     </div>
                     <div className='purchase-area'>
                         <span>Buy {game.title}</span>
@@ -168,7 +178,7 @@ const GameShowPage = () => {
                                 </div>
                                 <div className='add-to-cart'>
 
-                                    { isGameInCart ? <span onClick={() => {window.location.href = '/cart';}}>In Cart</span> :
+                                    { isGameInCart ? <Link to='/cart'>In Cart</Link> :
                                     <span onClick={handleAddToCart}>Add to Cart</span> }
 
                                 </div>
@@ -192,16 +202,16 @@ const GameShowPage = () => {
                                 {game.title}
                                 <br />
                                 <b>Genre:</b>
-                                <a href='#'>{game.genre}</a>
+                                <a>{game.genre}</a>
                                 <br />
                                 <b>Developer:</b>
-                                <a href='#'>{game.developer}</a>
+                                <a>{game.developer}</a>
                                 <br />
                                 <b>Publisher:</b>
-                                <a href='#'>{game.publisher}</a>
+                                <a>{game.publisher}</a>
                                 <br />
                                 <b>Franchise:</b>
-                                <a href='#'>{game.title}</a>
+                                <a>{game.title}</a>
                                 <br />
                                 <b>Release date:</b>
                                 {formatDate(game.releaseDate)}
@@ -210,11 +220,11 @@ const GameShowPage = () => {
                         </div>
 
                         <div className='buttons-block'>
-                            <a href={`/games/${game.id}`}>Visit the website</a>
-                            <a href='/'>View update history</a>
-                            <a href='/'>Read related news</a>
-                            <a href='/'>View discussions</a>
-                            <a href='/'>Find Community Groups</a>
+                            <Link to={`/category/All`}>More games</Link>
+                            <Link to={`/category/${game.genre}`}>View similar games</Link>
+                            <a onClick={() => scrollTo('all-reviews')}>View reviews</a>
+                            <Link to='/'>Home page</Link>
+                            <Link to={`/games/${getRandomNumber(1, 8)}`}>Best seller game</Link>
                         </div>
                     </div>
                 </div>

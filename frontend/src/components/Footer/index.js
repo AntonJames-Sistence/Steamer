@@ -1,5 +1,5 @@
-import './Footer.css'
-import logo from '../../resources/logo.png'
+import { Link } from 'react-router-dom/';
+import './Footer.css';
 
 const Footer = () => {
     return (
@@ -10,17 +10,18 @@ const Footer = () => {
                 <div className="border-helper"></div>
 
                     <div className="footer-logo">
-                        <img src={logo} id='logo' className='footer-logo'></img>
-                    </div>
+                    
+                        <div className="footer-text">
+                            <div>
+                                © 2023 Steamer Corporation.  All rights reserved.  All trademarks are property 
+                                of their respective owners in the US and other countries.
+                            </div>
+                            <div>
+                                VAT included in all prices where applicable.
+                            </div>
+                        </div>
 
-                    <div className="footer-text">
-                        <div>
-                            © 2023 Steamer Corporation.  All rights reserved.  All trademarks are property 
-                            of their respective owners in the US and other countries.
-                        </div>
-                        <div>
-                            VAT included in all prices where applicable.
-                        </div>
+                        <Link className='footer-logo-img' to='/'></Link>
                     </div>
 
                     {/* <div className="right-footer-logo"></div> */}
