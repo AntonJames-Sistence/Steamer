@@ -65,7 +65,7 @@ const SignupForm = () => {
                 required
                 placeholder='username'
               />
-              {getErrorByField('Username') ? <span className="errors">{getErrorByField('Username')}</span> : <></>}
+              {getErrorByField('Username') ? <span className="errors">{getErrorByField('Username')}</span> : <span className="errors-place-holder"></span>}
           </div>
 
           <div className="signup-text-field">
@@ -79,7 +79,7 @@ const SignupForm = () => {
                 required
                 placeholder='email'
               />
-              {getErrorByField('Email') ? <span className="errors">{getErrorByField('Email')}</span> : <></>}
+              {getErrorByField('Email') ? <span className="errors">{getErrorByField('Email')}</span> : <span className="errors-place-holder"></span>}
           </div>
 
           <div className="signup-text-field">
@@ -106,7 +106,7 @@ const SignupForm = () => {
                 required
                 placeholder='confirm password'
               />
-              {getErrorByField('Password') ? <span className="errors">{getErrorByField('Password')}</span> : <></>}
+              {getErrorByField('Password') ? <span className="errors">{getErrorByField('Password')}</span> : <span className="errors-place-holder"></span>}
           </div>
 
           <div className="signup-login-button-capsule">
