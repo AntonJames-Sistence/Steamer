@@ -34,6 +34,7 @@ export const getRandomNumber = (min, max) => {
 const GameShowPage = () => {
     const dispatch = useDispatch();
     const { gameId } = useParams();
+    const currentUser = useSelector(getCurrentUser);
 
     useEffect(() => {
         dispatch(fetchCartGames());
@@ -46,8 +47,6 @@ const GameShowPage = () => {
     
     const sliderRef = useRef(null);
     const [ showPageSignInModal, showPageSetSignInModal ] = useState(false);
-
-    const currentUser = useSelector(getCurrentUser);
 
     if (!game) return (<></>) // prevents bug when code executing too fast
 
@@ -178,7 +177,8 @@ const GameShowPage = () => {
                                 </div>
                                 <div className='add-to-cart'>
 
-                                    { isGameInCart ? <Link to='/cart'>In Cart</Link> :
+                                    { isGameInCart ? <Link to='/cart'>In Cart</Link> 
+                                    :
                                     <span onClick={handleAddToCart}>Add to Cart</span> }
 
                                 </div>

@@ -68,6 +68,9 @@
     box-shadow: 0 0 10px #66c0f4;
     transform: scale(1.1);
 }
+/* .game-box-link:active { 
+    transform: scale(0.85);
+} */
 .cart-game-img {
     height: 150px;
     width: 267px;
@@ -79,13 +82,16 @@
 }
 
 /* ============================================================================================ */
-
+.cart-game-details {
+    cursor: default;
+}
 .cart-title {
     color: #c7d5e0;
     text-shadow: 1px 1px 0 rgba( 0, 0, 0, 0.8 );
     margin: 10px 0px 0px 10px;
     font-size: 18px;
     margin-bottom: 20px;
+    display: flex;
 }
 .space-between {
     display: flex;
@@ -95,6 +101,7 @@
 .cart-price {
     color: #c7d5e0;
     font-size: 13px;
+    cursor: default;
 }
 .cart-remove {
     color: #56707f;

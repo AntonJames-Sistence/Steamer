@@ -65,13 +65,15 @@
     justify-content: space-between;
     transition: all 0.5s;
     border-radius: 10px;
-    
 }
 .grid-item-capsule:hover {
     box-shadow: 0 0 20px #66c0f4;
     transform: scale(1.1);
     background: linear-gradient( to right, #c6e6f8 5%,#95bcd3 95%);
     color: #000;
+}
+.grid-item-capsule:active {
+    transform: scale(0.85);
 }
 
 .grid-holder {

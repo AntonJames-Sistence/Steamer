@@ -91,6 +91,9 @@
     background: linear-gradient( to right, #75b022 5%, #588a1b 95%);
     transition: all 0.5s ease;
 }
+.add-to-cart:active {
+    transform: scale(0.85);
+}
 .add-to-cart > a {
     color: #ffffff;
 }
