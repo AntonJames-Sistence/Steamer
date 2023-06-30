@@ -54,8 +54,6 @@ const GameShowPage = () => {
     
     const sliderRef = useRef(null);
 
-    console.log(showPageSignInModal)
-
     if (!game) return (<></>) // prevents bug when code executing too fast
 
     const settings = {

@@ -25,10 +25,15 @@ const AllReviews = () => {
     const { gameId } = useParams();
     const dispatch = useDispatch();
     const currentUser = useSelector(getCurrentUser);
+    const [loginModal, setLoginModal] = useState(false);
 
     useEffect(() => {
         dispatch(receiveReviews(gameId));
     }, [dispatch, gameId]);
+
+    useEffect(() => {
+        setLoginModal(false);
+    }, [currentUser])
 
     const reviews = useSelector(getReviews);
 
@@ -37,10 +42,10 @@ const AllReviews = () => {
         if(currentUser) {
             scrollTo('review-form-wrap');
         } else {
-            window.scrollTo(0,0);
+            // window.scrollTo(0,0);
+            setLoginModal(true);
         }
-    }
-
+    };
 
     const displayReviews = (
         reviews.slice().reverse().map((review, index) => {
@@ -53,6 +58,11 @@ const AllReviews = () => {
                             <a onClick={handleClick}>
                                 <div className="all-recommended">{review.recommended ? 'Recommended' : 'Not Recommended'}</div>
                             </a> 
+                            {loginModal && (
+                                <Modal onClose={() => setLoginModal(false)}>
+                                    <LoginForm />
+                                </Modal>
+                            )}
                             <img className="all-mini-logo"></img>
                         </div>
                         <div className="review-column-holder">
