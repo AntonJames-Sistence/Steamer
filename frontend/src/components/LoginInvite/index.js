@@ -7,7 +7,7 @@ import SignupForm from '../SignupFormModal/SignupForm';
 const LoginInvite = () => {
     const [showLogInModal, setShowLogInModal] = useState(false);
     const [showSignUpModal, setShowSignUpModal] = useState(false);
-
+    // console.log(showLogInModal)
 
     return (
         <div className="login-invite-wrap">

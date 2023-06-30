@@ -36,19 +36,22 @@ const GameShowPage = () => {
     const dispatch = useDispatch();
     const { gameId } = useParams();
     const currentUser = useSelector(getCurrentUser);
+    const [ showPageSignInModal, showPageSetSignInModal ] = useState(false);
+    const [ showSignupModal, setShowSignupModal ] = useState(false);
 
     useEffect(() => {
         dispatch(fetchCartGames());
         window.scrollTo(0, 0);
         dispatch(fetchGames());
+        showPageSetSignInModal(false);
     }, [dispatch, gameId]);
 
     const cartGames = useSelector(getCartGames);
     const game = useSelector(getCurrentGame(gameId));
     
     const sliderRef = useRef(null);
-    const [ showPageSignInModal, showPageSetSignInModal ] = useState(false);
-    const [ showSignupModal, setShowSignupModal ] = useState(false);
+
+    // console.log(showPageSignInModal)
 
     if (!game) return (<></>) // prevents bug when code executing too fast
 
@@ -57,7 +60,7 @@ const GameShowPage = () => {
         dots: false,
         arrows: false,
         infinite: true,
-        speed: 800,
+        speed: 300,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
@@ -247,7 +250,7 @@ const GameShowPage = () => {
                 {sliderThumbnail}
             </div>
             {!currentUser ? signInInvite : <></>}
-            {/* this has to be modified after implementing library */}
+            {/* this has to be modified after implementing games collection */}
             {currentUser ? <GameReviewForm /> : <></>} 
             {pageContent}
             <AllReviews />
