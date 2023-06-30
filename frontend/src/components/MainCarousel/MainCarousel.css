@@ -102,7 +102,22 @@
 }
 
 /* ==================== prev / next buttons ===================== */
-
+.slick-prev:before
+{
+    content: '\f053';
+}
+[dir='rtl'] .slick-prev:before
+{
+    content: '\f054';
+}
+.slick-next:before
+{
+    content: '\f053';
+}
+[dir='rtl'] .slick-next:before
+{
+    content: '\f054';
+}
 .slick-prev:before, .slick-next:before {
     font-size: 36px;
     color: black;

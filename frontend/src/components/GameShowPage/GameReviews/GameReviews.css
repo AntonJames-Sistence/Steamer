@@ -48,7 +48,7 @@
 }
 .install-play-button:active,
 .submit-post:active { 
-    transform: scale(0.85);
+    transform: scale(0.7);
 }
 .review-offer {
     font-size: 20px;

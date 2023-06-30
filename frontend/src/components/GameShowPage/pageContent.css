@@ -92,7 +92,7 @@
     transition: all 0.5s ease;
 }
 .add-to-cart:active {
-    transform: scale(0.85);
+    transform: scale(0.7);
 }
 .add-to-cart > a {
     color: #ffffff;
@@ -172,7 +172,7 @@
     background: linear-gradient( -60deg, #417a9b 5%,#67c1f5 95%);
 }
 .signin-offer-button:active { 
-    transform: scale(0.85);
+    transform: scale(0.7);
 }
 .signin-offer-button > span {
     padding: 0 12px;

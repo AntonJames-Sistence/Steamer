@@ -45,7 +45,7 @@
     transition: all 0.5s;
 }
 .signup-login-button:active {
-    transform: scale(0.85);
+    transform: scale(0.7);
 }
 #sign-in {
     width: 200px;
