@@ -19,7 +19,7 @@ const CartGameItem = ( { game } ) => {
             <div className='cart-game-details'>
             <Link to={`/games/${id}`}>
                 <div className='cart-title'>{title}</div>
-                </Link>
+            </Link>
                 <div className='space-between'>
                     <span className="cart-price">{price === '0.0' ? <></> : '$' + price }</span>
                     <a onClick={handleRemove} className='cart-remove'>Remove</a>

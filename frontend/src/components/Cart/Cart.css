@@ -111,6 +111,7 @@
     margin-bottom: 10px;
     transition: all 0.3s;
     font-family: "Motiva Sans", Sans-serif;
+    z-index: 101;
 }
 .cart-remove:hover {
     color: #67c1f5;
