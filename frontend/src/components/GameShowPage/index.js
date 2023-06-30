@@ -43,20 +43,22 @@ const GameShowPage = () => {
         dispatch(fetchCartGames());
         window.scrollTo(0, 0);
         dispatch(fetchGames());
-        showPageSetSignInModal(false);
     }, [dispatch, gameId]);
+
+    useEffect(() => {
+        showPageSetSignInModal(false);
+    }, [currentUser])
 
     const cartGames = useSelector(getCartGames);
     const game = useSelector(getCurrentGame(gameId));
     
     const sliderRef = useRef(null);
 
-    // console.log(showPageSignInModal)
+    console.log(showPageSignInModal)
 
     if (!game) return (<></>) // prevents bug when code executing too fast
 
     const settings = {
-        // Main carousel settings
         dots: false,
         arrows: false,
         infinite: true,
@@ -77,7 +79,7 @@ const GameShowPage = () => {
 
               <img className="show-slider-img" 
               src={imageUrl} 
-              alt="" />
+              alt="game_images" />
 
               <InfoHolder game={game} />
 
@@ -97,7 +99,7 @@ const GameShowPage = () => {
                 {game.imageUrls.map((imageUrl, index) => (
                 <img
                     src={imageUrl}
-                    alt=""
+                    alt="game_images"
                     key={index}
                     onMouseEnter={() => handleThumbnailHover(index)}
                 />
