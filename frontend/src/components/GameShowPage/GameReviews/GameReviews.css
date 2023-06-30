@@ -46,7 +46,10 @@
     color: #ffffff;
     background: linear-gradient( to bottom, rgba(102,192,244,1) 5%, rgba(47,137,188,1) 95%);
 }
-
+.install-play-button:active,
+.submit-post:active { 
+    transform: scale(0.85);
+}
 .review-offer {
     font-size: 20px;
     margin: 15px 15px 15px 15px;

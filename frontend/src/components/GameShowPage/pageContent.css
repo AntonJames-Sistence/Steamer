@@ -171,6 +171,9 @@
     color: #fff;
     background: linear-gradient( -60deg, #417a9b 5%,#67c1f5 95%);
 }
+.signin-offer-button:active { 
+    transform: scale(0.85);
+}
 .signin-offer-button > span {
     padding: 0 12px;
     font-size: 13px;
