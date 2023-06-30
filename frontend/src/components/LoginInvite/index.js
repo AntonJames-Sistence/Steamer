@@ -8,7 +8,6 @@ const LoginInvite = () => {
     const [showLogInModal, setShowLogInModal] = useState(false);
     const [showSignUpModal, setShowSignUpModal] = useState(false);
 
-
     return (
         <div className="login-invite-wrap">
 

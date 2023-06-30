@@ -42,6 +42,10 @@
     cursor: pointer;
     width: 150px;
     height: 40px;
+    transition: all 0.5s;
+}
+.signup-login-button:active {
+    transform: scale(0.85);
 }
 #sign-in {
     width: 200px;
@@ -99,7 +103,11 @@
     color: #c15755;
     font-size: 16px;
     font-weight: 500;
-    margin: 10px 0px 0px 5px;
+    margin: 10px 0px 0px 0px;
+}
+.errors-place-holder {
+    margin: 10px 0px 0px 0px;
+    height: 16px;
 }
 
 .qr-code {

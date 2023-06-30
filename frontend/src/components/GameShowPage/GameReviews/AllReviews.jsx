@@ -6,6 +6,9 @@ import './AllReviews.css'
 import './GameReviews.css'
 import { Link } from "react-router-dom";
 import { scrollTo } from "../index";
+import { getCurrentUser } from "../../../store/session";
+import { Modal } from "../../../context/Modal";
+import LoginForm from "../../LoginFormModal/LoginForm";
 
 // custom function for formating date string from backend
 export function formatDate(dateString) {
@@ -21,21 +24,45 @@ export function formatDate(dateString) {
 const AllReviews = () => {
     const { gameId } = useParams();
     const dispatch = useDispatch();
+    const currentUser = useSelector(getCurrentUser);
+    const [loginModal, setLoginModal] = useState(false);
 
     useEffect(() => {
         dispatch(receiveReviews(gameId));
     }, [dispatch, gameId]);
 
+    useEffect(() => {
+        setLoginModal(false);
+    }, [currentUser])
+
     const reviews = useSelector(getReviews);
+
+    const handleClick = () => {
+
+        if(currentUser) {
+            scrollTo('review-form-wrap');
+        } else {
+            // window.scrollTo(0,0);
+            setLoginModal(true);
+        }
+    };
 
     const displayReviews = (
         reviews.slice().reverse().map((review, index) => {
             return <div className="all-reviews-review-container" key={index}>
+
+
+
                         <div className="all-review-rec">
                             <div className={review.recommended ? 'all-thumb-up' : 'all-thumb-down'}></div>
-                            <a onClick={()=>{scrollTo('review-form-wrap')}}>
+                            <a onClick={handleClick}>
                                 <div className="all-recommended">{review.recommended ? 'Recommended' : 'Not Recommended'}</div>
-                            </a>
+                            </a> 
+                            {loginModal && (
+                                <Modal onClose={() => setLoginModal(false)}>
+                                    <LoginForm />
+                                </Modal>
+                            )}
                             <img className="all-mini-logo"></img>
                         </div>
                         <div className="review-column-holder">
@@ -82,6 +109,7 @@ const AllReviews = () => {
 
     return ( reviews.length === 0 ? <></> :
         <>
+                        
             <div id="all-reviews" className="all-reviews-wrap">
                 <div className="all-reviews-capsule">
                     <div className="all-reviews-statistic">

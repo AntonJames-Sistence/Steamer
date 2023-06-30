@@ -12,13 +12,14 @@ const CartGameItem = ( { game } ) => {
 
     return (
         <div className='game-box'>
-            <Link to={`/games/${id}`}>
+            <Link className='game-box-link' to={`/games/${id}`}>
                 <div className='cart-game-img' style={{ backgroundImage: `url(${imageUrls[0]})` }}></div>
             </Link>
 
             <div className='cart-game-details'>
+            <Link to={`/games/${id}`}>
                 <div className='cart-title'>{title}</div>
-
+            </Link>
                 <div className='space-between'>
                     <span className="cart-price">{price === '0.0' ? <></> : '$' + price }</span>
                     <a onClick={handleRemove} className='cart-remove'>Remove</a>

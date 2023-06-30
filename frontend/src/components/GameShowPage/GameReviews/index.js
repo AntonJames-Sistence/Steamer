@@ -143,7 +143,7 @@ const GameReviewForm = () => {
                             value={reviewBody}
                             onChange={(e) => setReviewBody(e.target.value)}
                         />
-                        {getErrorByField('comment') ? <div className="review-errors">{getErrorByField('comment')}</div> : <></>}
+                        {getErrorByField('comment') ? <div className="review-errors">{getErrorByField('comment')}</div> : <div className="review-error-place-holder"></div>}
 
                         <div className={getErrorByField('recommend') ? 'review-errors' : 'form-rec-question'}>Do you recommend this game?</div>
 

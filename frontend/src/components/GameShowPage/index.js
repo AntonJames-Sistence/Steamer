@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchGames, getCurrentGame } from '../../store/games';
 import { Modal } from '../../context/Modal';
 import LoginForm from '../LoginFormModal/LoginForm';
+import SignupForm from '../SignupFormModal/SignupForm';
 import { fetchCartGame, fetchCartGames, getCartGames } from '../../store/cartItems';
 import InfoHolder, { formatDate } from './InfoHolder';
 
@@ -34,6 +35,9 @@ export const getRandomNumber = (min, max) => {
 const GameShowPage = () => {
     const dispatch = useDispatch();
     const { gameId } = useParams();
+    const currentUser = useSelector(getCurrentUser);
+    const [ showPageSignInModal, showPageSetSignInModal ] = useState(false);
+    const [ showSignupModal, setShowSignupModal ] = useState(false);
 
     useEffect(() => {
         dispatch(fetchCartGames());
@@ -41,22 +45,22 @@ const GameShowPage = () => {
         dispatch(fetchGames());
     }, [dispatch, gameId]);
 
+    useEffect(() => {
+        showPageSetSignInModal(false);
+    }, [currentUser])
+
     const cartGames = useSelector(getCartGames);
     const game = useSelector(getCurrentGame(gameId));
     
     const sliderRef = useRef(null);
-    const [ signInModal, setSignInModal ] = useState(false);
-
-    const currentUser = useSelector(getCurrentUser);
 
     if (!game) return (<></>) // prevents bug when code executing too fast
 
     const settings = {
-        // Main carousel settings
         dots: false,
         arrows: false,
         infinite: true,
-        speed: 800,
+        speed: 300,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
@@ -73,7 +77,7 @@ const GameShowPage = () => {
 
               <img className="show-slider-img" 
               src={imageUrl} 
-              alt="" />
+              alt="game_images" />
 
               <InfoHolder game={game} />
 
@@ -93,7 +97,7 @@ const GameShowPage = () => {
                 {game.imageUrls.map((imageUrl, index) => (
                 <img
                     src={imageUrl}
-                    alt=""
+                    alt="game_images"
                     key={index}
                     onMouseEnter={() => handleThumbnailHover(index)}
                 />
@@ -122,9 +126,9 @@ const GameShowPage = () => {
 
     const signInInvite = (
         <div className='invite-capsule'>
-            <div><a className='login-invite-link' onClick={() => setSignInModal(true)}>Sign in</a> to add this item to your wishlist, follow it, or mark it as ignored</div>
-            {signInModal && (
-                <Modal onClose={() => setSignInModal(false)}>
+            <div><a className='login-invite-link' onClick={() => showPageSetSignInModal(true)}>Sign in</a> to add this item to your wishlist, follow it, or mark it as ignored</div>
+            {showPageSignInModal && (
+                <Modal onClose={() => showPageSetSignInModal(false)}>
                     <LoginForm />
                 </Modal>     
             )}
@@ -139,10 +143,15 @@ const GameShowPage = () => {
                 <a 
                 className='signin-offer-button' 
                 id='left-side-button'
-                onClick={() => setSignInModal(true)}
+                onClick={() => showPageSetSignInModal(true)}
                 ><span>Sign In</span></a>
                 or
-                <a className='signin-offer-button'><span>Open in Steamer</span></a>
+                <a className='signin-offer-button'><span onClick={() => setShowSignupModal(true)}>Create Account</span></a>
+                {showSignupModal && (
+                <Modal onClose={() => setShowSignupModal(false)}>
+                    <SignupForm />
+                </Modal>     
+            )}
             </div>
         </div>
     )
@@ -150,9 +159,9 @@ const GameShowPage = () => {
     // add item to cart handle
     const handleAddToCart = () => {
         if(currentUser) {
-            return dispatch(fetchCartGame(game.id))
+            dispatch(fetchCartGame(game.id))
         } else {
-            return setSignInModal(true)
+            showPageSetSignInModal(true)
         }
     };
 
@@ -178,7 +187,8 @@ const GameShowPage = () => {
                                 </div>
                                 <div className='add-to-cart'>
 
-                                    { isGameInCart ? <Link to='/cart'>In Cart</Link> :
+                                    { isGameInCart ? <Link to='/cart'>In Cart</Link> 
+                                    :
                                     <span onClick={handleAddToCart}>Add to Cart</span> }
 
                                 </div>
@@ -240,7 +250,7 @@ const GameShowPage = () => {
                 {sliderThumbnail}
             </div>
             {!currentUser ? signInInvite : <></>}
-            {/* this has to be modified after implementing library */}
+            {/* this has to be modified after implementing games collection */}
             {currentUser ? <GameReviewForm /> : <></>} 
             {pageContent}
             <AllReviews />
