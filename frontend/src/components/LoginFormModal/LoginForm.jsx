@@ -100,7 +100,7 @@ const LoginForm = () => {
 
                 </form>
 
-                    <ul className="errors">
+                    <ul className={errors.length > 0 ? "errors" : 'errors-place-holder'}>
                         {errors.map(error => <div key={error}>{error}</div>)}
                     </ul>
             </div>

@@ -45,7 +45,7 @@ const GameShowPage = () => {
     const game = useSelector(getCurrentGame(gameId));
     
     const sliderRef = useRef(null);
-    const [ signInModal, setSignInModal ] = useState(false);
+    const [ showPageSignInModal, showPageSetSignInModal ] = useState(false);
 
     const currentUser = useSelector(getCurrentUser);
 
@@ -122,9 +122,9 @@ const GameShowPage = () => {
 
     const signInInvite = (
         <div className='invite-capsule'>
-            <div><a className='login-invite-link' onClick={() => setSignInModal(true)}>Sign in</a> to add this item to your wishlist, follow it, or mark it as ignored</div>
-            {signInModal && (
-                <Modal onClose={() => setSignInModal(false)}>
+            <div><a className='login-invite-link' onClick={() => showPageSetSignInModal(true)}>Sign in</a> to add this item to your wishlist, follow it, or mark it as ignored</div>
+            {showPageSignInModal && (
+                <Modal onClose={() => showPageSetSignInModal(false)}>
                     <LoginForm />
                 </Modal>     
             )}
@@ -139,7 +139,7 @@ const GameShowPage = () => {
                 <a 
                 className='signin-offer-button' 
                 id='left-side-button'
-                onClick={() => setSignInModal(true)}
+                onClick={() => showPageSetSignInModal(true)}
                 ><span>Sign In</span></a>
                 or
                 <a className='signin-offer-button'><span>Open in Steamer</span></a>
@@ -150,9 +150,9 @@ const GameShowPage = () => {
     // add item to cart handle
     const handleAddToCart = () => {
         if(currentUser) {
-            return dispatch(fetchCartGame(game.id))
+            dispatch(fetchCartGame(game.id))
         } else {
-            return setSignInModal(true)
+            showPageSetSignInModal(true)
         }
     };
 

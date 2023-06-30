@@ -6,6 +6,9 @@ import './AllReviews.css'
 import './GameReviews.css'
 import { Link } from "react-router-dom";
 import { scrollTo } from "../index";
+import { getCurrentUser } from "../../../store/session";
+import { Modal } from "../../../context/Modal";
+import LoginForm from "../../LoginFormModal/LoginForm";
 
 // custom function for formating date string from backend
 export function formatDate(dateString) {
@@ -21,6 +24,8 @@ export function formatDate(dateString) {
 const AllReviews = () => {
     const { gameId } = useParams();
     const dispatch = useDispatch();
+    const currentUser = useSelector(getCurrentUser);
+    const [ signInModal, setSignInModal ] = useState(false);
 
     useEffect(() => {
         dispatch(receiveReviews(gameId));
@@ -28,12 +33,24 @@ const AllReviews = () => {
 
     const reviews = useSelector(getReviews);
 
+    const handleClick = () => {
+
+        if(currentUser) {
+            return scrollTo('review-form-wrap');
+        } else {
+            return setSignInModal(true);
+        }
+    }
+
     const displayReviews = (
         reviews.slice().reverse().map((review, index) => {
             return <div className="all-reviews-review-container" key={index}>
+
+
+
                         <div className="all-review-rec">
                             <div className={review.recommended ? 'all-thumb-up' : 'all-thumb-down'}></div>
-                            <a onClick={()=>{scrollTo('review-form-wrap')}}>
+                            <a onClick={handleClick}>
                                 <div className="all-recommended">{review.recommended ? 'Recommended' : 'Not Recommended'}</div>
                             </a>
                             <img className="all-mini-logo"></img>
@@ -82,6 +99,11 @@ const AllReviews = () => {
 
     return ( reviews.length === 0 ? <></> :
         <>
+                        {signInModal && (
+                            <Modal onClose={() => setSignInModal(false)}>
+                                <LoginForm />
+                            </Modal>     
+                        )}
             <div id="all-reviews" className="all-reviews-wrap">
                 <div className="all-reviews-capsule">
                     <div className="all-reviews-statistic">
