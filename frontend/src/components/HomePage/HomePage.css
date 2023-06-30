@@ -11,9 +11,10 @@
 }
 
 #scaled-frame {
-    width: 1070px;
+    width: 1120px;
     height: 616px;
-    border: 0px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px;
     zoom: 1.2;
     -moz-transform: scale(0.75);
     -moz-transform-origin: 0 0;
