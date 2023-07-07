@@ -46,6 +46,7 @@ const Navigation = () => {
                     </div>
 
                     <div className='nav-links-container'>
+                        <a href='https://antonjames.dev/' className='nav-link' target='_blanc'>My Portfolio</a>
                         <a href='https://github.com/AntonJames-Sistence/Steamer' className='nav-link' target='_blanc'>About Steamer</a>
                         <a href='https://github.com/AntonJames-Sistence' className='nav-link' target='_blanc'>GitHub</a>
                         <a href='https://www.linkedin.com/in/anton-james-ja/' className='nav-link' target='_blanc'>LinkedIn</a>

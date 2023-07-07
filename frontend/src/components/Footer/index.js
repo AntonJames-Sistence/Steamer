@@ -29,6 +29,8 @@ const Footer = () => {
                 <div className="border-helper"></div>
 
                 <div className="footer-links">
+                    <a href='https://antonjames.dev/' target='_blanc'>My Portfolio</a>
+                    &nbsp;|&nbsp;
                     <a href='https://github.com/AntonJames-Sistence/Steamer' target='_blanc'>About Steamer</a>
                     &nbsp;|&nbsp;
                     <a href='https://www.linkedin.com/in/anton-james-ja/' target='_blanc'>LinkedIn</a>

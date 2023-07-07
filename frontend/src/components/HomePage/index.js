@@ -15,7 +15,7 @@ const torque = (
             <div className="carousel-header-text">Special Offer</div>
 
             <iframe 
-            src="https://antonjames-sistence.github.io/Torque/" 
+            src="https://antonjames.dev/Torque/" 
             width="100%" 
             height="1140" 
             id="scaled-frame"
