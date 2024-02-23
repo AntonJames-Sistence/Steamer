@@ -19,13 +19,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AntonJames-Sistence/PlaySteamer.git"
+    "url": "git+https://github.com/AntonJames-Sistence/Steamer.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AntonJames-Sistence/PlaySteamer/issues"
+    "url": "https://github.com/AntonJames-Sistence/Steamer/issues"
   },
-  "homepage": "https://github.com/AntonJames-Sistence/PlaySteamer#readme"
+  "homepage": "https://github.com/AntonJames-Sistence/Steamer#readme"
 }
