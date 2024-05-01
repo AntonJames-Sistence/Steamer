@@ -80,7 +80,7 @@
     border-radius: 5px;
     /* background: linear-gradient(90deg, rgba(246, 247, 248, 0.25) 0%, rgba(148, 196, 230, 0.15) 50%, rgba(50, 50, 51, 0) 100%); */
     text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.7);
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
 }
 .store-nav-tab:active {
     transform: scale(0.7);

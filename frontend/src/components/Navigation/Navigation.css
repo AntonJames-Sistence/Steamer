@@ -76,7 +76,7 @@ a {
 }
 
 .nav-link:hover {
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
     color: #1999ff;
 }
 
